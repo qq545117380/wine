@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--定义mybatis 配置-->
+<configuration>
+    <!--向mybatis 中导入 日志-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--配置扫描 mapper xml文件-->
+    <mappers>
+
+    </mappers>
+
+</configuration>

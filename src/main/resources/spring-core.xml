@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--默认使用注解配置-->
+    <context:annotation-config/>
+    <!--mvc 使用注解驱动-->
+    <mvc:annotation-driven/>
+    <!-- 设置不拦截静态资源-->
+    <mvc:default-servlet-handler/>
+
+    <!-- 引入 spring 整合mybatis 的配置-->
+    <import resource="spring-mybatis.xml"/>
+
+    <!--引入sping 整合shiro 的 配置-->
+
+    <!--引入 spring 整合redis的 配置-->
+    <import resource="spring-redis.xml"/>
+
+    <!-- 扫描包，创建bean 对象-->
+    <context:component-scan base-package="com.zmj.wine"/>
+
+    <!-- 视图解析器，可以给jsp页面 配置前后缀-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+</beans>
