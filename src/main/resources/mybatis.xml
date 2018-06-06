@@ -10,9 +10,9 @@
         <setting name="logImpl" value="LOG4J"/>
     </settings>
 
-    <!--配置扫描 mapper xml文件-->
-    <mappers>
-        <mapper resource="mapper/*Mapper.xml"/>
-    </mappers>
+    <!--&lt;!&ndash;配置扫描 mapper xml文件&ndash;&gt;-->
+    <!--<mappers>-->
+        <!--<mapper resource="mapper/*Mapper.xml"/>-->
+    <!--</mappers>-->
 
 </configuration>
