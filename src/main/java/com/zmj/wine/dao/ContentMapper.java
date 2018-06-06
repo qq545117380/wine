@@ -2,6 +2,7 @@ package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Content;
 
+
 public interface ContentMapper {
     int deleteByPrimaryKey(Integer contentId);
 

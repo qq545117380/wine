@@ -1,7 +1,9 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Opinion;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OpinionMapper {
     int deleteByPrimaryKey(Integer opinionId);
 
