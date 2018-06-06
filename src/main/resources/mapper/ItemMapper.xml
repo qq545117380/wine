@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.ItemMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Item">
+    <id column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_describe" jdbcType="VARCHAR" property="itemDescribe" />
+    <result column="regular_price" jdbcType="INTEGER" property="regularPrice" />
+    <result column="activity_price" jdbcType="INTEGER" property="activityPrice" />
+    <result column="item_promotion_msg" jdbcType="VARCHAR" property="itemPromotionMsg" />
+    <result column="item_notability" jdbcType="INTEGER" property="itemNotability" />
+    <result column="item_integral" jdbcType="INTEGER" property="itemIntegral" />
+    <result column="item_brand" jdbcType="VARCHAR" property="itemBrand" />
+    <result column="item_sku" jdbcType="VARCHAR" property="itemSku" />
+    <result column="item_content" jdbcType="VARCHAR" property="itemContent" />
+    <result column="item_proof" jdbcType="VARCHAR" property="itemProof" />
+    <result column="item_reticule" jdbcType="VARCHAR" property="itemReticule" />
+    <result column="item_flavour" jdbcType="VARCHAR" property="itemFlavour" />
+    <result column="item_carton_spec" jdbcType="VARCHAR" property="itemCartonSpec" />
+    <result column="item_spec" jdbcType="VARCHAR" property="itemSpec" />
+    <result column="img_1" jdbcType="VARCHAR" property="img1" />
+    <result column="img_2" jdbcType="VARCHAR" property="img2" />
+    <result column="img_3" jdbcType="VARCHAR" property="img3" />
+    <result column="item_preferential" jdbcType="INTEGER" property="itemPreferential" />
+    <result column="item_status" jdbcType="VARCHAR" property="itemStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    item_id, item_name, item_describe, regular_price, activity_price, item_promotion_msg, 
+    item_notability, item_integral, item_brand, item_sku, item_content, item_proof, item_reticule, 
+    item_flavour, item_carton_spec, item_spec, img_1, img_2, img_3, item_preferential, 
+    item_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_item
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_item
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Item">
+    insert into tb_item (item_id, item_name, item_describe, 
+      regular_price, activity_price, item_promotion_msg, 
+      item_notability, item_integral, item_brand, 
+      item_sku, item_content, item_proof, 
+      item_reticule, item_flavour, item_carton_spec, 
+      item_spec, img_1, img_2, 
+      img_3, item_preferential, item_status
+      )
+    values (#{itemId,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{itemDescribe,jdbcType=VARCHAR}, 
+      #{regularPrice,jdbcType=INTEGER}, #{activityPrice,jdbcType=INTEGER}, #{itemPromotionMsg,jdbcType=VARCHAR}, 
+      #{itemNotability,jdbcType=INTEGER}, #{itemIntegral,jdbcType=INTEGER}, #{itemBrand,jdbcType=VARCHAR}, 
+      #{itemSku,jdbcType=VARCHAR}, #{itemContent,jdbcType=VARCHAR}, #{itemProof,jdbcType=VARCHAR}, 
+      #{itemReticule,jdbcType=VARCHAR}, #{itemFlavour,jdbcType=VARCHAR}, #{itemCartonSpec,jdbcType=VARCHAR}, 
+      #{itemSpec,jdbcType=VARCHAR}, #{img1,jdbcType=VARCHAR}, #{img2,jdbcType=VARCHAR}, 
+      #{img3,jdbcType=VARCHAR}, #{itemPreferential,jdbcType=INTEGER}, #{itemStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Item">
+    insert into tb_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemDescribe != null">
+        item_describe,
+      </if>
+      <if test="regularPrice != null">
+        regular_price,
+      </if>
+      <if test="activityPrice != null">
+        activity_price,
+      </if>
+      <if test="itemPromotionMsg != null">
+        item_promotion_msg,
+      </if>
+      <if test="itemNotability != null">
+        item_notability,
+      </if>
+      <if test="itemIntegral != null">
+        item_integral,
+      </if>
+      <if test="itemBrand != null">
+        item_brand,
+      </if>
+      <if test="itemSku != null">
+        item_sku,
+      </if>
+      <if test="itemContent != null">
+        item_content,
+      </if>
+      <if test="itemProof != null">
+        item_proof,
+      </if>
+      <if test="itemReticule != null">
+        item_reticule,
+      </if>
+      <if test="itemFlavour != null">
+        item_flavour,
+      </if>
+      <if test="itemCartonSpec != null">
+        item_carton_spec,
+      </if>
+      <if test="itemSpec != null">
+        item_spec,
+      </if>
+      <if test="img1 != null">
+        img_1,
+      </if>
+      <if test="img2 != null">
+        img_2,
+      </if>
+      <if test="img3 != null">
+        img_3,
+      </if>
+      <if test="itemPreferential != null">
+        item_preferential,
+      </if>
+      <if test="itemStatus != null">
+        item_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescribe != null">
+        #{itemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="regularPrice != null">
+        #{regularPrice,jdbcType=INTEGER},
+      </if>
+      <if test="activityPrice != null">
+        #{activityPrice,jdbcType=INTEGER},
+      </if>
+      <if test="itemPromotionMsg != null">
+        #{itemPromotionMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNotability != null">
+        #{itemNotability,jdbcType=INTEGER},
+      </if>
+      <if test="itemIntegral != null">
+        #{itemIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="itemBrand != null">
+        #{itemBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSku != null">
+        #{itemSku,jdbcType=VARCHAR},
+      </if>
+      <if test="itemContent != null">
+        #{itemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="itemProof != null">
+        #{itemProof,jdbcType=VARCHAR},
+      </if>
+      <if test="itemReticule != null">
+        #{itemReticule,jdbcType=VARCHAR},
+      </if>
+      <if test="itemFlavour != null">
+        #{itemFlavour,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCartonSpec != null">
+        #{itemCartonSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSpec != null">
+        #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="img1 != null">
+        #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPreferential != null">
+        #{itemPreferential,jdbcType=INTEGER},
+      </if>
+      <if test="itemStatus != null">
+        #{itemStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Item">
+    update tb_item
+    <set>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescribe != null">
+        item_describe = #{itemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="regularPrice != null">
+        regular_price = #{regularPrice,jdbcType=INTEGER},
+      </if>
+      <if test="activityPrice != null">
+        activity_price = #{activityPrice,jdbcType=INTEGER},
+      </if>
+      <if test="itemPromotionMsg != null">
+        item_promotion_msg = #{itemPromotionMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNotability != null">
+        item_notability = #{itemNotability,jdbcType=INTEGER},
+      </if>
+      <if test="itemIntegral != null">
+        item_integral = #{itemIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="itemBrand != null">
+        item_brand = #{itemBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSku != null">
+        item_sku = #{itemSku,jdbcType=VARCHAR},
+      </if>
+      <if test="itemContent != null">
+        item_content = #{itemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="itemProof != null">
+        item_proof = #{itemProof,jdbcType=VARCHAR},
+      </if>
+      <if test="itemReticule != null">
+        item_reticule = #{itemReticule,jdbcType=VARCHAR},
+      </if>
+      <if test="itemFlavour != null">
+        item_flavour = #{itemFlavour,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCartonSpec != null">
+        item_carton_spec = #{itemCartonSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSpec != null">
+        item_spec = #{itemSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="img1 != null">
+        img_1 = #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        img_2 = #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        img_3 = #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPreferential != null">
+        item_preferential = #{itemPreferential,jdbcType=INTEGER},
+      </if>
+      <if test="itemStatus != null">
+        item_status = #{itemStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Item">
+    update tb_item
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_describe = #{itemDescribe,jdbcType=VARCHAR},
+      regular_price = #{regularPrice,jdbcType=INTEGER},
+      activity_price = #{activityPrice,jdbcType=INTEGER},
+      item_promotion_msg = #{itemPromotionMsg,jdbcType=VARCHAR},
+      item_notability = #{itemNotability,jdbcType=INTEGER},
+      item_integral = #{itemIntegral,jdbcType=INTEGER},
+      item_brand = #{itemBrand,jdbcType=VARCHAR},
+      item_sku = #{itemSku,jdbcType=VARCHAR},
+      item_content = #{itemContent,jdbcType=VARCHAR},
+      item_proof = #{itemProof,jdbcType=VARCHAR},
+      item_reticule = #{itemReticule,jdbcType=VARCHAR},
+      item_flavour = #{itemFlavour,jdbcType=VARCHAR},
+      item_carton_spec = #{itemCartonSpec,jdbcType=VARCHAR},
+      item_spec = #{itemSpec,jdbcType=VARCHAR},
+      img_1 = #{img1,jdbcType=VARCHAR},
+      img_2 = #{img2,jdbcType=VARCHAR},
+      img_3 = #{img3,jdbcType=VARCHAR},
+      item_preferential = #{itemPreferential,jdbcType=INTEGER},
+      item_status = #{itemStatus,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+</mapper>

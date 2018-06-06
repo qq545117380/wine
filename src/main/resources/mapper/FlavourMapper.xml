@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.FlavourMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Flavour">
+    <id column="flavour_id" jdbcType="INTEGER" property="flavourId" />
+    <result column="flavour_name" jdbcType="VARCHAR" property="flavourName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    flavour_id, flavour_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_flavour
+    where flavour_id = #{flavourId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_flavour
+    where flavour_id = #{flavourId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Flavour">
+    insert into tb_flavour (flavour_id, flavour_name)
+    values (#{flavourId,jdbcType=INTEGER}, #{flavourName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Flavour">
+    insert into tb_flavour
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="flavourId != null">
+        flavour_id,
+      </if>
+      <if test="flavourName != null">
+        flavour_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="flavourId != null">
+        #{flavourId,jdbcType=INTEGER},
+      </if>
+      <if test="flavourName != null">
+        #{flavourName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Flavour">
+    update tb_flavour
+    <set>
+      <if test="flavourName != null">
+        flavour_name = #{flavourName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where flavour_id = #{flavourId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Flavour">
+    update tb_flavour
+    set flavour_name = #{flavourName,jdbcType=VARCHAR}
+    where flavour_id = #{flavourId,jdbcType=INTEGER}
+  </update>
+</mapper>

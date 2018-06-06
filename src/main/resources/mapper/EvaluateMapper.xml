@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.EvaluateMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Evaluate">
+    <id column="evaluate_id" jdbcType="INTEGER" property="evaluateId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="et_detail" jdbcType="VARCHAR" property="etDetail" />
+    <result column="et_satisficing" jdbcType="INTEGER" property="etSatisficing" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    evaluate_id, item_id, user_id, et_detail, et_satisficing
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_evaluate
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_evaluate
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Evaluate">
+    insert into tb_evaluate (evaluate_id, item_id, user_id, 
+      et_detail, et_satisficing)
+    values (#{evaluateId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{etDetail,jdbcType=VARCHAR}, #{etSatisficing,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Evaluate">
+    insert into tb_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        evaluate_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="etDetail != null">
+        et_detail,
+      </if>
+      <if test="etSatisficing != null">
+        et_satisficing,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        #{evaluateId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="etDetail != null">
+        #{etDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="etSatisficing != null">
+        #{etSatisficing,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Evaluate">
+    update tb_evaluate
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="etDetail != null">
+        et_detail = #{etDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="etSatisficing != null">
+        et_satisficing = #{etSatisficing,jdbcType=INTEGER},
+      </if>
+    </set>
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Evaluate">
+    update tb_evaluate
+    set item_id = #{itemId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      et_detail = #{etDetail,jdbcType=VARCHAR},
+      et_satisficing = #{etSatisficing,jdbcType=INTEGER}
+    where evaluate_id = #{evaluateId,jdbcType=INTEGER}
+  </update>
+</mapper>

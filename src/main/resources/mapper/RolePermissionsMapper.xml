@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.RolePermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.RolePermissions">
+    <id column="_id" jdbcType="INTEGER" property="id" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    _id, permission, role_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from roles_permissions
+    where _id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from roles_permissions
+    where _id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.RolePermissions">
+    insert into roles_permissions (_id, permission, role_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.RolePermissions">
+    insert into roles_permissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        _id,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.RolePermissions">
+    update roles_permissions
+    <set>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where _id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.RolePermissions">
+    update roles_permissions
+    set permission = #{permission,jdbcType=VARCHAR},
+      role_name = #{roleName,jdbcType=VARCHAR}
+    where _id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

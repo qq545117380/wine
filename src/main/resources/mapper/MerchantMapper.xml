@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.MerchantMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Merchant">
+    <id column="mt_id" jdbcType="INTEGER" property="mtId" />
+    <result column="mt_name" jdbcType="VARCHAR" property="mtName" />
+    <result column="mt_user" jdbcType="VARCHAR" property="mtUser" />
+    <result column="mt_moblie" jdbcType="VARCHAR" property="mtMoblie" />
+    <result column="mt_type" jdbcType="VARCHAR" property="mtType" />
+    <result column="mt_notes" jdbcType="VARCHAR" property="mtNotes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mt_id, mt_name, mt_user, mt_moblie, mt_type, mt_notes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_merchant
+    where mt_id = #{mtId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_merchant
+    where mt_id = #{mtId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Merchant">
+    insert into tb_merchant (mt_id, mt_name, mt_user, 
+      mt_moblie, mt_type, mt_notes
+      )
+    values (#{mtId,jdbcType=INTEGER}, #{mtName,jdbcType=VARCHAR}, #{mtUser,jdbcType=VARCHAR}, 
+      #{mtMoblie,jdbcType=VARCHAR}, #{mtType,jdbcType=VARCHAR}, #{mtNotes,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Merchant">
+    insert into tb_merchant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mtId != null">
+        mt_id,
+      </if>
+      <if test="mtName != null">
+        mt_name,
+      </if>
+      <if test="mtUser != null">
+        mt_user,
+      </if>
+      <if test="mtMoblie != null">
+        mt_moblie,
+      </if>
+      <if test="mtType != null">
+        mt_type,
+      </if>
+      <if test="mtNotes != null">
+        mt_notes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mtId != null">
+        #{mtId,jdbcType=INTEGER},
+      </if>
+      <if test="mtName != null">
+        #{mtName,jdbcType=VARCHAR},
+      </if>
+      <if test="mtUser != null">
+        #{mtUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mtMoblie != null">
+        #{mtMoblie,jdbcType=VARCHAR},
+      </if>
+      <if test="mtType != null">
+        #{mtType,jdbcType=VARCHAR},
+      </if>
+      <if test="mtNotes != null">
+        #{mtNotes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Merchant">
+    update tb_merchant
+    <set>
+      <if test="mtName != null">
+        mt_name = #{mtName,jdbcType=VARCHAR},
+      </if>
+      <if test="mtUser != null">
+        mt_user = #{mtUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mtMoblie != null">
+        mt_moblie = #{mtMoblie,jdbcType=VARCHAR},
+      </if>
+      <if test="mtType != null">
+        mt_type = #{mtType,jdbcType=VARCHAR},
+      </if>
+      <if test="mtNotes != null">
+        mt_notes = #{mtNotes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mt_id = #{mtId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Merchant">
+    update tb_merchant
+    set mt_name = #{mtName,jdbcType=VARCHAR},
+      mt_user = #{mtUser,jdbcType=VARCHAR},
+      mt_moblie = #{mtMoblie,jdbcType=VARCHAR},
+      mt_type = #{mtType,jdbcType=VARCHAR},
+      mt_notes = #{mtNotes,jdbcType=VARCHAR}
+    where mt_id = #{mtId,jdbcType=INTEGER}
+  </update>
+</mapper>

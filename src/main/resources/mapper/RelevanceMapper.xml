@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.RelevanceMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Relevance">
+    <id column="relevance_id" jdbcType="INTEGER" property="relevanceId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="rm_name" jdbcType="VARCHAR" property="rmName" />
+    <result column="rm_img" jdbcType="VARCHAR" property="rmImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    relevance_id, item_id, rm_name, rm_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_relevance
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_relevance
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Relevance">
+    insert into tb_relevance (relevance_id, item_id, rm_name, 
+      rm_img)
+    values (#{relevanceId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{rmName,jdbcType=VARCHAR}, 
+      #{rmImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Relevance">
+    insert into tb_relevance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relevanceId != null">
+        relevance_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="rmName != null">
+        rm_name,
+      </if>
+      <if test="rmImg != null">
+        rm_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relevanceId != null">
+        #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="rmName != null">
+        #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="rmImg != null">
+        #{rmImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Relevance">
+    update tb_relevance
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="rmName != null">
+        rm_name = #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="rmImg != null">
+        rm_img = #{rmImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Relevance">
+    update tb_relevance
+    set item_id = #{itemId,jdbcType=INTEGER},
+      rm_name = #{rmName,jdbcType=VARCHAR},
+      rm_img = #{rmImg,jdbcType=VARCHAR}
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </update>
+</mapper>

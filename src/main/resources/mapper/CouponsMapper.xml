@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.CouponsMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Coupons">
+    <id column="coupons_id" jdbcType="INTEGER" property="couponsId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="unused" jdbcType="VARCHAR" property="unused" />
+    <result column="have_used" jdbcType="VARCHAR" property="haveUsed" />
+    <result column="have_expired" jdbcType="VARCHAR" property="haveExpired" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    coupons_id, user_id, unused, have_used, have_expired
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_coupons
+    where coupons_id = #{couponsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_coupons
+    where coupons_id = #{couponsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Coupons">
+    insert into tb_coupons (coupons_id, user_id, unused, 
+      have_used, have_expired)
+    values (#{couponsId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{unused,jdbcType=VARCHAR}, 
+      #{haveUsed,jdbcType=VARCHAR}, #{haveExpired,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Coupons">
+    insert into tb_coupons
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponsId != null">
+        coupons_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="unused != null">
+        unused,
+      </if>
+      <if test="haveUsed != null">
+        have_used,
+      </if>
+      <if test="haveExpired != null">
+        have_expired,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponsId != null">
+        #{couponsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="unused != null">
+        #{unused,jdbcType=VARCHAR},
+      </if>
+      <if test="haveUsed != null">
+        #{haveUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="haveExpired != null">
+        #{haveExpired,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Coupons">
+    update tb_coupons
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="unused != null">
+        unused = #{unused,jdbcType=VARCHAR},
+      </if>
+      <if test="haveUsed != null">
+        have_used = #{haveUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="haveExpired != null">
+        have_expired = #{haveExpired,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupons_id = #{couponsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Coupons">
+    update tb_coupons
+    set user_id = #{userId,jdbcType=INTEGER},
+      unused = #{unused,jdbcType=VARCHAR},
+      have_used = #{haveUsed,jdbcType=VARCHAR},
+      have_expired = #{haveExpired,jdbcType=VARCHAR}
+    where coupons_id = #{couponsId,jdbcType=INTEGER}
+  </update>
+</mapper>

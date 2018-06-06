@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.HoardingMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Hoarding">
+    <id column="hoarding_id" jdbcType="INTEGER" property="hoardingId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="hoarding_name" jdbcType="VARCHAR" property="hoardingName" />
+    <result column="hoarding_price" jdbcType="INTEGER" property="hoardingPrice" />
+    <result column="hoarding_discounts" jdbcType="INTEGER" property="hoardingDiscounts" />
+    <result column="hoarding_img" jdbcType="VARCHAR" property="hoardingImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hoarding_id, user_id, hoarding_name, hoarding_price, hoarding_discounts, hoarding_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_hoarding
+    where hoarding_id = #{hoardingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_hoarding
+    where hoarding_id = #{hoardingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Hoarding">
+    insert into tb_hoarding (hoarding_id, user_id, hoarding_name, 
+      hoarding_price, hoarding_discounts, hoarding_img
+      )
+    values (#{hoardingId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{hoardingName,jdbcType=VARCHAR}, 
+      #{hoardingPrice,jdbcType=INTEGER}, #{hoardingDiscounts,jdbcType=INTEGER}, #{hoardingImg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Hoarding">
+    insert into tb_hoarding
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hoardingId != null">
+        hoarding_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="hoardingName != null">
+        hoarding_name,
+      </if>
+      <if test="hoardingPrice != null">
+        hoarding_price,
+      </if>
+      <if test="hoardingDiscounts != null">
+        hoarding_discounts,
+      </if>
+      <if test="hoardingImg != null">
+        hoarding_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hoardingId != null">
+        #{hoardingId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingName != null">
+        #{hoardingName,jdbcType=VARCHAR},
+      </if>
+      <if test="hoardingPrice != null">
+        #{hoardingPrice,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingDiscounts != null">
+        #{hoardingDiscounts,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingImg != null">
+        #{hoardingImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Hoarding">
+    update tb_hoarding
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingName != null">
+        hoarding_name = #{hoardingName,jdbcType=VARCHAR},
+      </if>
+      <if test="hoardingPrice != null">
+        hoarding_price = #{hoardingPrice,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingDiscounts != null">
+        hoarding_discounts = #{hoardingDiscounts,jdbcType=INTEGER},
+      </if>
+      <if test="hoardingImg != null">
+        hoarding_img = #{hoardingImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hoarding_id = #{hoardingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Hoarding">
+    update tb_hoarding
+    set user_id = #{userId,jdbcType=INTEGER},
+      hoarding_name = #{hoardingName,jdbcType=VARCHAR},
+      hoarding_price = #{hoardingPrice,jdbcType=INTEGER},
+      hoarding_discounts = #{hoardingDiscounts,jdbcType=INTEGER},
+      hoarding_img = #{hoardingImg,jdbcType=VARCHAR}
+    where hoarding_id = #{hoardingId,jdbcType=INTEGER}
+  </update>
+</mapper>

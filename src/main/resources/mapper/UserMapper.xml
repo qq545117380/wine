@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_mobile" jdbcType="INTEGER" property="userMobile" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
+    <result column="user_nikename" jdbcType="VARCHAR" property="userNikename" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_integral" jdbcType="INTEGER" property="userIntegral" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_mobile, user_password, user_email, user_photo, user_nikename, user_sex, 
+    user_address, user_integral
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.User">
+    insert into tb_user (user_id, user_mobile, user_password, 
+      user_email, user_photo, user_nikename, 
+      user_sex, user_address, user_integral
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userMobile,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}, #{userNikename,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, #{userIntegral,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.User">
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userMobile != null">
+        user_mobile,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userPhoto != null">
+        user_photo,
+      </if>
+      <if test="userNikename != null">
+        user_nikename,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userIntegral != null">
+        user_integral,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userMobile != null">
+        #{userMobile,jdbcType=INTEGER},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoto != null">
+        #{userPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="userNikename != null">
+        #{userNikename,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntegral != null">
+        #{userIntegral,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.User">
+    update tb_user
+    <set>
+      <if test="userMobile != null">
+        user_mobile = #{userMobile,jdbcType=INTEGER},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoto != null">
+        user_photo = #{userPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="userNikename != null">
+        user_nikename = #{userNikename,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntegral != null">
+        user_integral = #{userIntegral,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.User">
+    update tb_user
+    set user_mobile = #{userMobile,jdbcType=INTEGER},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_photo = #{userPhoto,jdbcType=VARCHAR},
+      user_nikename = #{userNikename,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_integral = #{userIntegral,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

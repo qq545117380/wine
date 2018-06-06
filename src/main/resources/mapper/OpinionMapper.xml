@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.OpinionMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Opinion">
+    <id column="opinion_id" jdbcType="INTEGER" property="opinionId" />
+    <result column="op_type" jdbcType="VARCHAR" property="opType" />
+    <result column="op_content" jdbcType="VARCHAR" property="opContent" />
+    <result column="op_name" jdbcType="VARCHAR" property="opName" />
+    <result column="op_account" jdbcType="VARCHAR" property="opAccount" />
+    <result column="op_email" jdbcType="VARCHAR" property="opEmail" />
+    <result column="op_mobile" jdbcType="VARCHAR" property="opMobile" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    opinion_id, op_type, op_content, op_name, op_account, op_email, op_mobile
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_opinion
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_opinion
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Opinion">
+    insert into tb_opinion (opinion_id, op_type, op_content, 
+      op_name, op_account, op_email, 
+      op_mobile)
+    values (#{opinionId,jdbcType=INTEGER}, #{opType,jdbcType=VARCHAR}, #{opContent,jdbcType=VARCHAR}, 
+      #{opName,jdbcType=VARCHAR}, #{opAccount,jdbcType=VARCHAR}, #{opEmail,jdbcType=VARCHAR}, 
+      #{opMobile,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Opinion">
+    insert into tb_opinion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opinionId != null">
+        opinion_id,
+      </if>
+      <if test="opType != null">
+        op_type,
+      </if>
+      <if test="opContent != null">
+        op_content,
+      </if>
+      <if test="opName != null">
+        op_name,
+      </if>
+      <if test="opAccount != null">
+        op_account,
+      </if>
+      <if test="opEmail != null">
+        op_email,
+      </if>
+      <if test="opMobile != null">
+        op_mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opinionId != null">
+        #{opinionId,jdbcType=INTEGER},
+      </if>
+      <if test="opType != null">
+        #{opType,jdbcType=VARCHAR},
+      </if>
+      <if test="opContent != null">
+        #{opContent,jdbcType=VARCHAR},
+      </if>
+      <if test="opName != null">
+        #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opAccount != null">
+        #{opAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="opEmail != null">
+        #{opEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="opMobile != null">
+        #{opMobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Opinion">
+    update tb_opinion
+    <set>
+      <if test="opType != null">
+        op_type = #{opType,jdbcType=VARCHAR},
+      </if>
+      <if test="opContent != null">
+        op_content = #{opContent,jdbcType=VARCHAR},
+      </if>
+      <if test="opName != null">
+        op_name = #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opAccount != null">
+        op_account = #{opAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="opEmail != null">
+        op_email = #{opEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="opMobile != null">
+        op_mobile = #{opMobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Opinion">
+    update tb_opinion
+    set op_type = #{opType,jdbcType=VARCHAR},
+      op_content = #{opContent,jdbcType=VARCHAR},
+      op_name = #{opName,jdbcType=VARCHAR},
+      op_account = #{opAccount,jdbcType=VARCHAR},
+      op_email = #{opEmail,jdbcType=VARCHAR},
+      op_mobile = #{opMobile,jdbcType=VARCHAR}
+    where opinion_id = #{opinionId,jdbcType=INTEGER}
+  </update>
+</mapper>

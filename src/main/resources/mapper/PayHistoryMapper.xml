@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.PayHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.PayHistory">
+    <id column="ph_id" jdbcType="INTEGER" property="phId" />
+    <result column="ph_time" jdbcType="DATE" property="phTime" />
+    <result column="ph_account" jdbcType="VARCHAR" property="phAccount" />
+    <result column="ph_name" jdbcType="VARCHAR" property="phName" />
+    <result column="ph_money" jdbcType="INTEGER" property="phMoney" />
+    <result column="ph_serial_num" jdbcType="VARCHAR" property="phSerialNum" />
+    <result column="ph_notes" jdbcType="VARCHAR" property="phNotes" />
+    <result column="ph_payer" jdbcType="VARCHAR" property="phPayer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ph_id, ph_time, ph_account, ph_name, ph_money, ph_serial_num, ph_notes, ph_payer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_pay_history
+    where ph_id = #{phId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_pay_history
+    where ph_id = #{phId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.PayHistory">
+    insert into tb_pay_history (ph_id, ph_time, ph_account, 
+      ph_name, ph_money, ph_serial_num, 
+      ph_notes, ph_payer)
+    values (#{phId,jdbcType=INTEGER}, #{phTime,jdbcType=DATE}, #{phAccount,jdbcType=VARCHAR}, 
+      #{phName,jdbcType=VARCHAR}, #{phMoney,jdbcType=INTEGER}, #{phSerialNum,jdbcType=VARCHAR}, 
+      #{phNotes,jdbcType=VARCHAR}, #{phPayer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.PayHistory">
+    insert into tb_pay_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="phId != null">
+        ph_id,
+      </if>
+      <if test="phTime != null">
+        ph_time,
+      </if>
+      <if test="phAccount != null">
+        ph_account,
+      </if>
+      <if test="phName != null">
+        ph_name,
+      </if>
+      <if test="phMoney != null">
+        ph_money,
+      </if>
+      <if test="phSerialNum != null">
+        ph_serial_num,
+      </if>
+      <if test="phNotes != null">
+        ph_notes,
+      </if>
+      <if test="phPayer != null">
+        ph_payer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="phId != null">
+        #{phId,jdbcType=INTEGER},
+      </if>
+      <if test="phTime != null">
+        #{phTime,jdbcType=DATE},
+      </if>
+      <if test="phAccount != null">
+        #{phAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="phName != null">
+        #{phName,jdbcType=VARCHAR},
+      </if>
+      <if test="phMoney != null">
+        #{phMoney,jdbcType=INTEGER},
+      </if>
+      <if test="phSerialNum != null">
+        #{phSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="phNotes != null">
+        #{phNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="phPayer != null">
+        #{phPayer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.PayHistory">
+    update tb_pay_history
+    <set>
+      <if test="phTime != null">
+        ph_time = #{phTime,jdbcType=DATE},
+      </if>
+      <if test="phAccount != null">
+        ph_account = #{phAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="phName != null">
+        ph_name = #{phName,jdbcType=VARCHAR},
+      </if>
+      <if test="phMoney != null">
+        ph_money = #{phMoney,jdbcType=INTEGER},
+      </if>
+      <if test="phSerialNum != null">
+        ph_serial_num = #{phSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="phNotes != null">
+        ph_notes = #{phNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="phPayer != null">
+        ph_payer = #{phPayer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ph_id = #{phId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.PayHistory">
+    update tb_pay_history
+    set ph_time = #{phTime,jdbcType=DATE},
+      ph_account = #{phAccount,jdbcType=VARCHAR},
+      ph_name = #{phName,jdbcType=VARCHAR},
+      ph_money = #{phMoney,jdbcType=INTEGER},
+      ph_serial_num = #{phSerialNum,jdbcType=VARCHAR},
+      ph_notes = #{phNotes,jdbcType=VARCHAR},
+      ph_payer = #{phPayer,jdbcType=VARCHAR}
+    where ph_id = #{phId,jdbcType=INTEGER}
+  </update>
+</mapper>

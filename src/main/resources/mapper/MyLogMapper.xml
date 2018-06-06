@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.MyLogMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.MyLog">
+    <id column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="log_user_name" jdbcType="VARCHAR" property="logUserName" />
+    <result column="log_time" jdbcType="DATE" property="logTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    log_id, log_user_name, log_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.MyLog">
+    insert into log (log_id, log_user_name, log_time
+      )
+    values (#{logId,jdbcType=INTEGER}, #{logUserName,jdbcType=VARCHAR}, #{logTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.MyLog">
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="logUserName != null">
+        log_user_name,
+      </if>
+      <if test="logTime != null">
+        log_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="logUserName != null">
+        #{logUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null">
+        #{logTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.MyLog">
+    update log
+    <set>
+      <if test="logUserName != null">
+        log_user_name = #{logUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null">
+        log_time = #{logTime,jdbcType=DATE},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.MyLog">
+    update log
+    set log_user_name = #{logUserName,jdbcType=VARCHAR},
+      log_time = #{logTime,jdbcType=DATE}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+</mapper>

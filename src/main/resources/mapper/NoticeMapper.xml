@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmj.wine.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.zmj.wine.entity.Notice">
+    <id column="notice_id" jdbcType="INTEGER" property="noticeId" />
+    <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle" />
+    <result column="notice_time" jdbcType="DATE" property="noticeTime" />
+    <result column="notice_detail" jdbcType="VARCHAR" property="noticeDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    notice_id, notice_title, notice_time, notice_detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_notice
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_notice
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zmj.wine.entity.Notice">
+    insert into tb_notice (notice_id, notice_title, notice_time, 
+      notice_detail)
+    values (#{noticeId,jdbcType=INTEGER}, #{noticeTitle,jdbcType=VARCHAR}, #{noticeTime,jdbcType=DATE}, 
+      #{noticeDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Notice">
+    insert into tb_notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        notice_id,
+      </if>
+      <if test="noticeTitle != null">
+        notice_title,
+      </if>
+      <if test="noticeTime != null">
+        notice_time,
+      </if>
+      <if test="noticeDetail != null">
+        notice_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        #{noticeId,jdbcType=INTEGER},
+      </if>
+      <if test="noticeTitle != null">
+        #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        #{noticeTime,jdbcType=DATE},
+      </if>
+      <if test="noticeDetail != null">
+        #{noticeDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Notice">
+    update tb_notice
+    <set>
+      <if test="noticeTitle != null">
+        notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        notice_time = #{noticeTime,jdbcType=DATE},
+      </if>
+      <if test="noticeDetail != null">
+        notice_detail = #{noticeDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Notice">
+    update tb_notice
+    set notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      notice_time = #{noticeTime,jdbcType=DATE},
+      notice_detail = #{noticeDetail,jdbcType=VARCHAR}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+</mapper>
