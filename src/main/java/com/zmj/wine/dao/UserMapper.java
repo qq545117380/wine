@@ -1,7 +1,11 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.User;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -14,4 +18,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //查询会员用户的所有信息
+    List<User> selectAllUser();
 }
