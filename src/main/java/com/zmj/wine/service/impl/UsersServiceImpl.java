@@ -2,6 +2,7 @@ package com.zmj.wine.service.impl;
 
 import com.zmj.wine.dao.UsersMapper;
 import com.zmj.wine.entity.Users;
+import com.zmj.wine.service.UsersService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,7 @@ import java.util.List;
  **/
 @Service
 @Transactional
-public class UsersServiceImpl {
+public class UsersServiceImpl implements UsersService{
 
     @Resource
     private UsersMapper usersMapper;
