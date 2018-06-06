@@ -17,26 +17,27 @@
     id, kind_id, subclass_id, brand_id, yieldly_id, flavour_id, proof_id, content_id, 
     price_group_id, item_id
   </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_middle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_middle
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_middle
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zmj.wine.entity.Middle">
-    insert into tb_middle (id, kind_id, subclass_id, 
-      brand_id, yieldly_id, flavour_id, 
-      proof_id, content_id, price_group_id, 
-      item_id)
-    values (#{id,jdbcType=INTEGER}, #{kindId,jdbcType=INTEGER}, #{subclassId,jdbcType=INTEGER}, 
-      #{brandId,jdbcType=INTEGER}, #{yieldlyId,jdbcType=INTEGER}, #{flavourId,jdbcType=INTEGER}, 
-      #{proofId,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, #{priceGroupId,jdbcType=INTEGER}, 
-      #{itemId,jdbcType=INTEGER})
-  </insert>
+
+
   <insert id="insertSelective" parameterType="com.zmj.wine.entity.Middle">
     insert into tb_middle
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -104,6 +105,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Middle">
     update tb_middle
     <set>
@@ -137,17 +139,5 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Middle">
-    update tb_middle
-    set kind_id = #{kindId,jdbcType=INTEGER},
-      subclass_id = #{subclassId,jdbcType=INTEGER},
-      brand_id = #{brandId,jdbcType=INTEGER},
-      yieldly_id = #{yieldlyId,jdbcType=INTEGER},
-      flavour_id = #{flavourId,jdbcType=INTEGER},
-      proof_id = #{proofId,jdbcType=INTEGER},
-      content_id = #{contentId,jdbcType=INTEGER},
-      price_group_id = #{priceGroupId,jdbcType=INTEGER},
-      item_id = #{itemId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
 </mapper>

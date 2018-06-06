@@ -8,51 +8,18 @@
   <sql id="Base_Column_List">
     content_id, content_name
   </sql>
+    <!--根据id查询净含量组-->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_content
     where content_id = #{contentId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tb_content
-    where content_id = #{contentId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zmj.wine.entity.Content">
-    insert into tb_content (content_id, content_name)
-    values (#{contentId,jdbcType=INTEGER}, #{contentName,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Content">
-    insert into tb_content
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="contentId != null">
-        content_id,
-      </if>
-      <if test="contentName != null">
-        content_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="contentId != null">
-        #{contentId,jdbcType=INTEGER},
-      </if>
-      <if test="contentName != null">
-        #{contentName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Content">
-    update tb_content
-    <set>
-      <if test="contentName != null">
-        content_name = #{contentName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where content_id = #{contentId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Content">
-    update tb_content
-    set content_name = #{contentName,jdbcType=VARCHAR}
-    where content_id = #{contentId,jdbcType=INTEGER}
-  </update>
+
+    <!--查询所有净含量组-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT distinct content_name FROM tb_content c JOIN
+        tb_middle m on c.content_id=m.content_id JOIN tb_kind k
+        on m.kind_id=k.kind_id where k.kind_id=#{kindId};
+    </select>
 </mapper>

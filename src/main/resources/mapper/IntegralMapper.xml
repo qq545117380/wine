@@ -12,16 +12,32 @@
   <sql id="Base_Column_List">
     ih_id, user_id, integral_id, ih_type, ih_integral_time, ih_notes
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_integral
     where ih_id = #{ihId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByNum" resultMap="BaseResultMap">
+    select count(1)
+    from tb_integral
+  </select>
+
+  <!--分页查询积分历史-->
+  <select id="selectAllByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_integral
+    limit #{index},#{size}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_integral
     where ih_id = #{ihId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.zmj.wine.entity.Integral">
     insert into tb_integral (ih_id, user_id, integral_id, 
       ih_type, ih_integral_time, ih_notes
@@ -30,49 +46,7 @@
       #{ihType,jdbcType=VARCHAR}, #{ihIntegralTime,jdbcType=DATE}, #{ihNotes,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Integral">
-    insert into tb_integral
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ihId != null">
-        ih_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="integralId != null">
-        integral_id,
-      </if>
-      <if test="ihType != null">
-        ih_type,
-      </if>
-      <if test="ihIntegralTime != null">
-        ih_integral_time,
-      </if>
-      <if test="ihNotes != null">
-        ih_notes,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ihId != null">
-        #{ihId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="integralId != null">
-        #{integralId,jdbcType=INTEGER},
-      </if>
-      <if test="ihType != null">
-        #{ihType,jdbcType=VARCHAR},
-      </if>
-      <if test="ihIntegralTime != null">
-        #{ihIntegralTime,jdbcType=DATE},
-      </if>
-      <if test="ihNotes != null">
-        #{ihNotes,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Integral">
     update tb_integral
     <set>
@@ -94,13 +68,5 @@
     </set>
     where ih_id = #{ihId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Integral">
-    update tb_integral
-    set user_id = #{userId,jdbcType=INTEGER},
-      integral_id = #{integralId,jdbcType=INTEGER},
-      ih_type = #{ihType,jdbcType=VARCHAR},
-      ih_integral_time = #{ihIntegralTime,jdbcType=DATE},
-      ih_notes = #{ihNotes,jdbcType=VARCHAR}
-    where ih_id = #{ihId,jdbcType=INTEGER}
-  </update>
+
 </mapper>

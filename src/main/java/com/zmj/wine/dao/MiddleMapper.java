@@ -1,11 +1,12 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Middle;
+import org.springframework.stereotype.Repository;
 
+//中间表
+@Repository
 public interface MiddleMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(Middle record);
 
     int insertSelective(Middle record);
 
@@ -13,5 +14,4 @@ public interface MiddleMapper {
 
     int updateByPrimaryKeySelective(Middle record);
 
-    int updateByPrimaryKey(Middle record);
 }

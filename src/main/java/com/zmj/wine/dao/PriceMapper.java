@@ -1,17 +1,15 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Price;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface PriceMapper {
-    int deleteByPrimaryKey(Integer priceId);
-
-    int insert(Price record);
-
-    int insertSelective(Price record);
 
     Price selectByPrimaryKey(Integer priceId);
 
-    int updateByPrimaryKeySelective(Price record);
-
-    int updateByPrimaryKey(Price record);
+    //查询所有的价格区间
+    List<Price> selectAll();
 }
