@@ -1,9 +1,7 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.MyLog;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface MyLogMapper {
     int deleteByPrimaryKey(Integer logId);
 

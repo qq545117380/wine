@@ -2,7 +2,6 @@ package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Coupons;
 
-
 public interface CouponsMapper {
     int deleteByPrimaryKey(Integer couponsId);
 

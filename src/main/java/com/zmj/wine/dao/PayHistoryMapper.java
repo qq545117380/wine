@@ -1,9 +1,7 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.PayHistory;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface PayHistoryMapper {
     int deleteByPrimaryKey(Integer phId);
 

@@ -5,12 +5,12 @@
     <id column="mt_id" jdbcType="INTEGER" property="mtId" />
     <result column="mt_name" jdbcType="VARCHAR" property="mtName" />
     <result column="mt_user" jdbcType="VARCHAR" property="mtUser" />
-    <result column="mt_moblie" jdbcType="VARCHAR" property="mtMoblie" />
+    <result column="mt_mobile" jdbcType="VARCHAR" property="mtMobile" />
     <result column="mt_type" jdbcType="VARCHAR" property="mtType" />
     <result column="mt_notes" jdbcType="VARCHAR" property="mtNotes" />
   </resultMap>
   <sql id="Base_Column_List">
-    mt_id, mt_name, mt_user, mt_moblie, mt_type, mt_notes
+    mt_id, mt_name, mt_user, mt_mobile, mt_type, mt_notes
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,10 +24,10 @@
   </delete>
   <insert id="insert" parameterType="com.zmj.wine.entity.Merchant">
     insert into tb_merchant (mt_id, mt_name, mt_user, 
-      mt_moblie, mt_type, mt_notes
+      mt_mobile, mt_type, mt_notes
       )
     values (#{mtId,jdbcType=INTEGER}, #{mtName,jdbcType=VARCHAR}, #{mtUser,jdbcType=VARCHAR}, 
-      #{mtMoblie,jdbcType=VARCHAR}, #{mtType,jdbcType=VARCHAR}, #{mtNotes,jdbcType=VARCHAR}
+      #{mtMobile,jdbcType=VARCHAR}, #{mtType,jdbcType=VARCHAR}, #{mtNotes,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zmj.wine.entity.Merchant">
@@ -42,8 +42,8 @@
       <if test="mtUser != null">
         mt_user,
       </if>
-      <if test="mtMoblie != null">
-        mt_moblie,
+      <if test="mtMobile != null">
+        mt_mobile,
       </if>
       <if test="mtType != null">
         mt_type,
@@ -62,8 +62,8 @@
       <if test="mtUser != null">
         #{mtUser,jdbcType=VARCHAR},
       </if>
-      <if test="mtMoblie != null">
-        #{mtMoblie,jdbcType=VARCHAR},
+      <if test="mtMobile != null">
+        #{mtMobile,jdbcType=VARCHAR},
       </if>
       <if test="mtType != null">
         #{mtType,jdbcType=VARCHAR},
@@ -82,8 +82,8 @@
       <if test="mtUser != null">
         mt_user = #{mtUser,jdbcType=VARCHAR},
       </if>
-      <if test="mtMoblie != null">
-        mt_moblie = #{mtMoblie,jdbcType=VARCHAR},
+      <if test="mtMobile != null">
+        mt_mobile = #{mtMobile,jdbcType=VARCHAR},
       </if>
       <if test="mtType != null">
         mt_type = #{mtType,jdbcType=VARCHAR},
@@ -98,7 +98,7 @@
     update tb_merchant
     set mt_name = #{mtName,jdbcType=VARCHAR},
       mt_user = #{mtUser,jdbcType=VARCHAR},
-      mt_moblie = #{mtMoblie,jdbcType=VARCHAR},
+      mt_mobile = #{mtMobile,jdbcType=VARCHAR},
       mt_type = #{mtType,jdbcType=VARCHAR},
       mt_notes = #{mtNotes,jdbcType=VARCHAR}
     where mt_id = #{mtId,jdbcType=INTEGER}

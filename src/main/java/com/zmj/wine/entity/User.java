@@ -3,7 +3,7 @@ package com.zmj.wine.entity;
 public class User {
     private Integer userId;
 
-    private Integer userMobile;
+    private String userMobile;
 
     private String userPassword;
 
@@ -27,12 +27,12 @@ public class User {
         this.userId = userId;
     }
 
-    public Integer getUserMobile() {
+    public String getUserMobile() {
         return userMobile;
     }
 
-    public void setUserMobile(Integer userMobile) {
-        this.userMobile = userMobile;
+    public void setUserMobile(String userMobile) {
+        this.userMobile = userMobile == null ? null : userMobile.trim();
     }
 
     public String getUserPassword() {

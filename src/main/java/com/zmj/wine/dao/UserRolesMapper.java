@@ -1,9 +1,7 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.UserRoles;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface UserRolesMapper {
     int deleteByPrimaryKey(Integer id);
 

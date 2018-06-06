@@ -3,7 +3,7 @@
 <mapper namespace="com.zmj.wine.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.zmj.wine.entity.User">
     <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_mobile" jdbcType="INTEGER" property="userMobile" />
+    <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
     <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
@@ -31,7 +31,7 @@
       user_email, user_photo, user_nikename, 
       user_sex, user_address, user_integral
       )
-    values (#{userId,jdbcType=INTEGER}, #{userMobile,jdbcType=INTEGER}, #{userPassword,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{userMobile,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
       #{userEmail,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}, #{userNikename,jdbcType=VARCHAR}, 
       #{userSex,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, #{userIntegral,jdbcType=INTEGER}
       )
@@ -72,7 +72,7 @@
         #{userId,jdbcType=INTEGER},
       </if>
       <if test="userMobile != null">
-        #{userMobile,jdbcType=INTEGER},
+        #{userMobile,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         #{userPassword,jdbcType=VARCHAR},
@@ -101,7 +101,7 @@
     update tb_user
     <set>
       <if test="userMobile != null">
-        user_mobile = #{userMobile,jdbcType=INTEGER},
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         user_password = #{userPassword,jdbcType=VARCHAR},
@@ -129,7 +129,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.User">
     update tb_user
-    set user_mobile = #{userMobile,jdbcType=INTEGER},
+    set user_mobile = #{userMobile,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
       user_email = #{userEmail,jdbcType=VARCHAR},
       user_photo = #{userPhoto,jdbcType=VARCHAR},

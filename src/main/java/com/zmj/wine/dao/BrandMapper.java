@@ -2,7 +2,6 @@ package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Brand;
 
-
 public interface BrandMapper {
     int deleteByPrimaryKey(Integer brandId);
 

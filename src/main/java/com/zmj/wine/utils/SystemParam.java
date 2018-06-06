@@ -11,6 +11,7 @@ public class SystemParam {
      *
      */
     public final static class Login{
+
         //用户登录成功
         public static final int CODE_SUCCESS = 0;
         public static final String MSG_SUCCESS="登录成功";

@@ -7,7 +7,7 @@ public class Merchant {
 
     private String mtUser;
 
-    private String mtMoblie;
+    private String mtMobile;
 
     private String mtType;
 
@@ -37,12 +37,12 @@ public class Merchant {
         this.mtUser = mtUser == null ? null : mtUser.trim();
     }
 
-    public String getMtMoblie() {
-        return mtMoblie;
+    public String getMtMobile() {
+        return mtMobile;
     }
 
-    public void setMtMoblie(String mtMoblie) {
-        this.mtMoblie = mtMoblie == null ? null : mtMoblie.trim();
+    public void setMtMobile(String mtMobile) {
+        this.mtMobile = mtMobile == null ? null : mtMobile.trim();
     }
 
     public String getMtType() {
