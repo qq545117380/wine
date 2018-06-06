@@ -12,7 +12,7 @@
 
     <!--配置扫描 mapper xml文件-->
     <mappers>
-
+        <mapper resource="mapper/*Mapper.xml"/>
     </mappers>
 
 </configuration>
