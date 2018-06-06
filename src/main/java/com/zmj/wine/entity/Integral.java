@@ -1,11 +1,35 @@
 package com.zmj.wine.entity;
 
+import java.util.Date;
+
 public class Integral {
+    private Integer ihId;
+
+    private Integer userId;
+
     private Integer integralId;
 
-    private Integer availableIntegral;
+    private String ihType;
 
-    private Integer willOverdue;
+    private Date ihIntegralTime;
+
+    private String ihNotes;
+
+    public Integer getIhId() {
+        return ihId;
+    }
+
+    public void setIhId(Integer ihId) {
+        this.ihId = ihId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getIntegralId() {
         return integralId;
@@ -15,19 +39,27 @@ public class Integral {
         this.integralId = integralId;
     }
 
-    public Integer getAvailableIntegral() {
-        return availableIntegral;
+    public String getIhType() {
+        return ihType;
     }
 
-    public void setAvailableIntegral(Integer availableIntegral) {
-        this.availableIntegral = availableIntegral;
+    public void setIhType(String ihType) {
+        this.ihType = ihType == null ? null : ihType.trim();
     }
 
-    public Integer getWillOverdue() {
-        return willOverdue;
+    public Date getIhIntegralTime() {
+        return ihIntegralTime;
     }
 
-    public void setWillOverdue(Integer willOverdue) {
-        this.willOverdue = willOverdue;
+    public void setIhIntegralTime(Date ihIntegralTime) {
+        this.ihIntegralTime = ihIntegralTime;
+    }
+
+    public String getIhNotes() {
+        return ihNotes;
+    }
+
+    public void setIhNotes(String ihNotes) {
+        this.ihNotes = ihNotes == null ? null : ihNotes.trim();
     }
 }

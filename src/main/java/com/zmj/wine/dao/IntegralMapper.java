@@ -3,13 +3,13 @@ package com.zmj.wine.dao;
 import com.zmj.wine.entity.Integral;
 
 public interface IntegralMapper {
-    int deleteByPrimaryKey(Integer integralId);
+    int deleteByPrimaryKey(Integer ihId);
 
     int insert(Integral record);
 
     int insertSelective(Integral record);
 
-    Integral selectByPrimaryKey(Integer integralId);
+    Integral selectByPrimaryKey(Integer ihId);
 
     int updateByPrimaryKeySelective(Integral record);
 
