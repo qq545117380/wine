@@ -1,4 +1,4 @@
-package com.zmj.wine.service.Impl;
+package com.zmj.wine.service.impl;
 
 import com.zmj.wine.dao.UsersMapper;
 import com.zmj.wine.entity.Users;
