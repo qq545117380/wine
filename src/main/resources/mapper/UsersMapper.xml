@@ -16,6 +16,11 @@
     _id, username, password, password_salt, nickname, sex, user_type, role, login_time
   </sql>
 
+  <!--查询所有的后台用户信息-->
+  <select id="findAllUsers" resultMap="BaseResultMap">
+    select _id, username, password, password_salt, nickname, sex, user_type, role, login_time
+    from users;
+  </select>
 
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
