@@ -16,6 +16,7 @@
     <!-- 设置不拦截静态资源-->
     <mvc:default-servlet-handler/>
 
+
     <!-- 引入 spring 整合mybatis 的配置-->
     <import resource="spring-mybatis.xml"/>
 
