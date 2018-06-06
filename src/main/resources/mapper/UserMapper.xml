@@ -16,6 +16,13 @@
     user_id, user_mobile, user_password, user_email, user_photo, user_nikename, user_sex, 
     user_address, user_integral
   </sql>
+
+  <!--查询所有会员用户的信息-->
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    select  user_id, user_mobile, user_password, user_email, user_photo, user_nikename, user_sex,
+    user_address, user_integral from tb_user;
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
