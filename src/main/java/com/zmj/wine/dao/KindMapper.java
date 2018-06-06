@@ -1,17 +1,13 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Kind;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface KindMapper {
-    int deleteByPrimaryKey(Integer kindId);
-
-    int insert(Kind record);
-
-    int insertSelective(Kind record);
 
     Kind selectByPrimaryKey(Integer kindId);
 
-    int updateByPrimaryKeySelective(Kind record);
-
-    int updateByPrimaryKey(Kind record);
+    List<Kind> selectAll();
 }

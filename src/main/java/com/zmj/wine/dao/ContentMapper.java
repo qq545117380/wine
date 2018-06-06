@@ -1,17 +1,14 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Content;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface ContentMapper {
-    int deleteByPrimaryKey(Integer contentId);
-
-    int insert(Content record);
-
-    int insertSelective(Content record);
 
     Content selectByPrimaryKey(Integer contentId);
 
-    int updateByPrimaryKeySelective(Content record);
-
-    int updateByPrimaryKey(Content record);
+    //查询所有净含量组
+    List<Content> selectAll();
 }

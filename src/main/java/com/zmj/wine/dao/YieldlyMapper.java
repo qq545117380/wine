@@ -1,17 +1,15 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Yieldly;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface YieldlyMapper {
-    int deleteByPrimaryKey(Integer yieldlyId);
-
-    int insert(Yieldly record);
-
-    int insertSelective(Yieldly record);
 
     Yieldly selectByPrimaryKey(Integer yieldlyId);
 
-    int updateByPrimaryKeySelective(Yieldly record);
-
-    int updateByPrimaryKey(Yieldly record);
+    //查询所有酒产地
+    List<Yieldly> selectAll();
 }

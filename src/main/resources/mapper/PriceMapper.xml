@@ -8,51 +8,18 @@
   <sql id="Base_Column_List">
     price_id, price_name
   </sql>
+  <!--根据id查询价格区间-->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_price
     where price_id = #{priceId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tb_price
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zmj.wine.entity.Price">
-    insert into tb_price (price_id, price_name)
-    values (#{priceId,jdbcType=INTEGER}, #{priceName,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.zmj.wine.entity.Price">
-    insert into tb_price
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="priceId != null">
-        price_id,
-      </if>
-      <if test="priceName != null">
-        price_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="priceId != null">
-        #{priceId,jdbcType=INTEGER},
-      </if>
-      <if test="priceName != null">
-        #{priceName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Price">
-    update tb_price
-    <set>
-      <if test="priceName != null">
-        price_name = #{priceName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zmj.wine.entity.Price">
-    update tb_price
-    set price_name = #{priceName,jdbcType=VARCHAR}
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </update>
+
+  <!--查询所有的价格区间-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT distinct price_name FROM tb_price p JOIN tb_middle m
+    on p.price_id=m.price_group_id JOIN tb_kind k
+    on m.kind_id=k.kind_id where k.kind_id=#{kindId};
+  </select>
 </mapper>
