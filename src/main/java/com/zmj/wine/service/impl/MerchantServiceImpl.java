@@ -1,15 +1,17 @@
 package com.zmj.wine.service.impl;
 
 import com.zmj.wine.dao.MerchantMapper;
-import com.zmj.wine.entity.Integral;
 import com.zmj.wine.entity.Merchant;
 import com.zmj.wine.service.IMerchantService;
 import com.zmj.wine.utils.PageBean;
 import com.zmj.wine.utils.SystemUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
-
+@Service
+@Transactional
 public class MerchantServiceImpl implements IMerchantService{
     @Resource
     private MerchantMapper merchantDAO;
