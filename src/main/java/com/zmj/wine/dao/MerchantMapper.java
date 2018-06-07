@@ -13,6 +13,8 @@ public interface MerchantMapper {
 
     Merchant selectByPrimaryKey(Integer mtId);
 
+    int selectByNum();
+
     //查询所有采购单(分页查询)
     List<Merchant> selectAllByPage(@Param("index") int index, @Param("size") int size );
 }

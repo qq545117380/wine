@@ -20,6 +20,10 @@
     where mt_id = #{mtId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByNum" resultMap="BaseResultMap">
+    select count(1) FROM tb_merchant
+  </select>
+
   <!--查询所有采购单(分页查询)-->
   <select id="selectAllByPage" resultMap="BaseResultMap">
     select

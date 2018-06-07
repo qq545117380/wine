@@ -10,5 +10,5 @@ public interface FlavourMapper {
     Flavour selectByPrimaryKey(Integer flavourId);
 
     //查询所有酒类型
-    List<Flavour> selectAll();
+    List<Flavour> selectAllByKindId(int kindId);
 }
