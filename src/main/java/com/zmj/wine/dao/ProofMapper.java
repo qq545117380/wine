@@ -11,5 +11,5 @@ public interface ProofMapper {
     Proof selectByPrimaryKey(Integer proofId);
 
     //查询所有酒精度数区间
-    List<Proof> selectAll();
+    List<Proof> selectAllByKindId(int kindId);
 }

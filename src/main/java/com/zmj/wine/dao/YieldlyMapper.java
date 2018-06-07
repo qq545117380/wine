@@ -11,5 +11,5 @@ public interface YieldlyMapper {
     Yieldly selectByPrimaryKey(Integer yieldlyId);
 
     //查询所有酒产地
-    List<Yieldly> selectAll();
+    List<Yieldly> selectAllByKindId(int kindId);
 }

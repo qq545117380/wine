@@ -11,5 +11,5 @@ public interface PriceMapper {
     Price selectByPrimaryKey(Integer priceId);
 
     //查询所有的价格区间
-    List<Price> selectAll();
+    List<Price> selectAllByKindId(int kindId);
 }

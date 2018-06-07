@@ -10,5 +10,5 @@ public interface BrandMapper {
     Brand selectByPrimaryKey(Integer brandId);
 
     //查询所有品牌
-    List<Brand> selectAll();
+    List<Brand> selectAllByKindId(int kindId);
 }
