@@ -6,9 +6,11 @@ import com.zmj.wine.service.IIntegralService;
 import com.zmj.wine.utils.PageBean;
 import com.zmj.wine.utils.SystemUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+@Transactional
 @Service
 public class IntegralServiceImpl implements IIntegralService{
     @Resource

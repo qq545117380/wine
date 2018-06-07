@@ -30,6 +30,14 @@
     item_flavour, item_carton_spec, item_spec, img_1, img_2, img_3, item_preferential, 
     item_status
   </sql>
+
+  <!--后台查询所有的商品-->
+  <select id="selectItemAll" resultMap="BaseResultMap">
+    select item_id,img_1,item_name,item_describe,regular_price,item_status
+    from tb_item;
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
