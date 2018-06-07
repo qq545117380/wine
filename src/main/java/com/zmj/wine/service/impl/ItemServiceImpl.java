@@ -25,7 +25,11 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.selectItemAll();
     }
 
-
+    @Override
+    public Item selectByPrimaryKey(Integer itemId) {
+        Item item = itemMapper.selectByPrimaryKey(itemId);
+        return item;
+    }
 
 
 }
