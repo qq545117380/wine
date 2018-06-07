@@ -10,6 +10,8 @@
   <sql id="Base_Column_List">
     notice_id, notice_title, notice_time, notice_detail
   </sql>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
