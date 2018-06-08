@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="${base}/lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
 <script type="text/javascript" src="${base}/lib/respond.min.js"></script>
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="${base}/static/h-ui/css/H-ui.min.css" />
@@ -74,9 +74,9 @@
 
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="${base}/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="${base}lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="${base}static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="${base}static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="${base}/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="${base}/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="${base}/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="${base}/lib/My97DatePicker/4.8/WdatePicker.js"></script>

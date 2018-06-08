@@ -1,7 +1,7 @@
 package com.zmj.wine.service;
 
 import com.zmj.wine.entity.Item;
-import org.apache.ibatis.annotations.Param;
+import com.zmj.wine.utils.PageBean;
 
 import java.util.List;
 
@@ -13,6 +13,12 @@ public interface ItemService {
 
     //后台查询所有的商品
     List<Item> selectItemAll();
+
+    //查询商品的总数量
+    int selectItemNum();
+
+    //后台分页查询商品信息
+    PageBean<Item> selectItemByPage(int currentPage);
 
     Item selectByPrimaryKey(Integer itemId);
 }

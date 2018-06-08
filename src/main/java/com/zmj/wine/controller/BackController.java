@@ -20,12 +20,18 @@ public class BackController {
     @Resource
     private ItemService itemService;
 
+    //模拟登录后台
+    @RequestMapping("/login")
+    public String login(){
+        return "backPage/index";
+    }
+
     //查询所有商品信息
     @RequestMapping("/item")
     public String selectItem(Model model){
         List<Item> itemList = itemService.selectItemAll();
         model.addAttribute("itemList",itemList);
 
-        return "/picture-list";
+        return "backPage/picture-list";
     }
 }
