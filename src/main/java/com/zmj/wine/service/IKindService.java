@@ -9,4 +9,6 @@ public interface IKindService {
     Kind selectByPrimaryKey(Integer kindId);
 
     List<Kind> selectAll();
+
+    Integer selectIdByName(String kindName);
 }

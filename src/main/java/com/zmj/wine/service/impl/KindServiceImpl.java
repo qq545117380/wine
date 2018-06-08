@@ -1,5 +1,6 @@
 package com.zmj.wine.service.impl;
 
+import com.zmj.wine.dao.KindMapper;
 import com.zmj.wine.entity.Kind;
 import com.zmj.wine.service.IKindService;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 public class KindServiceImpl implements IKindService{
     @Resource
-    private IKindService kindDAO;
+    private KindMapper kindDAO;
 
     @Override
     public Kind selectByPrimaryKey(Integer kindId) {
@@ -24,5 +25,11 @@ public class KindServiceImpl implements IKindService{
     public List<Kind> selectAll() {
         List<Kind> kindList = kindDAO.selectAll();
         return kindList;
+    }
+
+    @Override
+    public Integer selectIdByName(String kindName) {
+        Integer kindId = kindDAO.selectIdByName(kindName);
+        return kindId;
     }
 }
