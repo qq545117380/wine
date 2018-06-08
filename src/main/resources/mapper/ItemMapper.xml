@@ -33,8 +33,19 @@
 
   <!--后台查询所有的商品-->
   <select id="selectItemAll" resultMap="BaseResultMap">
-    select item_id,img_1,item_name,item_describe,regular_price,item_status
+    select item_id,img_1,item_name,item_promotion_msg,regular_price,item_status,item_brand
     from tb_item;
+  </select>
+
+  <!--查询商品的总数量-->
+  <select id="selectItemNum" resultType="java.lang.Integer">
+    select count(1) from tb_item;
+  </select>
+
+  <!--后台分页查询 商品信息-->
+  <select id="selectItemByPage" resultMap="BaseResultMap">
+    select item_id,img_1,item_name,item_promotion_msg,regular_price,item_status,item_brand
+    from tb_item limit #{index},#{size};
   </select>
 
 
