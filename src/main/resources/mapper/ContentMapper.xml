@@ -17,7 +17,7 @@
   </select>
 
     <!--查询所有净含量组-->
-    <select id="selectAll" resultMap="BaseResultMap">
+    <select id="selectAllByKindId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT distinct content_name FROM tb_content c JOIN
         tb_middle m on c.content_id=m.content_id JOIN tb_kind k
         on m.kind_id=k.kind_id where k.kind_id=#{kindId};

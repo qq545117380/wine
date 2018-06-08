@@ -10,5 +10,5 @@ public interface ContentMapper {
     Content selectByPrimaryKey(Integer contentId);
 
     //查询所有净含量组
-    List<Content> selectAll();
+    List<Content> selectAllByKindId(Integer kindId);
 }

@@ -21,4 +21,10 @@ public class MiddleServiceImpl implements IMiddleService{
         int[] ints = middleDAO.selectByTerm(kindId, subclassId, brandId, yieldlyId, flavourId, proofId, contentId, priceId);
         return ints;
     }
+
+    @Override
+    public int[] selectAllByKindId(Integer kindId) {
+        int[] ints = middleDAO.selectAllByKindId(kindId);
+        return ints;
+    }
 }

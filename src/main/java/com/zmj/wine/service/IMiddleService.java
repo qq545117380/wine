@@ -9,4 +9,5 @@ public interface IMiddleService {
                        @Param("flavourId") Integer flavourId, @Param("proofId") Integer proofId,
                        @Param("contentId") Integer contentId, @Param("priceId") Integer priceId);
 
+    int[] selectAllByKindId(Integer kindId);
 }
