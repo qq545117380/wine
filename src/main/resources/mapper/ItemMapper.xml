@@ -43,7 +43,7 @@
   </select>
 
   <!--后台分页查询 商品信息-->
-  <select id="selectItemByPage" resultType="BaseResultMap">
+  <select id="selectItemByPage" resultMap="BaseResultMap">
     select item_id,img_1,item_name,item_promotion_msg,regular_price,item_status,item_brand
     from tb_item limit #{index},#{size};
   </select>
