@@ -9,7 +9,7 @@
     <bean name="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!--指定登录界面-->
-        <property name="loginUrl" value="/backlogin.html"/>
+        <!--<property name="loginUrl" value="/backlogin.html"/>-->
 
         <property name="filterChainDefinitions">
             <value>
