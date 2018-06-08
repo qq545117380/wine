@@ -9,24 +9,29 @@
     <bean name="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!--指定登录界面-->
-        <property name="loginUrl" value="/login.html"/>
+        <property name="loginUrl" value="/backlogin.html"/>
 
         <property name="filterChainDefinitions">
             <value>
+                <!--后台不拦截-->
+                <!--/backPage/**=anon-->
+                <!--/lib/**=anon-->
+                <!--/static/**=anon-->
+                <!--/temp/**=anon-->
                 <!--anon不需要登录-->
-                /register.html=anon
-                /vcode.do=anon
-                /user/login=anon
-                /css/**=anon
-                /dist/**=anon
-                /image/**=anon
-                /loginFiles/**=anon
-                /js/**=anon
-                /vendor/**=anon
+                <!--/register.html=anon-->
+                <!--/vcode.do=anon-->
+                <!--/user/login=anon-->
+                <!--/css/**=anon-->
+                <!--/dist/**=anon-->
+                <!--/image/**=anon-->
+                <!--/loginFiles/**=anon-->
+                <!--/js/**=anon-->
+                <!--/vendor/**=anon-->
 
                 <!--authc需要登录才能访问-->
                 <!--user配合rememberMe使用有效，authc不能配合rememberMe使用-->
-                /**=user
+                <!--/**=user-->
             </value>
         </property>
 
