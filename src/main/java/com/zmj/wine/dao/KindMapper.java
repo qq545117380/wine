@@ -10,4 +10,6 @@ public interface KindMapper {
     Kind selectByPrimaryKey(Integer kindId);
 
     List<Kind> selectAll();
+
+    Integer selectIdByName(String kindName);
 }

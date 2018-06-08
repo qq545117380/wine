@@ -16,6 +16,13 @@
     where kind_id = #{kindId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectIdByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    kind_id
+    from tb_kind
+    where kind_name = #{kindName}
+  </select>
+
   <!--查询所有种类-->
   <select id="selectAll" resultMap="BaseResultMap">
     select

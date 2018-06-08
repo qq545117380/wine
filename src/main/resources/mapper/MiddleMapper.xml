@@ -25,6 +25,45 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+<!--根据kindId查询-->
+  <select id="selectAllByKindId" resultType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from tb_middle
+    where kind_id = #{kindId,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectByTerm" resultType="java.lang.Integer">
+    SELECT * FROM tb_middle
+    <where>
+      <if test="kindId != null">
+        kind_id = #{kindId}
+      </if>
+      <if test="subclassId != null">
+        AND subclass_id = #{subclassId}
+      </if>
+      <if test="brandId != null">
+        AND brand_id = #{brandId}
+      </if>
+      <if test="yieldlyId != null">
+        AND yieldly_id = #{yieldlyId}
+      </if>
+      <if test="flavourId != null">
+        AND flavour_id = #{flavourId}
+      </if>
+      <if test="proofId != null">
+        AND proof_id = #{proofId}
+      </if>
+      <if test="contentId != null">
+        AND content_id = #{contentId}
+      </if>
+      <if test="priceId != null">
+        AND price_id = #{priceId}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
