@@ -18,7 +18,7 @@
 
   <!--查询所有酒精度数区间-->
   <select id="selectAllByKindId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    SELECT distinct proof_name FROM tb_proof p JOIN tb_middle m
+    SELECT distinct proof_name,p.proof_id FROM tb_proof p JOIN tb_middle m
     on p.proof_id=m.proof_id JOIN tb_kind k on m.kind_id=k.kind_id
     where k.kind_id=#{kindId};
   </select>

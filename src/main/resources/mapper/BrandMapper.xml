@@ -18,7 +18,7 @@
 
     <!--查询所有品牌-->
     <select id="selectAllByKindId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        SELECT distinct  brand_name FROM tb_brand b JOIN
+        SELECT distinct  brand_name,b.brand_id FROM tb_brand b JOIN
         tb_middle m JOIN tb_kind k on b.brand_id=m.brand_id
         and m.kind_id=k.kind_id where k.kind_id=#{kindId};
     </select>
