@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 是过滤器代理类所代理的实体对象 -->
+    <!-- name的取值必须要和web.xml中的filter的名称一致，因为过滤器代理是通过filter的名称查找spring容器中的代理对象-->
+    <bean name="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--指定登录界面-->
+        <property name="loginUrl" value="/login.html"/>
+
+        <property name="filterChainDefinitions">
+            <value>
+                <!--anon不需要登录-->
+                /register.html=anon
+                /vcode.do=anon
+                /user/login=anon
+                /css/**=anon
+                /dist/**=anon
+                /image/**=anon
+                /loginFiles/**=anon
+                /js/**=anon
+                /vendor/**=anon
+
+                <!--authc需要登录才能访问-->
+                <!--user配合rememberMe使用有效，authc不能配合rememberMe使用-->
+                /**=user
+            </value>
+        </property>
+
+    </bean>
+
+    <bean name="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realms" ref="userRealm"/>
+        <!--记住登录状态方便下次直接进入-->
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+    </bean>
+
+    <bean id="userRealm" class="com.zmj.wine.realm.UserRealm"/>
+    <!--<bean id="merhcantRealm" class="com.qianfeng.shiro.realm.MerchantRealm"/>
+
+    <bean id="myAuthenticator" class="com.qianfeng.shiro.realm.authenticator.QfRealmAuthenticator"/>-->
+
+
+    <bean name="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
+
+
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/> <!--避免XSS攻击-->
+        <property name="maxAge" value="30000"/><!-- 失效时间 -->
+    </bean>
+
+    <bean name="mybatisRealm" class="com.zmj.wine.realm.UserRealm"/>
+
+
+</beans>

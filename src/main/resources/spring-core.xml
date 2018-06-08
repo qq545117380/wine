@@ -22,34 +22,33 @@
     <!-- 设置不拦截静态资源-->
     <mvc:default-servlet-handler/>
 
-
-
     <!-- 引入 spring 整合mybatis 的配置-->
     <import resource="spring-mybatis.xml"/>
 
     <!--引入sping 整合shiro 的 配置-->
+    <import resource="spring-shiro.xml"/>
 
     <!--引入 spring 整合redis的 配置-->
     <import resource="spring-redis.xml"/>
 
 
     <!-- Freemarker配置 -->
-    <bean id="freemarkerConfig"
+    <!--<bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/" />
 
-        <property name="freemarkerVariables"><!--设置一些常用的全局变量-->
+        <property name="freemarkerVariables">&lt;!&ndash;设置一些常用的全局变量&ndash;&gt;
             <map>
                 <entry key="webRoot" value="/wine"></entry>
                 <entry key="jsRoot" value="js/"></entry>
-                <!--<entry key="imagesPath" value="http://120.79.225.238/images"></entry>-->
+                &lt;!&ndash;<entry key="imagesPath" value="http://120.79.225.238/images"></entry>&ndash;&gt;
                 <entry key="imagesPath" value="http://47.93.226.204/zmjtp"></entry>
             </map>
         </property>
 
         <property name="freemarkerSettings">
             <props>
-                <!--检查模板更新的时间间隔，默认5s-->
+                &lt;!&ndash;检查模板更新的时间间隔，默认5s&ndash;&gt;
                 <prop key="template_update_delay">0</prop>
                 <prop key="default_encoding">UTF-8</prop>
                 <prop key="number_format">0.##########</prop>
@@ -61,7 +60,7 @@
         </property>
     </bean>
 
-    <!-- 配置freeMarker视图解析器 -->
+    &lt;!&ndash; 配置freeMarker视图解析器 &ndash;&gt;
     <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
         <property name="contentType" value="text/html; charset=UTF-8"/>
@@ -71,13 +70,13 @@
         <property name="suffix" value=".ftl" />
         <property name="order" value="0"/>
     </bean>
-
+-->
 
     <!-- 视图解析器，可以给jsp页面 配置前后缀-->
-    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix" value="/"/>-->
-        <!--<property name="suffix" value=".jsp"/>-->
-    <!--</bean>-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
 
 </beans>

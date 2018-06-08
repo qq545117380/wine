@@ -13,7 +13,6 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer userId);
 
     int updateByPrimaryKeySelective(User record);
 
@@ -21,4 +20,16 @@ public interface UserMapper {
 
     //查询会员用户的所有信息
     List<User> selectAllUser();
+
+    /**
+     * 用户登陆/注册
+     *
+     */
+    User selectByPrimaryKey(String userMobile);
+
+    /**
+     * 添加用户
+     *
+     */
+    int insertUser(User record);
 }
