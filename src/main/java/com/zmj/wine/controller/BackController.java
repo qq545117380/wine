@@ -20,11 +20,18 @@ public class BackController {
     @Resource
     private ItemService itemService;
 
-    //模拟登录后台
+    //模拟跳转到登录页面
     @RequestMapping("/login")
     public String login(){
+        return "backPage/backlogin";
+    }
+
+    //模拟登录后台
+    @RequestMapping("/index")
+    public String index(){
         return "backPage/index";
     }
+
 
     //查询所有商品信息
     @RequestMapping("/item")
@@ -34,4 +41,6 @@ public class BackController {
 
         return "backPage/picture-list";
     }
+
+
 }
