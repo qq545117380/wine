@@ -22,4 +22,5 @@
     on y.yieldly_id=m.yieldly_id JOIN tb_kind k on m.kind_id=k.kind_id
     where k.kind_id=#{kindId};
   </select>
+
 </mapper>

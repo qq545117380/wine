@@ -301,4 +301,35 @@
       item_status = #{itemStatus,jdbcType=VARCHAR}
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectByTerm" resultType="java.lang.Integer">
+    SELECT item_id FROM tb_middle
+    <where>
+      <if test="kindId != null">
+        kind_id = #{kindId}
+      </if>
+      <if test="subclassId != null">
+        AND subclass_id = #{subclassId}
+      </if>
+      <if test="brandId != null">
+        AND brand_id = #{brandId}
+      </if>
+      <if test="yieldlyId != null">
+        AND yieldly_id = #{yieldlyId}
+      </if>
+      <if test="flavourId != null">
+        AND flavour_id = #{flavourId}
+      </if>
+      <if test="proofId != null">
+        AND proof_id = #{proofId}
+      </if>
+      <if test="contentId != null">
+        AND content_id = #{contentId}
+      </if>
+      <if test="priceId != null">
+        AND price_id = #{priceId}
+      </if>
+    </where>
+  </select>
 </mapper>
