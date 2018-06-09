@@ -16,7 +16,8 @@ public class ProofServiceImpl implements IProofService{
     private ProofMapper proofDAO;
     @Override
     public Proof selectByPrimaryKey(Integer proofId) {
-        return null;
+        Proof proof = proofDAO.selectByPrimaryKey(proofId);
+        return proof;
     }
 
     @Override

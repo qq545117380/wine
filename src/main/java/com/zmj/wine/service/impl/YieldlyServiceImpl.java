@@ -15,7 +15,8 @@ public class YieldlyServiceImpl implements IYieldlyService{
     private YieldlyMapper yieldlyDAO;
     @Override
     public Yieldly selectByPrimaryKey(Integer yieldlyId) {
-        return null;
+        Yieldly yieldly = yieldlyDAO.selectByPrimaryKey(yieldlyId);
+        return yieldly;
     }
 
     @Override

@@ -17,7 +17,8 @@ public class FlavourServiceImpl implements IFlavourService{
 
     @Override
     public Flavour selectByPrimaryKey(Integer flavourId) {
-        return null;
+        Flavour flavour = flavourDAO.selectByPrimaryKey(flavourId);
+        return flavour;
     }
 
     @Override

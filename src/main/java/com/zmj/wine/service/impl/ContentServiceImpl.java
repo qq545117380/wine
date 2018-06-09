@@ -15,7 +15,8 @@ public class ContentServiceImpl implements IContentService{
     private ContentMapper contentDAO;
     @Override
     public Content selectByPrimaryKey(Integer contentId) {
-        return null;
+        Content content = contentDAO.selectByPrimaryKey(contentId);
+        return content;
     }
 
     @Override
