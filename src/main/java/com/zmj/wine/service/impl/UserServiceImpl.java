@@ -38,12 +38,11 @@ public class UserServiceImpl implements UserService {
     }
     //
     @Override
-    public User save(String userMobile, String userPassword) throws Exception {
+    public void save(String userMobile, String userPassword) {
         User user = new User();
         user.setUserMobile(userMobile);
         user.setUserPassword(userPassword);
         userMapper.insertUser(user);
-        return user;
     }
 
 }

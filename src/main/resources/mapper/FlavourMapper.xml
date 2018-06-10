@@ -16,6 +16,9 @@
     where flavour_id = #{flavourId,jdbcType=INTEGER}
   </select>
 
+
+
+
   <!--查询所有酒类型-->
   <select id="selectAllByKindId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     SELECT distinct  flavour_name,f.flavour_id FROM tb_flavour f JOIN

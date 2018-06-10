@@ -16,7 +16,8 @@ public class PriceServiceImpl implements IPriceService{
 
     @Override
     public Price selectByPrimaryKey(Integer priceId) {
-        return null;
+        Price price = priceDAO.selectByPrimaryKey(priceId);
+        return price;
     }
 
     @Override

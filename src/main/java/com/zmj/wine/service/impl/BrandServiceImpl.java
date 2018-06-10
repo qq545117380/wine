@@ -18,7 +18,8 @@ public class BrandServiceImpl implements IBrandService{
 
     @Override
     public Brand selectByPrimaryKey(Integer brandId) {
-        return null;
+        Brand brand = brandDAO.selectByPrimaryKey(brandId);
+        return brand;
     }
 
     @Override
