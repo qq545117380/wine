@@ -15,5 +15,10 @@ public class ItemController {
     @Resource
     private ItemService itemService;
 
-
+    @RequestMapping("/byId")
+    public String selectItem(Integer itemId, Model model) {
+        Item item = itemService.selectByPrimaryKey(itemId);
+        model.addAttribute("item", item);
+        return "item";
+    }
 }

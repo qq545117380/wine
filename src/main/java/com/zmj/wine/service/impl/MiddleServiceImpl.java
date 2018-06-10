@@ -14,13 +14,14 @@ public class MiddleServiceImpl implements IMiddleService{
     private MiddleMapper middleDAO;
 
     @Override
-    public int[] selectByTerm(Integer kindId, Integer subclassId,
+    public int[] selectByTerm(Integer kindId,
                               Integer brandId, Integer yieldlyId,
                               Integer flavourId, Integer proofId,
                               Integer contentId, Integer priceId) {
-        int[] ints = middleDAO.selectByTerm(kindId, subclassId, brandId, yieldlyId, flavourId, proofId, contentId, priceId);
+        int[] ints = middleDAO.selectByTerm(kindId, brandId, yieldlyId, flavourId, proofId, contentId, priceId);
         return ints;
     }
+
 
     @Override
     public int[] selectAllByKindId(Integer kindId) {

@@ -69,7 +69,7 @@
 
 
   <select id="selectYieldlyIdByTerm" resultType="java.lang.Integer">
-    SELECT yieldly_id FROM tb_middle
+    SELECT distinct yieldly_id FROM tb_middle
     <where>
       <if test="kindId != null">
         kind_id = #{kindId}
@@ -93,7 +93,7 @@
   </select>
 
   <select id="selectFlavourIdByTerm" resultType="java.lang.Integer">
-    SELECT flavour_id FROM tb_middle
+    SELECT distinct flavour_id FROM tb_middle
     <where>
       <if test="kindId != null">
         kind_id = #{kindId}
@@ -117,7 +117,7 @@
   </select>
 
   <select id="selectProofIdByTerm" resultType="java.lang.Integer">
-    SELECT proof_id FROM tb_middle
+    SELECT distinct proof_id FROM tb_middle
     <where>
       <if test="kindId != null">
         kind_id = #{kindId}
@@ -141,7 +141,7 @@
   </select>
 
   <select id="selectContentIdByTerm" resultType="java.lang.Integer">
-    SELECT content_id FROM tb_middle
+    SELECT distinct content_id FROM tb_middle
     <where>
       <if test="kindId != null">
         kind_id = #{kindId}
@@ -165,7 +165,7 @@
   </select>
 
   <select id="selectPriceByTerm" resultType="java.lang.Integer">
-    SELECT price_group_id FROM tb_middle
+    SELECT distinct price_group_id FROM tb_middle
     <where>
       <if test="kindId != null">
         kind_id = #{kindId}
