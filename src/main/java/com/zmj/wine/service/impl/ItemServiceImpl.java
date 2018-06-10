@@ -58,5 +58,11 @@ public class ItemServiceImpl implements ItemService {
         return item;
     }
 
+    //后台添加商品
+    @Override
+    public void addItem(Item item) {
+        itemMapper.insert(item);
+    }
+
 
 }

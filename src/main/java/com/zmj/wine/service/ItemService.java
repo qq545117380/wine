@@ -21,4 +21,7 @@ public interface ItemService {
     PageBean<Item> selectItemByPage(int currentPage);
 
     Item selectByPrimaryKey(Integer itemId);
+
+    //后台添加商品
+    void addItem( Item item);
 }
