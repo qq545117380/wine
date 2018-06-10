@@ -25,6 +25,6 @@ public interface UserService {
      * @param userMobile
      * @param userPassword
      */
-    User save(String userMobile, String userPassword)throws Exception;
+    void save(String userMobile, String userPassword);
 
 }

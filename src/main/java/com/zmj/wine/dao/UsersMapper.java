@@ -21,4 +21,12 @@ public interface UsersMapper {
 
     //查询所有后台用户
     List<Users>  findAllUsers();
+    //根据用户姓名 查询用户对象
+    Users checkUsername(String username)throws Exception;
+
+    //根据用户名字 查询角色
+    List<String> queryRoles(String username);
+
+    //根据用户名字 查询盐
+    String querySalt(String username);
 }
