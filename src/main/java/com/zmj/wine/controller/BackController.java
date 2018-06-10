@@ -69,9 +69,15 @@ public class BackController {
         if (!file.isEmpty()){
             //获得上传文件的名字
             String filename =file.getOriginalFilename();
-            //使用uuid 设置图片的名字，以免图片名称重复，图片被覆盖
-            String imgName = UUID.randomUUID()+"-"+filename;
-            item.setImg1(imgName);//设置img1 的名称
+            String imgName =null;
+            if (filename.length()>50){
+                item.setImg1(filename);//使用原来的名字
+            }else {
+                //使用uuid 设置图片的名字，以免图片名称重复，图片被覆盖
+                 imgName = UUID.randomUUID()+"-"+filename;
+                item.setImg1(imgName);//设置img1 的名称
+            }
+
             try(InputStream inputStream = file.getInputStream();
             ) {
                 boolean upload = FtpUtils.upload(imgName,inputStream);
@@ -84,6 +90,50 @@ public class BackController {
         }
         itemService.addItem(item);
         return "redirect:/back/item/1";
+    }
+
+    //预修改商品
+    @RequestMapping("/preUpdate/{itemId}/{page}")
+    public String preUpdate(@PathVariable("itemId") int itemId,
+                            @PathVariable("page")int page,Model model){
+        Item item = itemService.findItem(itemId);
+        model.addAttribute("item",item);
+        model.addAttribute("page",page);
+        return "backPage/picture-update";
+    }
+
+    //修改商品信息
+    @RequestMapping("/update")
+    public String update(@RequestParam("file") MultipartFile file, Item item){
+        if (!file.isEmpty()){
+            //获得上传文件的名字
+            String filename = file.getOriginalFilename();
+            String imgName=null;
+            if (filename.length()>50){
+                item.setImg1(filename);
+            }else {
+                //使用UUid设置新名字
+                UUID uuid = UUID.randomUUID();
+                String[]idd=uuid.toString().split("-");
+                imgName = idd[1]+filename;
+                item.setImg1(filename);//设置图片1的名称
+            }
+            try(InputStream inputStream = file.getInputStream()) {
+                boolean upload = FtpUtils.upload(imgName, inputStream);
+                if (upload){
+                    logger.debug("图片上传成功");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+//        //获得当前页面数
+//        HttpServletRequest request
+//        String page = request.getParameter("page");
+//        int currentPage = Integer.parseInt(page);
+        itemService.updateItem(item);
+        return "redirect:/back/item/1";
+
     }
 
 

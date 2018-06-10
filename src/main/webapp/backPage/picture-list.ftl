@@ -78,10 +78,11 @@
                 <td>${item.regularPrice} 元</td>
                 <td class="text-c">${item.itemBrand}</td>
                 <td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>
-                <td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">
-                    <i class="Hui-iconfont">&#xe6de;</i></a>
-                    <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                <td class="td-manage">
+                    <#--<a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">-->
+                    <#--<i class="Hui-iconfont">&#xe6de;</i></a>-->
+                    <a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改商品"><i class="Hui-iconfont">&#xe6df;</i></a>
+                    <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
             </tr>
             </tbody>
 		</#list>
