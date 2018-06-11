@@ -302,7 +302,6 @@
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
 
-
   <select id="selectByTerm" resultType="java.lang.Integer">
     SELECT item_id FROM tb_middle
     <where>
