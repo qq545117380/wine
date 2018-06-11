@@ -36,6 +36,39 @@ public class UserController {
     private UserService userServiceImpl;
     @Resource
     private UsersService usersServiceImpl;
+    //重新修改手机密码
+    @ResponseBody
+    @RequestMapping("/updatePwd")
+    public Object updatePwd(String password,HttpSession httpSession){
+        String phoneNum = (String) httpSession.getAttribute("phoneNum");
+        JsonResult jsonResult = null;
+        User user = userDAO.updatePassword(password, phoneNum);
+        if(null!=user){
+            jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
+        }
+        return jsonResult;
+    }
+    //跳转updatePassword．ftl页面
+    @RequestMapping("/updatePassword")
+    public String updatePassword(){
+        return "updatePassword";
+    }
+    //验证修改密码时的手机验证码
+    @ResponseBody
+    @RequestMapping("/mobileMessage")
+    public Object updatePassword(String mobileCode,HttpSession httpSession){
+        JsonResult jsonResult = null;
+        Object random = httpSession.getAttribute("random");
+        if(mobileCode!=null&&mobileCode.equals(random)) {
+            jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
+        }
+        return jsonResult;
+    }
+    //跳转mobileMessage．页面
+    @RequestMapping("/mobileMessage")
+    public String mobileMessage(){
+        return "mobileMessage";
+    }
     //跳转登录页面
     @RequestMapping("/login1")
     public String login(){

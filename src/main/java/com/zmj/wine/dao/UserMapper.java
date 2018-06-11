@@ -32,4 +32,12 @@ public interface UserMapper {
      *
      */
     int insertUser(User record);
+
+    /**
+     * 修改密码
+     * @param userPassword
+     * @param userMobile
+     * @return
+     */
+    User updatePassword(String userPassword,String userMobile);
 }
