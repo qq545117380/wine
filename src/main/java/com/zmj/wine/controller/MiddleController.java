@@ -21,12 +21,12 @@ public class MiddleController {
     private ItemService itemService;
 
     @RequestMapping("/trem")
-    public String selectItemByTrem(Integer kindId, Integer subclassId,
+    public String selectItemByTrem(Integer kindId,
                                    Integer brandId, Integer yieldlyId,
                                    Integer flavourId, Integer proofId,
                                    Integer contentId, Integer priceId,
                                    Model model){
-        int[] ints = middleService.selectByTerm(kindId, subclassId, brandId, yieldlyId,
+        int[] ints = middleService.selectByTerm(kindId, brandId, yieldlyId,
                 flavourId, proofId, contentId, priceId);
         List<Item> itemList = new ArrayList<>();
         for(int i=0;i<ints.length;i++){
@@ -36,4 +36,6 @@ public class MiddleController {
         model.addAttribute("itemList",itemList);
         return "pinpaibaijiu";
     }
+
+
 }
