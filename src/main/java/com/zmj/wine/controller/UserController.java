@@ -3,7 +3,9 @@ package com.zmj.wine.controller;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.sun.org.apache.bcel.internal.classfile.Code;
 import com.zmj.wine.dao.UserMapper;
+import com.zmj.wine.dao.UsersMapper;
 import com.zmj.wine.entity.User;
+import com.zmj.wine.entity.Users;
 import com.zmj.wine.service.UserService;
 import com.zmj.wine.service.UsersService;
 import com.zmj.wine.utils.JsonResult;
@@ -30,11 +32,15 @@ public class UserController {
     @Resource
     private UserMapper userDAO;
     @Resource
+    private UsersMapper usersDAO;
+    @Resource
     private UserService userServiceImpl;
     @Resource
     private UsersService usersServiceImpl;
     @RequestMapping("/login")
-    public Object login(String userMobile, String userPassword,HttpServletRequest req, String vcode,String num){
+    public Object login(String userMobile, String userPassword,
+                        HttpServletRequest req, String vcode,
+                        HttpSession httpSession,String num){
         System.out.println("进入方法1"+vcode);
         JsonResult jsonResult = null;
         Object vcode1 = req.getSession().getAttribute("vcode");
@@ -42,8 +48,14 @@ public class UserController {
         try {
             if(num.equals("user")){
                 userServiceImpl.login(userMobile,userPassword);
+                User user = null;
+                user = userDAO.selectByPrimaryKey(userMobile);
+                httpSession.setAttribute("user",user);
             }else {
                 usersServiceImpl.login(userMobile,userPassword);
+                Users users = null;
+                users = usersDAO.checkUsername(userMobile);
+                httpSession.setAttribute("users",users);
             }
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
 //            验证验证码
@@ -108,9 +120,9 @@ public class UserController {
             //请求成功，将dataJson数据返回给客户端就可以了
             System.out.println(dataJson);
         }
-        System.out.println("短信接口返回的数据----------------");
+        /*System.out.println("短信接口返回的数据----------------");
         System.out.println("Code=" + response.getCode());
-        System.out.println("Message=" + response.getMessage());
+        System.out.println("Message=" + response.getMessage());*/
         httpSession.setAttribute("random",random);
         httpSession.setAttribute("phoneNum",phoneNum);
         if(response.getCode().equals("OK")){
