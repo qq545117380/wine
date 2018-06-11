@@ -59,10 +59,10 @@ public class UserController {
             e.printStackTrace();
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_INCORRECT_PASSWORD, SystemParam.Login.MSG_FAIL_INCORRECT_PASSWORD);
         }
-        System.out.println("成功执行");
+       /* System.out.println("成功执行");*/
 //        System.out.println(jsonResult);
-        System.out.println(jsonResult.getCode());
-        System.out.println(jsonResult.getMsg());
+        /*System.out.println(jsonResult.getCode());
+        System.out.println(jsonResult.getMsg());*/
         return jsonResult;
     }
     @RequestMapping("/save")
