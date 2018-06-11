@@ -15,6 +15,13 @@ public class SystemTools {
         jsonResult.setMsg(msg);
         return jsonResult;
     }
+    public static JsonResult formatJsonResult(int code, String msg,Object data){
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setCode(code);
+        jsonResult.setMsg(msg);
+        jsonResult.setData(data);
+        return jsonResult;
+    }
     //使用MD5，进行密码加密
     public static String entryption(String password,String salt){
         SimpleHash simpleHash = new SimpleHash
