@@ -438,9 +438,8 @@
                             </div>
 
                             <div class="btnbox clearfix">
-                                <a id="addCat" href="javascript:void(0)" class="addBuy btn" rel="nofollow" onclick="addToCart(${item.itemId});"></a>
-                                <a id="addToCat" href="javascript:void(0)" class="addToCart btn" rel="nofollow" onclick="joinCart(${item.itemId});"></a>
-                                <a id="aa" href="javascript:void(0)" onclick="joinCart(${item.itemId});">点击</a>
+                                <a id="addCat" href="#" class="addBuy btn" rel="nofollow" onclick="addToCart();"></a>
+                                <a id="addToCat" href="#" class="addToCart btn" rel="nofollow" onclick="joinCart();"></a>
                                      <div class="noprobox" style="display: none;"><a id="noPro" class="noPro" target="_blank" rel="nofollow"></a></div>
 
                                 <div id="apphover">
@@ -739,17 +738,32 @@
     <script src="${base}/item_files/flyCart.min.js.下载" charset="gbk"></script>
     <script type="text/javascript">
 
-        function joinCart(id) {
-            var Quan = $("#txtQuantity").val();
 
+        function addToCart() {
+            var count = $.trim($("#txtQuantity").val());
+            var itemName="${item.itemName}";
+            $("#addCat").attr("href","/shopping/insert?itemName="+itemName+"&count="+count);
         }
 
-        function addToCart(id) {
-            var qty = $.trim($("#txtQuantity").val());
-            Gocartplus(id, qty, true, function () {
-                window.location = 'http://order.gjw.com/order/Cart.html';
-            })
+        function joinCart() {
+            var count = $.trim($("#txtQuantity").val());
+            var itemName="${item.itemName}";
+            window.location.href="/shopping/join?itemName="+itemName+"&count="+count;
         }
+
+//$("addToCat").attr("href","<a href=\"/shopping/insert?itemName="+itemName+"&count="+count+"\">立即购买</a>")
+//}
+      /*立即购买*/
+        <#--function addToCart(id) {-->
+            <#--var count = $.trim($("#txtQuantity").val());-->
+            <#--$.get("shopping/insert",-->
+                    <#--{itemId:${item.itemId},-->
+                    <#--count:qty},function (data) {-->
+                        <#--if(data.code=="0"){-->
+                            <#--window.location ='/shopping/list?userId=1';-->
+                        <#--}-->
+                    <#--});-->
+        <#--}-->
 
         /*加入购物车*/
 //        function joinCart(id) {
