@@ -26,7 +26,6 @@ import javax.servlet.http.HttpSession;
  * 前端用户登录
  */
 @Controller
-@ResponseBody
 @RequestMapping("/user")
 public class UserController {
     @Resource
@@ -37,6 +36,22 @@ public class UserController {
     private UserService userServiceImpl;
     @Resource
     private UsersService usersServiceImpl;
+    //跳转登录页面
+    @RequestMapping("/login1")
+    public String login(){
+        return "login";
+    }
+    //跳转注册页面
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
+    @RequestMapping("/find")
+    public String findPsw(){
+        return "findPsw";
+    }
+    //登录
+    @ResponseBody
     @RequestMapping("/login")
     public Object login(String userMobile, String userPassword,
                         HttpServletRequest req, String vcode,
@@ -77,6 +92,7 @@ public class UserController {
         System.out.println(jsonResult.getMsg());*/
         return jsonResult;
     }
+    @ResponseBody
     @RequestMapping("/save")
     public Object save(String userMobile,String userPassword,
                             String firmPassword,HttpServletRequest req,
@@ -105,7 +121,8 @@ public class UserController {
         System.out.println(jsonResult.getCode());
         return jsonResult;
     }
-    //    验证
+    //发送手机验证码
+    @ResponseBody
     @RequestMapping("/send")
     public Object send(String phoneNum, HttpSession httpSession){
         JsonResult jsonResult = null;
