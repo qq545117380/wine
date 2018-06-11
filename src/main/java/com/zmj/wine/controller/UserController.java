@@ -71,7 +71,7 @@ public class UserController {
                                     String vcode,String checkCode,HttpSession httpSession){
         System.out.println("进入方法2"+vcode);
         //手机验证码
-        String dataJson=(String)httpSession.getAttribute("dataJson");
+        String random=(String)httpSession.getAttribute("random");
         JsonResult jsonResult = null;
         Object vcode1 = req.getSession().getAttribute("vcode");
         User user = userDAO.selectByPrimaryKey(userMobile);
@@ -82,13 +82,15 @@ public class UserController {
         }else if(vcode==null||!vcode.equals(vcode1)) {
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_INCORRECT_CODE, SystemParam.Login.MSG_FAIL_INCORRECT_CODE);
             return jsonResult;
-        }else if(!dataJson.equals(checkCode)) {
+        }else if(!random.equals(checkCode)) {
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_INCORRECT_MOBILE, SystemParam.Login.MSG_FAIL_INCORRECT_MOBILE);
             return jsonResult;
         } else {
             userServiceImpl.save(userMobile,userPassword);
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
         }
+        System.out.println("成功执行");
+        System.out.println(jsonResult.getCode());
         return jsonResult;
     }
     //    验证
@@ -109,7 +111,7 @@ public class UserController {
         System.out.println("短信接口返回的数据----------------");
         System.out.println("Code=" + response.getCode());
         System.out.println("Message=" + response.getMessage());
-        httpSession.setAttribute("dataJson",dataJson);
+        httpSession.setAttribute("random",random);
         httpSession.setAttribute("phoneNum",phoneNum);
         if(response.getCode().equals("OK")){
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
