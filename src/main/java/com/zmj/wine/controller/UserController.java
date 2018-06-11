@@ -50,12 +50,12 @@ public class UserController {
                 userServiceImpl.login(userMobile,userPassword);
                 User user = null;
                 user = userDAO.selectByPrimaryKey(userMobile);
-                httpSession.setAttribute("user",user);
+                httpSession.setAttribute("currentUser",user);
             }else {
                 usersServiceImpl.login(userMobile,userPassword);
                 Users users = null;
                 users = usersDAO.checkUsername(userMobile);
-                httpSession.setAttribute("users",users);
+                httpSession.setAttribute("currentUsers",users);
             }
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
 //            验证验证码
