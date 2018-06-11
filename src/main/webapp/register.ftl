@@ -206,7 +206,7 @@
             function (data) {
                 if (data.code == 6) {
                     alert("注册");
-                    window.location.href = "${base}/welcome.html";
+                    window.location.href = "${base}/pageHome.html";
                 }else if(data.code== 3){
                     alert("验证码错误");
                 }else if(data.code== 4){

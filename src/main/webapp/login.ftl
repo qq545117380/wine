@@ -22,7 +22,8 @@
 	<script type="text/javascript" async="async" charset="utf-8" src="${base}/loginFiles/zh_cn.js.下载" data-requiremodule="lang"></script>
 	<script type="text/javascript" async="async" charset="utf-8" src="${base}/loginFiles/chat.in.js.下载" data-requiremodule="chatManage"></script>
 	<script type="text/javascript" async="async" charset="utf-8" src="${base}/loginFiles/mqtt31.js.下载" data-requiremodule="MQTT"></script>
-	<script type="text/javascript" async="async" charset="utf-8" src="${base}/loginFiles/mqtt.chat.js.下载" data-requiremodule="Connection"></script></head>
+	<script type="text/javascript" async="async" charset="utf-8" src="${base}/loginFiles/mqtt.chat.js.下载" data-requiremodule="Connection"></script>
+</head>
 	<script type="text/javascript" src="${base}/js/jquery-1.4.2.js"></script>
 
 <body rlt="1" style=""><div id="nTalk_post_hiddenElement" style="left: -10px; top: -10px; visibility: hidden; display: none; width: 1px; height: 1px;"></div>

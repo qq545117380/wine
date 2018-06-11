@@ -1,0 +1,186 @@
+﻿$(function () {
+    var registerfun = {
+        urlApiPath: "http://order.gjw.com/Order_Api",
+        urlPath: "http://order.gjw.com/Login",
+        init: function () {
+            this.bindEvent();
+            this.validate('phone', '正确手机号', 'phone');
+            this.validate('phonePwd:eq(0)', '正确密码格式', 'pwd');
+
+            this.validate('emlPwd:eq(0)', '正确密码格式', 'pwd');
+            //this.validate('email:eq(0)', '正确邮箱格式', 'email');
+            //验证相同密码e
+            var $p1 = $('.mobileForm .phonePwd').eq(0);
+            var $p2 = $('.mobileForm .phonePwd').eq(1);
+            this.pwd($p1, $p2);
+           // var $p3 = $('.emailForm .emlPwd').eq(0);
+           // var $p4 = $('.emailForm .emlPwd').eq(1);
+           // this.pwd($p3, $p4);
+          
+           
+
+        },
+        bindEvent: function () {
+            var curobj = this;
+            var code = 0;
+            $("form").on("click", "a.regCodeBtn", function () {
+                var regCodeBtn = this;
+                if ($(regCodeBtn).html()!="获取校验码")
+                    return;
+                var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+                var phone = $("#mob").val();
+                var imgcode = $('#codeForMob').val();
+                if (phone == '') {
+                    alert('手机号不能为空');
+                    return;
+                } else if (!myreg.test(phone)) {
+                    alert('请输入有效的手机号码！');
+                    return;
+                } else if (imgcode == "") {
+                    alert("请先填写验证码！");
+                    return;
+
+                } else {
+
+                    $.ajax({
+                        type: "post",
+                        url: curobj.urlApiPath + "/GetValiCode" ,
+                        async: true,
+                        data: {
+                            "Mob": phone, "validcode": imgcode, "use": "regiVali"
+                        },
+                        success: function (res) {
+                            if (res.Success == 1) {
+                                code = 60;
+                                var timer = setInterval(function () {
+                                    code--;
+                                    if (code == 0) {
+                                        code = 60;
+                                        $(regCodeBtn).html("获取校验码");
+                                        clearInterval(timer);
+                                    }else
+                                    $(regCodeBtn).html(code);
+                                }, 1000);
+                            } else {
+                                var code = 0;
+                                curobj.changeCode();
+                                alert(res.Message);
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("form .btnSubmit").click(function () {
+                var curForm = this.form;
+                //form提交
+                $(curForm).ajaxSubmit(function (data) {
+                    var json = data;
+                    if (json.Success == 1) {
+                        //var backurl = '';
+                        //var backurl2 = '';
+                        //if (backurl2 != "") {
+                        //    backurl = backurl2;
+                        //}
+                        //if (backurl != "") {
+                        //    window.location = backurl;
+                        //}
+                        //else {
+                            window.location = "regOK.html";
+                        //}
+                    }
+                    else if (json.Success == 3) {
+                        /// alert(json.Message);
+                        window.location = json.Message;
+                    }
+                    else {
+                        var dd = new Date();
+                        curobj.changeCode();
+                        alert(json.Message);
+                    }
+                });
+
+            });
+
+            $("#replace_img").click(function () {
+                curobj.changeCode();
+            });
+        },
+        changeCode: function () {
+            var curobj = this;
+            var dd = new Date();
+            $(".virificationImg").attr("src", curobj.urlApiPath + "/verifycode?dd=" + escape(dd));
+        },
+        validate: function (name, errorTxt, pattern) {
+            var curobj = this;
+            reg = {
+                //电话正则
+                phone: /^1[3-9]\d{9}$/,
+                //密码正则
+                pwd: /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$/,
+                //邮箱正则
+                email: /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+            };
+            var flag = true;
+            var $testName = $('input.' + name); //$('input[name='+name+']');
+            $testName.bind('blur', function () {
+                var $papa = $(this).closest('.text_box');
+                var $val = $(this).val();
+                if ($val == '') {
+                    var error = $(this).attr('data-id');
+                    curobj.addError(error, $papa);
+                    flag = false;
+                } else if (!reg[pattern].test($val)) {
+                    var error = errorTxt;
+                    curobj.addError(error, $papa);
+                    flag = false;
+                } else {
+
+                    curobj.addMeet($papa)
+                }
+            });
+
+            $('input').bind('focus', function () {
+                var $papa = $(this).closest('.text_box');
+                $papa.hasClass('errorBox') && $papa.removeClass('errorBox');
+                $papa.hasClass('meet') && $papa.removeClass('meet');
+                var $strong = $papa.find('strong');
+                if ($strong) {
+                    $strong.remove();
+                }
+                $papa.addClass('focus')
+            });
+        },
+        pwd: function ($p1, $p2) {
+            var curobj = this;
+            $p2.bind('blur', function () {
+                var $papa = $(this).closest('.text_box');
+
+                if ($(this).val() != $p1.val()) {
+                    $papa.find('.meetIcon').remove();
+                    var errorTxt = '相同的密码';
+                    curobj.addError(errorTxt, $papa);
+                } else {
+                    if ($(this).val() != '') {
+                        curobj.addMeet($papa);
+                    }
+                }
+            })
+        }, addError: function (error, papa) {
+
+            var $errorLen = papa.find('.error').length
+            $errorLen && papa.find('strong').remove();
+            var $error = $('<strong class="error"><b class="errorIcon"></b>请输入' + error + '</strong>');
+            $error.appendTo(papa);
+            papa.addClass('errorBox').removeClass('focus').removeClass('meet');
+        },
+        addMeet: function (papa) {
+            var $meetLen = papa.find('.meet').length
+            $meetLen && papa.find('strong').remove();
+            var $meet = $('<strong class="meetIcon"></strong>');
+            $meet.appendTo(papa);
+            papa.addClass('meet').removeClass('focus').removeClass('errorBox');
+        }
+    }
+    registerfun.init();
+});

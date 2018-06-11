@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0038)http://order.gjw.com/login/Findpsw.htm -->
+<!-- saved from url=(0045)http://order.gjw.com/login/MobileVirification -->
 <html lang="zh">
 <head>
     <#--需要添加base-->
@@ -7,30 +7,31 @@
     <base id="base" href="${base}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>找回密码</title>
+    <title>购酒网-找回密码</title>
     <link href="http://order.gjw.com/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <meta name="keywords">
     <meta name="description">
-    <link rel="stylesheet" type="text/css" href="${base}/FindFiles/swiper.css">
-    <link href="${base}/FindFiles/index.min.css" rel="stylesheet">
-        <link href="${base}/FindFiles/base.css" rel="stylesheet">
-        <link href="${base}/FindFiles/centerstyle.css" rel="stylesheet">
-        <link href="${base}/FindFiles/laypage.css" rel="stylesheet">
-    <script src="${base}/FindFiles/hm.js.下载"></script>
-        <script src="${base}/FindFiles/hm.js(1).下载"></script>
-        <script type="text/javascript" async="" src="${base}/FindFiles/dc.js.下载"></script>
-        <script src="${base}/FindFiles/jquery-1.7.1.min.js.下载"></script>
+    <link rel="stylesheet" type="text/css" href="${base}/mobileMessage/swiper.css">
+    <link href="${base}/mobileMessage/index.min.css" rel="stylesheet">
+        <link href="${base}/mobileMessage/base.css" rel="stylesheet">
+        <link href="${base}/mobileMessage/centerstyle.css" rel="stylesheet">
+        <link href="${base}/mobileMessage/laypage.css" rel="stylesheet">
+    <script src="${base}/mobileMessage/hm.js.下载"></script>
+        <script src="${base}/mobileMessage/hm.js(1).下载"></script>
+        <script type="text/javascript" async="" src="${base}/mobileMessage/dc.js.下载"></script>
+        <script src="${base}/mobileMessage/jquery-1.7.1.min.js.下载"></script>
+
     <script>
         document.domain = "gjw.com";
     </script>
 
-<link rel="stylesheet" href="${base}/FindFiles/layer.css" id="layui_layer_skinlayercss" style="">
-        <script type="text/javascript" async="async" charset="utf-8" src="${base}/FindFiles/userinfo.php"></script>
-        <script type="text/javascript" async="async" charset="utf-8" src="${base}/FindFiles/zh_cn.js.下载" data-requiremodule="lang"></script>
-        <script type="text/javascript" async="async" charset="utf-8" src="${base}/FindFiles/chat.in.js.下载" data-requiremodule="chatManage"></script>
-        <script type="text/javascript" async="async" charset="utf-8" src="${base}/FindFiles/mqtt31.js.下载" data-requiremodule="MQTT"></script>
-        <script type="text/javascript" async="async" charset="utf-8" src="${base}/FindFiles/mqtt.chat.js.下载" data-requiremodule="Connection"></script></head>
-<script type="text/javascript" src="${base}/js/jquery-1.4.2.js"></script>
+<link rel="stylesheet" href="${base}/mobileMessage/layer.css" id="layui_layer_skinlayercss" style="">
+        <script type="text/javascript" async="async" charset="utf-8" src="${base}/mobileMessage/userinfo.php"></script>
+        <script type="text/javascript" async="async" charset="utf-8" src="${base}/mobileMessage/zh_cn.js.下载" data-requiremodule="lang"></script>
+        <script type="text/javascript" async="async" charset="utf-8" src="${base}/mobileMessage/chat.in.js.下载" data-requiremodule="chatManage"></script>
+        <script type="text/javascript" async="async" charset="utf-8" src="${base}/mobileMessage/mqtt31.js.下载" data-requiremodule="MQTT"></script>
+        <script type="text/javascript" async="async" charset="utf-8" src="${base}/mobileMessage/mqtt.chat.js.下载" data-requiremodule="Connection"></script></head>
+
 
 <body rlt="1" style=""><div id="nTalk_post_hiddenElement" style="left: -10px; top: -10px; visibility: hidden; display: none; width: 1px; height: 1px;"></div>
     <!--头部s-->
@@ -41,16 +42,14 @@
 		<div class="topNav">
 			<div class="topNavbox clearfix">
 				<div class="focusbtn fl">
-					<img src="${base}/FindFiles/ewms.png" width="12" height="12" alt="" original="http://www.gjw.com/Images/ewms.png"><span> 购酒网APP </span><em> ﹀</em>
+					<img src="${base}/mobileMessage/ewms.png" width="12" height="12" alt="" original="http://www.gjw.com/Images/ewms.png"><span> 购酒网APP </span><em> ﹀</em>
 					<div class="ewm">
 						<span class="sanjiao">◆</span>
-						<img src="${base}/FindFiles/APP.png" original="http://order.gjw.com/image/APP.png">
+						<img src="${base}/mobileMessage/APP.png" original="http://order.gjw.com/image/APP.png">
 					</div>
 				</div>
 			    <ul class="navBox fr clearfix">
-			        <li class="loginReg" id="login">
-			    		
-			        </li> 
+			        <li class="loginReg" id="login"><em>Hi,请 </em><a href="http://order.gjw.com/login/login" class="login" rel="nofollow" target="_self">登录</a>/ <a href="http://order.gjw.com/login/register.htm" class="reg" rel="nofollow" target="_self">注册</a></li> 
 			        <li class="line"></li>
 			        <li class="wddd navlist">
 			        	<a href="http://order.gjw.com/UserCenter/MyOrder.html" class="force_link" rel="nofollow">我的订单</a>
@@ -87,15 +86,15 @@
 		</div>
 		<!--顶部导航e-->
 		<!--大广告s-->
-		<div class="topAd" id="bigimg" style="height: 80px;"><a href="http://www.gjw.com/Minisite/20180609/1506.htm" target="_blank"><img src="${base}/FindFiles/a3d2854a19aa417ca3c7af669a4861ae.jpg" alt="" original="http://img0.gjw.com/Famous/2018/0609/a3d2854a19aa417ca3c7af669a4861ae.jpg"></a></div>
+		<div class="topAd" id="bigimg" style="height: 80px;"><a href="http://www.gjw.com/Minisite/20180611/1508.htm" target="_blank"><img src="${base}/mobileMessage/7f07b37d61e940398f4d0b3d754e4690.jpg" alt="" original="http://img0.gjw.com/Famous/2018/0412/7f07b37d61e940398f4d0b3d754e4690.jpg"></a></div>
 		<!--大广告e-->
 		<!--图标、搜索框、购物车s-->
 		<div class="topItem">
 			<a href="http://www.gjw.com/" class="fl topLogo">
-                <img src="${base}/FindFiles/logo1.jpg" alt="购酒网" original="http://www.gjw.com/Images/logo1.jpg">
+                <img src="${base}mobileMessage/logo1.jpg" alt="购酒网" original="http://www.gjw.com/Images/logo1.jpg">
             </a>
             	<div class="fl topGif" id="topGif"><a href="http://www.gjw.com/product/item-id-7625.html" target="_blank">
-                    <img src="${base}/FindFiles/093094c6ae204763b190aab9265e0f33.gif" alt="" original="http://img0.gjw.com/Famous/2018/0604/093094c6ae204763b190aab9265e0f33.gif"></a></div>
+                    <img src="${base}/mobileMessage/093094c6ae204763b190aab9265e0f33.gif" alt="" original="http://img0.gjw.com/Famous/2018/0604/093094c6ae204763b190aab9265e0f33.gif"></a></div>
 		<div class="topSearch fl">
 			<div class="clearfix" id="clearsch" style=" position:absolute; z-index:12;">
 			<div class="@@-container"><input type="text" @@="off" name="query" placeholder="茅台飞天" class="topSearchtxt fl" style="border-radius: 3px 0px 0px 3px;"><div class="proposal-box"><ul class="proposal-list"></ul></div><div class="topSearchbtn fl">搜索</div></div></div>
@@ -107,7 +106,7 @@
             			<em></em>
             			<span>去购物车结算</span>
             			<span class="rtjt">&gt;</span>
-            			<div class="itemNum">0</div>
+            			<div class="itemNum">4</div>
             		</a>
             		
             	</div>  
@@ -118,71 +117,71 @@
 		<div class="itemNav clearfix">
 			<ul class="itemList fl">
 				<li id="listnav">
-					<a href="http://order.gjw.com/login/Findpsw.htm">☰ &nbsp; 全 部 分 类</a>
+					<a href="http://order.gjw.com/login/MobileVirification">☰ &nbsp; 全 部 分 类</a>
 					<ul class="qbfl-list">
 					<li class="yjxg-on">
-						<a href="http://order.gjw.com/login/Findpsw.htm"> 
-							<img src="${base}/FindFiles/ax-icon.png" original="/Content/head/img/ax-icon.png">&nbsp;一键选购</a><em>›</em>
+						<a href="http://order.gjw.com/login/MobileVirification"> 
+							<img src="${base}/mobileMessage/ax-icon.png" original="/Content/head/img/ax-icon.png">&nbsp;一键选购</a><em>›</em>
 						<div class="yjxg-box sec-box none" id="yijian"></div>
 							
 					</li>
 					<li class="bj-on">
 						<a href="http://www.gjw.com/baijiu">
-							<img src="${base}/FindFiles/bj-icon.png" original="/Content/head/img/bj-icon.png">&nbsp;白 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/bj-icon.png" original="/Content/head/img/bj-icon.png">&nbsp;白 酒</a><em>›</em>
 						<div class="bj-box sec-box none" id="baijiu">
 						 
 						</div>
 					</li>
 					<li class="ptj-on">
 						<a href="http://www.gjw.com/putaojiu">
-							<img src="${base}/FindFiles/ptj-icon.png" original="/Content/head/img/ptj-icon.png">&nbsp;葡 萄 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/ptj-icon.png" original="/Content/head/img/ptj-icon.png">&nbsp;葡 萄 酒</a><em>›</em>
 						<div class="ptj-box sec-box none" id="putaojiu">
 							 
 						</div>
 					</li>
 					<li class="yj-on">
 						<a href="http://www.gjw.com/yangjiu">
-							<img src="${base}/FindFiles/yj-icon.png" original="/Content/head/img/yj-icon.png">&nbsp;洋 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/yj-icon.png" original="/Content/head/img/yj-icon.png">&nbsp;洋 酒</a><em>›</em>
 						<div class="yj-box sec-box none" id="yangjiu">
 						</div>
 					</li>
 					<li class="hj-on">
 						<a href="http://www.gjw.com/huangjiu">
-							<img src="${base}/FindFiles/hj-icon.png" original="/Content/head/img/hj-icon.png">&nbsp;黄 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/hj-icon.png" original="/Content/head/img/hj-icon.png">&nbsp;黄 酒</a><em>›</em>
 						<div class="hj-box sec-box none" id="huangjiu">
 							 
 						</div>
 					</li>
 					<li class="ysj-on">
 						<a href="http://www.gjw.com/qingjiu">
-							<img src="${base}/FindFiles/ysj-icon.png" original="/Content/head/img/ysj-icon.png">&nbsp;清 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/ysj-icon.png" original="/Content/head/img/ysj-icon.png">&nbsp;清 酒</a><em>›</em>
 						<div class="ysj-box sec-box none" id="ys">
 							 
 						</div>
 					</li>
 					<li class="pj-on">
 						<a href="http://www.gjw.com/list/pijiu">
-							<img src="${base}/FindFiles/pj-icon.png" original="/Content/head/img/pj-icon.png">&nbsp;啤 酒</a><em>›</em>
+							<img src="${base}/mobileMessage/pj-icon.png" original="/Content/head/img/pj-icon.png">&nbsp;啤 酒</a><em>›</em>
 						<div class="pj-box sec-box none" id="pijiu">
 							
 						</div>
 					</li>
 					<li class="jjzb-on">
 						<a href="http://www.gjw.com/list/jiujujigengduo">
-							<img src="${base}/FindFiles/jjzb-icon.png" original="/Content/head/img/jjzb-icon.png">&nbsp;酒具周边</a><em>›</em>
+							<img src="${base}/mobileMessage/jjzb-icon.png" original="/Content/head/img/jjzb-icon.png">&nbsp;酒具周边</a><em>›</em>
 						<div class="jjzb-box sec-box none" id="zb"> 
 						</div>
 					</li>
 					<li class="xp-on">
 						<a href="http://www.gjw.com/Search.html?Key=ALL">
-							<img src="${base}/FindFiles/xp-icon.png" original="/Content/head/img/xp-icon.png">&nbsp;新 品</a><em>›</em>
+							<img src="${base}/mobileMessage/xp-icon.png" original="/Content/head/img/xp-icon.png">&nbsp;新 品</a><em>›</em>
 								<div class="jjzb-box sec-box none">
 										<div class="box-lt fl clearfix"></div>
 								</div>
 					</li>
                         <li class="xp-on">
 						<a href="http://www.gjw.com/qingcang/default.htm">
-							<img src="${base}/FindFiles/qingcang.png" original="/Content/head/img/qingcang.png">&nbsp;清 仓</a><em>›</em>
+							<img src="${base}/mobileMessage/qingcang.png" original="/Content/head/img/qingcang.png">&nbsp;清 仓</a><em>›</em>
 								<div class="jjzb-box sec-box none">
 										<div class="box-lt fl clearfix"></div>
 								</div>
@@ -196,7 +195,8 @@
                         <li><a href="http://www.gjw.com/shoucang/default.htm">高端收藏</a></li> 
                         <li><a href="http://www.gjw.com/Minisite/20170419/1199.htm">尾货直批</a></li>
 			</ul>
-				<div class="fr" id="rigft_advertisting"><a href="http://www.gjw.com/product/item-id-7460.html" target="_blank"><img src="${base}/FindFiles/6a9d90cda55e4389815f5a78f37bc9c2.gif" alt="" original="http://img0.gjw.com/Famous/2018/0508/6a9d90cda55e4389815f5a78f37bc9c2.gif"></a></div>
+				<div class="fr" id="rigft_advertisting"><a href="http://www.gjw.com/product/item-id-7460.html" target="_blank">
+                    <img src="${base}/mobileMessage/6a9d90cda55e4389815f5a78f37bc9c2.gif" alt="" original="http://img0.gjw.com/Famous/2018/0508/6a9d90cda55e4389815f5a78f37bc9c2.gif"></a></div>
 		</div>
 		<!--商品导航e--> 
 <!--首页头部e-->
@@ -204,144 +204,55 @@
 
     <!--头部e-->
     <div class="contentBody">
-            <link href="${base}/FindFiles/base(1).css" rel="stylesheet" type="text/css">
-    <link href="${base}/FindFiles/getPwd.style.css" rel="stylesheet" type="text/css">
-    <link href="${base}/FindFiles/cloud.control.css" rel="stylesheet" type="text/css">
-    <link href="${base}/FindFiles/cloud.extend.css" rel="stylesheet" type="text/css">
-    <script src="${base}/FindFiles/jquery-1.7.1.min.js.下载" type="text/javascript"></script>
-    <script src="${base}/FindFiles/layer.js.下载"></script>
+               <link href="${base}/mobileMessage/error.style.css" rel="stylesheet" type="text/css">
+        <link href="${base}/mobileMessage/cloud.extend.css" rel="stylesheet" type="text/css">
 
 
+  <div class="content w1000 fix">  
+    <!--主体-->  
+    <div class="mobile_box c09">
+    	<ul>
+    		<li><span class="error_tip">校验码已发送至您注册所用手机号码，请您收到后进行验证：</span></li>
+    		<li>
+    			请输入校验码：<input id="txtmobilecode" name="txtmobilecode" type="text" class="input100 mr10">
+    			<a id="btnMobile" class="btn" href="http://order.gjw.com/login/MobileVirification#">
+    			    <i class="line bgc5"></i>
+    			        <span onclick="Getcode()" class="long_red_btn pl15 pr15" style=" cursor:pointer">下一步</span>
+    			    <i class="line bgc5"></i>
+    			</a>
+    		</li>
+    		<li>
+            	还未收到短信？ <a id="againMobile" href="${base}/user/send">重新发送</a>&nbsp;（若&nbsp;<span id="scound" style=" color:Red"></span>&nbsp;还未收到短信，请重新发送!）
+    		</li>
+    	</ul>
+    </div>  
+    <form id="form2" method="post" action="http://order.gjw.com/ajax/user/FindPassword.htm?act=mobile_again_send"> </form>
+    <!--主体-->
+</div>
 
-    <div class="container1">      
-        <div class="main1 shadow">
-            <div class="">
-                <div class=" fix">
-                    <!--内容导航 begin-->
-                    <!--内容导航 end-->
-                    <!--主体-->
-                    <!--左-->
-                    <div class="wrapCon">
-                        <div align="center" class="userPhone" style="margin-left: 250px;">
-                            <div class="dlTitle">
-                                <h3 align="left">用手机短信</h3>
-                            </div>
-                         
-                           
-                                <div class="dlContent">
-                                    <div align="left" class="dlContentC">
-                                        <p class="c09">
-                                            请输入您在注册时使用手机号码：
-                                        </p>
-                                        <p class="hideMsg">
-                                        </p>
-                                        <p align="right" class="pSty1">
-                                            手机号码：<input type="text" id="txtmobile" name="mobile" maxlength="11" class="mobileInput">
-                                        </p>
-                                        <p align="right" class="pNext">
-                                            <a id="btnMobile" class="btn btnMobile" onclick="Phonesendcode()">
-                                                <i class="line bgc5"></i>
-                                                <span class="long_red_btn pl15 pr15" style="cursor: pointer">下一步</span>
-                                                <i class="line bgc5"></i>
-                                            </a>
-                                        </p>
-                                      
-                                        <p class="pSty6">
-                                        </p>
-                                        <p class="pSty4">
-                                            • 请确保您的手机在您的身边，以便及时收取我们的校验码。验证码在<br>
-                                            &nbsp;&nbsp;&nbsp;两小时内有效。购酒网给您发送的手机校验码短信提示是免费的。
-                                        </p>
-                                    </div>
-                                </div>
-                            
-                         
-                        </div>
-                        <#--<!--右&ndash;&gt;
-                        <div class="EmailR">
-                            <div align="center" class="Emai">
-                                <div class="dlTitle">
-                                    <h3 align="left">用电子邮件</h3>
-                                </div>                             
-                                    <div class="dlContent">
-                                        <div align="left" class="dlContentC">
-                                            <p class="c09">
-                                                请输入您在注册时使用的Email地址：
-                                            </p>
-                                            <p class="hideMsg2">
-                                            </p>
-                                            <p align="center" class="pSty1B pSty2B">
-                                                Email地址：
-                                            <input type="text" id="txtEmail" name="email" style="width: 200px;" class="mobileInput" maxlength="30">
-                                            </p>
-                                            <p align="right" class="pSty1B">
-                                                <a id="btnEmail" class="btn btnEmail" onclick="Emailsendcode()"><i class="line bgc5"></i><span class="long_red_btn pl15 pr15" style="cursor: pointer">下一步</span> <i class="line bgc5"></i></a>
-                                            </p>
-                                            <p class="pSty6">
-                                            </p>
-                                            <p class="pSty4">
-                                                • 如果该电子邮箱地址不正确，或者您已经忘记注册时填写的邮箱地址，<br>
-                                                &nbsp;&nbsp;&nbsp;那我们无法帮您找回密码，建议创建一个新帐户。
-                                            </p>
-                                        </div>
-                                    </div>                               
-                            </div>
-                        </div>
-                    </div>-->
-                    <!--主体-->
-                </div>
-            </div>
-        </div>
-        <div class="register">
-            <a href="http://order.gjw.com/login/register.htm"></a>
-        </div>      
-    </div>
+<script type="text/javascript">
 
-
-
-<script type="text/javascript"> 
- 
-    function Phonesendcode() {
-        var phoneNum = $("#txtmobile").val();
+    function Getcode() {
+        var mobileCode = $("#txtmobilecode").val();
         $.ajax({
             cache: true,
             type: "POST",
-            url: "${base}/user/send",
-            data:{ phoneNum : phoneNum},
+            url: "MobileCode",
+            data: { mobileCode: mobileCode },
             success: function (res) {
                 if (res.code==6) {
-                    layer.msg('发送成功', function () {
-                        window.location = "${base}/user/mobileMessage";
-                    });                             
-                } else {                   
-                    alert("手机号有误");
-                }
-            }
-        });
-
-    }
-
-    function Emailsendcode() {
-        var email = $("#txtEmail").val();
-        $.ajax({
-            cache: true,
-            type: "POST",
-            url: "${base}/Order_Api/EmailSend",
-            data: { email: email },
-            success: function (res) {
-                if (res.Success == 1) {
-                    layer.msg('发送成功', function () {
-                        window.location = "${base}/MailVirification";
+                    layer.msg('验证成功', function () {
+                        window.location = "${base}/user/updatePassword";
                     });
                 } else {
-                    alert(res.Message);
+                    alert("验证码错误");
                 }
             }
         });
 
     }
-</script>
 
+</script>
     </div>
 
     <!--尾部-s-->
@@ -352,7 +263,7 @@
                     </div>
             
                     <a onclick="NTKF.im_openInPageChat(&#39;kf_9250_1462524671271&#39;)" target="_blank" class="footer_serv fl" rel="nofollow">
-                        <img src="${base}/FindFiles/onlineServ.png" alt="" class="png_bg" style="cursor: pointer;" original="http://www.gjw.com/Images/onlineServ.png">
+                        <img src="${base}/mobileMessage/onlineServ.png" alt="" class="png_bg" style="cursor: pointer;" original="http://www.gjw.com/Images/onlineServ.png">
                     </a>
                     <div class="fr qrCodeBox">
                         <p class="fl">
@@ -361,7 +272,7 @@
                             客服邮箱：kf@goujiuwang.com<br>
                             <strong>扫描二维码，掌握一手优惠资讯</strong><br>
                         </p>
-                        <img src="${base}/FindFiles/qrcode_06.jpg" alt="" class="fl footer_qrCode" original="http://www.gjw.com/Images/qrcode_06.jpg">
+                        <img src="${base}/mobileMessage/qrcode_06.jpg" alt="" class="fl footer_qrCode" original="http://www.gjw.com/Images/qrcode_06.jpg">
                     </div>
                 </div>
                 <div class="footer_link footer_center">
@@ -559,8 +470,8 @@
                 </div>
                 <div class="iconBox_tips tips_qrcode">
                     <div class="tips_imgBox">
-                        <a href="http://order.gjw.com/login/Findpsw.htm">
-                            <img src="${base}/FindFiles/APP.png" alt="" original="http://order.gjw.com/image/APP.png">
+                        <a href="http://order.gjw.com/login/MobileVirification">
+                            <img src="${base}/mobileMessage/APP.png" alt="" original="http://order.gjw.com/image/APP.png">
                         </a>
                     </div>
                     <span class="tips_arrow">◆</span>
@@ -572,7 +483,7 @@
                     <span class="iconfont zan"></span>
                 </div>
                 <div class="iconBox_tips tips_zan">
-                    <div class="tips_imgBox" id="tips_imgBox"><a href="http://www.gjw.com/product/item-id-3568.htm" target="_blank"><img src="${base}/FindFiles/00d84c57071640e69b4fae0cccbe2cf3.jpg" alt="" original="http://img0.gjw.com/Famous/2017/0721/00d84c57071640e69b4fae0cccbe2cf3.jpg"></a></div>
+                    <div class="tips_imgBox" id="tips_imgBox"><a href="http://www.gjw.com/product/item-id-3568.htm" target="_blank"><img src="${base}/mobileMessage/00d84c57071640e69b4fae0cccbe2cf3.jpg" alt="" original="http://img0.gjw.com/Famous/2017/0721/00d84c57071640e69b4fae0cccbe2cf3.jpg"></a></div>
                     <span class="tips_arrow">◆</span>
                 </div>
             </div>
@@ -591,7 +502,7 @@
                 <div class="iconBox_tips">
                     <span class="tips">用户反馈</span> <span class="tips_arrow">◆</span>
                 </div>
-            </a><a href="http://order.gjw.com/login/Findpsw.htm" class="rb_btn rb_Center" id="rightBar_backTop">
+            </a><a href="http://order.gjw.com/login/MobileVirification" class="rb_btn rb_Center" id="rightBar_backTop">
                 <div class="footer_iconBox">
                     <span class="iconfont fanhui3"></span>
                 </div>
@@ -610,13 +521,13 @@
         display:none;
         }
     </style>
-    <script src="${base}/FindFiles/swiper.min.js.下载"></script>
-    <script src="${base}/FindFiles/jquery.lazyload.js.下载"></script>
+    <script src="${base}/mobileMessage/swiper.min.js.下载"></script>
+    <script src="${base}/mobileMessage/jquery.lazyload.js.下载"></script>
       
    
-    <script src="${base}/FindFiles/layer.js.下载"></script>
-         <script src="${base}/FindFiles/Order_index.min.js.下载"></script>
-      <script src="${base}/FindFiles/main.min.js.下载"></script>
+    <script src="${base}/mobileMessage/layer.js.下载"></script>
+         <script src="${base}/mobileMessage/Order_index.min.js.下载"></script>
+      <script src="${base}/mobileMessage/main.min.js.下载"></script>
      
     <script type="text/javascript">
         //SY小能客服
@@ -631,7 +542,7 @@
         }
     </script>
 
-    <script type="text/javascript" src="${base}/FindFiles/ntkfstat.js.下载" charset="utf-8"></script>
+    <script type="text/javascript" src="${base}/mobileMessage/ntkfstat.js.下载" charset="utf-8"></script>
     <script>
 
         $(function () {
@@ -677,7 +588,7 @@
         _gaq.push(['_trackPageLoadTime']);
         (function () {
             var ga = document.createElement('script');
-            ga.type = '${base}/text/javascript';
+            ga.type = 'text/javascript';
             ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
             var s = document.getElementsByTagName('script')[0];
@@ -685,7 +596,7 @@
         })();
     </script>
     <p style="display: none">
-        <script src="${base}/FindFiles/z_stat.php" language="JavaScript"></script><script src="${base}/FindFiles/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1253416101" target="_blank" title="站长统计">站长统计</a>
+        <script src="${base}/mobileMessage/z_stat.php" language="JavaScript"></script><script src="./mobileMessage/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1253416101" target="_blank" title="站长统计">站长统计</a>
     </p>
 
     <script>
@@ -697,5 +608,8 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+
+    
+
 
 </body></html>
