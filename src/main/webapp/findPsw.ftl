@@ -321,7 +321,7 @@
 
     }
 
-    function Emailsendcode() {
+    /*function Emailsendcode() {
         var email = $("#txtEmail").val();
         $.ajax({
             cache: true,
@@ -339,7 +339,7 @@
             }
         });
 
-    }
+    }*/
 </script>
 
     </div>
