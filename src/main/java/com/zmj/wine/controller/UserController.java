@@ -55,7 +55,7 @@ public class UserController {
     }
     //验证修改密码时的手机验证码
     @ResponseBody
-    @RequestMapping("/mobileMessage")
+    @RequestMapping("/MobileMessage")
     public Object updatePassword(String mobileCode,HttpSession httpSession){
         JsonResult jsonResult = null;
         Object random = httpSession.getAttribute("random");

@@ -237,7 +237,7 @@
         $.ajax({
             cache: true,
             type: "POST",
-            url: "MobileCode",
+            url: "user/MobileCode",
             data: { mobileCode: mobileCode },
             success: function (res) {
                 if (res.code==6) {
