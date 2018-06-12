@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			    <ul class="navBox fr clearfix">
-			        <li class="loginReg" id="login"><em>Hi,请 </em><a href="http://order.gjw.com/login/login" class="login" rel="nofollow" target="_self">登录</a>/ <a href="http://order.gjw.com/login/register.htm" class="reg" rel="nofollow" target="_self">注册</a></li> 
+			        <li class="loginReg" id="login"><em>Hi,请 </em><a href="./user/login1" class="login" rel="nofollow" target="_self">登录</a>/ <a href="./user/register" class="reg" rel="nofollow" target="_self">注册</a></li>
 			        <li class="line"></li>
 			        <li class="wddd navlist">
 			        	<a href="http://order.gjw.com/UserCenter/MyOrder.html" class="force_link" rel="nofollow">我的订单</a>
@@ -213,7 +213,7 @@
             </div>
             <ul class="rqpp-table fl clear" id="select1">
                 <#list brandList as brandValue>
-                    <li><a href="/base/byTerm?brandId=${brandValue.brandId}&kindId=${kind.kindId}">${brandValue.brandName}</a></li>
+                    <li><a href="${base}/base/byTerm?brandId=${brandValue.brandId}&kindId=${kind.kindId}">${brandValue.brandName}</a></li>
                 </#list>
             </ul>
 
