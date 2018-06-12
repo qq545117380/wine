@@ -18,7 +18,7 @@
   <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
   <script>DD_belatedPNG.fix('*');</script>
   <![endif]-->
-  <title>后台登录 - H-ui.admin v3.1</title>
+  <title>醉美酒后台</title>
   <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
   <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -31,45 +31,45 @@
   <a href="back/index">进入管理首页</a>
 
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" role="form">
-      <div class="row cl">
-        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
-        <div class="formControls col-xs-8">
-          <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L">
-        </div>
+  <form class="form form-horizontal" role="form">
+    <div class="row cl">
+      <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+      <div class="formControls col-xs-8">
+        <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L">
       </div>
-      <div class="row cl">
-        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
-        <div class="formControls col-xs-8">
-          <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L">
-        </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+      <div class="formControls col-xs-8">
+        <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L">
       </div>
-      <div class="row cl">
-        <div class="formControls col-xs-8 col-xs-offset-3">
-          <input name="imgCode" type="text" id="vocd" class="input-text size-L" placeholder="请输入验证码">
-          <!--<input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">-->
-          <img id="vcode" src="vcode.do"> <a id="kanbuq" href="javascript:changeCode();">看不清，换一张</a> </div>
+    </div>
+    <div class="row cl">
+      <div class="formControls col-xs-8 col-xs-offset-3">
+        <input name="imgCode" type="text" id="vocd" class="input-text size-L" placeholder="请输入验证码">
+        <!--<input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">-->
+        <img id="vcode" src="vcode.do"> <a id="kanbuq" href="javascript:changeCode();">看不清，换一张</a> </div>
+    </div>
+    <div class="row cl">
+      <div class="formControls col-xs-8 col-xs-offset-3">
+        <label for="online">
+          <input type="checkbox" name="online" id="online" value="true">
+          使我保持登录状态
+        </label>
       </div>
-      <div class="row cl">
-        <div class="formControls col-xs-8 col-xs-offset-3">
-          <label for="online">
-            <input type="checkbox" name="online" id="online" value="true">
-            使我保持登录状态
-          </label>
-        </div>
+    </div>
+    <div class="row cl">
+      <div class="formControls col-xs-8 col-xs-offset-3">
+        <!--<button class="btn btn-success radius size-L" id="sub_button" onclick="login()">登录</button>-->
+        <a href="javascript:login();" class="btn btn-success radius size-L">登录</a>
+        <!--<input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">-->
+        <!--<input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">-->
       </div>
-      <div class="row cl">
-        <div class="formControls col-xs-8 col-xs-offset-3">
-          <!--<button class="btn btn-success radius size-L" id="sub_button" onclick="login()">登录</button>-->
-          <a href="javascript:login();" class="btn btn-success radius size-L">登录</a>
-          <!--<input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">-->
-          <!--<input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">-->
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
-<div class="footer">Copyright 你的公司名称 by H-ui.admin v3.1</div>
+</div>
+<div class="footer">醉美酒后台管理系统1.1</div>
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
 <!--此乃百度统计代码，请自行删除-->
@@ -84,25 +84,7 @@
 </script>
 
 <script type="text/javascript">
-    /*function login() {
-        var name = $("#username").val();
-        var password = $("#password").val();
-        var remember = $("#online:checked").val();
-        var vcode = $("#vocd").val();
-        $.post(
-            "users/login",
-            {"username":name,"password":password,"vcode":vcode,"rememberMe":remember,"loginType":"UsersRealm"},
-            function (data) {
-                if (data.code==0){
-                    alert("11111")
-                    window.location.href = "welcome.html";
-                } else {
-                    alert(data.msg);
-                }
-            }
 
-        );
-    }*/
     function login() {
         var username = $("#username").val();
         var password = $("#password").val();
@@ -112,11 +94,11 @@
             "user/login",
             {"userMobile": username, "userPassword": password, "vcode": vcode,"num": num},
             function (data) {
-                alert(data.code);
+//                alert(data.code);
                 if (data.code == 0) {
-                    alert("1111");
+//                    alert("1111");
 
-                    window.location.href = "welcome.html";
+                    window.location.href = "back/index";
                 } else {
                     alert("手机号或密码错误");
                     alert("请重新输入手机号和密码");

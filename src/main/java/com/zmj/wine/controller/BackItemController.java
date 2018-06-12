@@ -24,9 +24,10 @@ import java.util.UUID;
  **/
 @Controller
 @RequestMapping("/back")
-public class BackController {
+public class BackItemController {
     //定义logger日志
-    private static Logger logger = LoggerFactory.getLogger(BackController.class);
+    private static Logger logger = LoggerFactory.getLogger(BackItemController.class);
+
     @Resource
     private ItemService itemService;
 
@@ -52,8 +53,8 @@ public class BackController {
 //        model.addAttribute("itemList",itemList);
         PageBean<Item> itemPageBean = itemService.selectItemByPage(currentPage);
         model.addAttribute("itemPageBean",itemPageBean);
-        int itemNum = itemService.selectItemNum();
-        model.addAttribute("itemNum",itemNum);
+//        int itemNum = itemService.selectItemNum();
+//        model.addAttribute("itemNum",itemNum);
         return "backPage/picture-list";
     }
 
@@ -133,7 +134,6 @@ public class BackController {
 //        int currentPage = Integer.parseInt(page);
         itemService.updateItem(item);
         return "redirect:/back/item/1";
-
     }
 
 

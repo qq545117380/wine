@@ -47,6 +47,7 @@ public class ItemServiceImpl implements ItemService {
         pageBean.setCurrentPage(currentPage);
         pageBean.setTotalPage(sumPage);
         pageBean.setData(itemList);
+        pageBean.setSum(sum);
 
         return pageBean;
     }
@@ -69,6 +70,18 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void addItem(Item item) {
         itemMapper.insert(item);
+    }
+
+    //后台查询商品
+    @Override
+    public Item findItem(int itemId) {
+        return itemMapper.selectByPrimaryKey(itemId);
+    }
+
+    //后台修改商品信息
+    @Override
+    public void updateItem(Item item) {
+        itemMapper.updateByPrimaryKeySelective(item);
     }
 
 
