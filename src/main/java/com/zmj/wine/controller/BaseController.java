@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -41,6 +42,7 @@ public class BaseController {
     @Resource
     private ItemService itemService;
 
+
     @RequestMapping("/pageHome")
     public String selectPageHome(Model model){
         List<Kind> kindList = kindService.selectAll();
@@ -67,8 +69,8 @@ public class BaseController {
 
         int[] ints = middleService.selectAllByKindId(Integer.parseInt(kindId));
         List<Item> goodsList = new ArrayList<>();
+        HashSet<Item> items = new HashSet<>();
         for(int i=0;i<ints.length;i++){
-            System.out.println(ints.length);
             Item item = itemService.selectByPrimaryKey(ints[i]);
             goodsList.add(item);
         }
@@ -188,8 +190,10 @@ public class BaseController {
         int[] goods = middleService.selectByTerm(kindId,
                 brandId, yId, fId, proofNo, cId, priceNo);
         List<Item> goodsList=new ArrayList<>();
+
         for(int i=0;i<goods.length;i++){
             Item item = itemService.selectByPrimaryKey(goods[i]);
+
             goodsList.add(item);
         }
         model.addAttribute("goodsList",goodsList);
