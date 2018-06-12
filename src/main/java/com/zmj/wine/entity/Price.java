@@ -1,6 +1,8 @@
 package com.zmj.wine.entity;
 
-public class Price {
+import java.io.Serializable;
+
+public class Price implements Serializable{
     private Integer priceId;
 
     private String priceName;

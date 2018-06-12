@@ -1,6 +1,8 @@
 package com.zmj.wine.entity;
 
-public class Proof {
+import java.io.Serializable;
+
+public class Proof implements Serializable{
     private Integer proofId;
 
     private String proofName;

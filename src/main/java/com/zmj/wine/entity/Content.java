@@ -1,6 +1,8 @@
 package com.zmj.wine.entity;
 
-public class Content {
+import java.io.Serializable;
+
+public class Content implements Serializable{
     private Integer contentId;
 
     private String contentName;
