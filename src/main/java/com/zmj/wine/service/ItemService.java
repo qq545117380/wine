@@ -27,4 +27,10 @@ public interface ItemService {
 
     //后台添加商品
     void addItem( Item item);
+
+    //后台查询商品信息
+    Item findItem(int itemId);
+
+    //后台修改商品信息
+     void updateItem(Item item);
 }
