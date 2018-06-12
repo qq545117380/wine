@@ -306,8 +306,10 @@
             <ul class="prolist clearfix">
                 <#list goodsList as goodsValue>
                     <li class="proitem">
-                        <a href="item/byId?itemId=${itemId}" class="proitem_a" target="_blank">
-                        </a><div class="itembox"><a href="/item/byId?itemId=${goodsValue.itemId}" class="proitem_a" target="_blank">
+                        <a href="${base}/item/byId?itemId=${itemId}" class="proitem_a" target="_blank">
+                        </a>
+                        <div class="itembox">
+                            <a href="${base}/item/byId?itemId=${goodsValue.itemId}" class="proitem_a" target="_blank">
                         <div class="itpic">
                             <img id="imgfly_2" data-sr="" original="${imagesPath}/${goodsValue.img1}" src="${imagesPath}/${goodsValue.img1}" style="display: inline;">
                         </div>

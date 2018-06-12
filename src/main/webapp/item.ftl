@@ -346,7 +346,7 @@
                         
                         <div class="newPriceBox">
                             <p class="newPrice fl" style="margin-top: 0">
-                                活动价<strong><span class="rmbIcon">¥</span><span class="price"><span id="spPrice">1988</span></span></strong>
+                                活动价<strong><span class="rmbIcon">¥</span><span class="price"><span id="spPrice">${item.activityPrice}</span></span></strong>
                             </p>
                             <div class="fl Etime">
                             </div>
@@ -407,7 +407,7 @@
                                 <div class="rtbox fl">
                                     <ul id="GroupPro" data-templateid="lefthottemplate">
                                         <#list relevanceList as relevanceValue>
-                                            <li><a target="_blank" id="4918" href="/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
+                                            <li><a target="_blank" id="4918" href="${base}/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
                                         </#list>
                                     </ul>
                                 </div>
@@ -440,7 +440,7 @@
                             <div class="btnbox clearfix">
                                 <a id="addCat" href="javascript:void(0)" class="addBuy btn" rel="nofollow" onclick="addToCart(${item.itemId});"></a>
                                 <a id="addToCat" href="javascript:void(0)" class="addToCart btn" rel="nofollow" onclick="joinCart(${item.itemId});"></a>
-                                <a id="aa" href="javascript:void(0)" onclick="joinCart(${item.itemId});">点击</a>
+                                <a id="aa" href="javascript:void(0)" onclick="joinCart(${item.itemId});"></a>
                                      <div class="noprobox" style="display: none;"><a id="noPro" class="noPro" target="_blank" rel="nofollow"></a></div>
 
                                 <div id="apphover">
@@ -550,8 +550,8 @@
             <ul class="historyitem clearfix" style="width: 100%; position: relative; left: 0%; height: 132px;">
 <li class="fl clearfix" style="width: 100%;">                    <div>
                         <a target="_blank" href="http://www.gjw.com/product/item-id-2.htm">
-                            <img original="http://img0.gjw.com/product/2018/0605/03f0b44e0bc34a87b1581d142b46e201_2.jpg"><span>【组合装】53度 茅台飞天酒（2018年产）500ml 和53度 习酒 窖藏1998 500ml</span><br>
-                            <em>￥1988</em></a>
+                            <img original="http://img0.gjw.com/product/2018/0605/03f0b44e0bc34a87b1581d142b46e201_2.jpg"><span>${item.itemName}</span><br>
+                            <em>1998</em></a>
                     </div>
             </li></ul>
         </div>
