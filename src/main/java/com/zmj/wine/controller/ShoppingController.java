@@ -5,8 +5,12 @@ import com.zmj.wine.entity.Shoppingcart;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -14,12 +18,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/shopping")
-public class shoppingController {
+public class ShoppingController {
     @Resource
     private IShoppingCartService shoppingCartService;
 
     @Resource
     private ItemService itemService;
+
 
     //立即购买
     @RequestMapping("/insert")
