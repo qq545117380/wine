@@ -58,6 +58,13 @@ public class ItemServiceImpl implements ItemService {
         return item;
     }
 
+    //<!--根据酒名查询单品信息-->
+    @Override
+    public Item selectByName(String itemName) {
+        Item item = itemMapper.selectByName(itemName);
+        return item;
+    }
+
     //后台添加商品
     @Override
     public void addItem(Item item) {

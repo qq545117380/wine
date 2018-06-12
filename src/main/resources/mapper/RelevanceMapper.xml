@@ -16,6 +16,14 @@
     from tb_relevance
     where relevance_id = #{relevanceId,jdbcType=INTEGER}
   </select>
+<!--根据单品id查询关联酒-->
+  <select id="selectItemByItemId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_relevance
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_relevance
     where relevance_id = #{relevanceId,jdbcType=INTEGER}

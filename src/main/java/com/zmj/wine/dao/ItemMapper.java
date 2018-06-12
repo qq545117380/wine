@@ -34,4 +34,7 @@ public interface ItemMapper {
                             @Param("brandId") Integer brandId,@Param("yieldlyId") Integer yieldlyId,
                             @Param("flavourId") Integer flavourId,@Param("proofId") Integer proofId,
                             @Param("contentId") Integer contentId,@Param("priceId") Integer priceId);
+
+    //<!--根据酒名查询单品信息-->
+    Item selectByName(String itemName);
 }

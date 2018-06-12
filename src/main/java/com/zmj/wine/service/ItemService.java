@@ -22,6 +22,9 @@ public interface ItemService {
 
     Item selectByPrimaryKey(Integer itemId);
 
+    //<!--根据酒名查询单品信息-->
+    Item selectByName(String itemName);
+
     //后台添加商品
     void addItem( Item item);
 
