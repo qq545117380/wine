@@ -107,7 +107,7 @@
 		<div class="itemNav clearfix">
 			<ul class="itemList fl">
 				<li id="listnav">
-					<a href="/pageHome.ftl">☰ &nbsp; 全 部 分 类</a>
+					<a href="/pageHome.html">☰ &nbsp; 全 部 分 类</a>
 					<ul class="qbfl-list">
 					<li class="yjxg-on">
 						<a href="/base/list?kindId=1">
@@ -178,7 +178,7 @@
 					</li>
 				</ul>
 				</li>
-				 <li><a href="/pageHome.ftl">首页</a></li>
+				 <li><a href="/pageHome.html">首页</a></li>
                         <li><a href="http://tm.gjw.com/">特卖会</a></li>
                         <li><a href="http://import.gjw.com/">进口馆</a></li>
                         <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>

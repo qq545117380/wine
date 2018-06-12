@@ -111,67 +111,67 @@
             <a href="http://www.gjw.com/product/item-id-2.htm">☰ &nbsp; 全 部 分 类</a>
             <ul class="qbfl-list">
                 <li class="yjxg-on">
-                    <a href="http://www.gjw.com/product/item-id-2.htm">
+                    <a href="/base/list?kindId=1">
                         <img src="${base}/item_files/ax-icon.png" original="/Content/head/img/ax-icon.png">&nbsp;一键选购</a><em>›</em>
                     <div class="yjxg-box sec-box none" id="yijian"></div>
 
                 </li>
                 <li class="bj-on">
-                    <a href="http://www.gjw.com/baijiu">
+                    <a href="/base/list?kindId=2">
                         <img src="${base}/item_files/bj-icon.png" original="/Content/head/img/bj-icon.png">&nbsp;白 酒</a><em>›</em>
                     <div class="bj-box sec-box none" id="baijiu">
 
                     </div>
                 </li>
                 <li class="ptj-on">
-                    <a href="http://www.gjw.com/putaojiu">
+                    <a href="/base/list?kindId=3">
                         <img src="${base}/item_files/ptj-icon.png" original="/Content/head/img/ptj-icon.png">&nbsp;葡 萄 酒</a><em>›</em>
                     <div class="ptj-box sec-box none" id="putaojiu">
 
                     </div>
                 </li>
                 <li class="yj-on">
-                    <a href="http://www.gjw.com/yangjiu">
+                    <a href="/base/list?kindId=4">
                         <img src="${base}/item_files/yj-icon.png" original="/Content/head/img/yj-icon.png">&nbsp;洋 酒</a><em>›</em>
                     <div class="yj-box sec-box none" id="yangjiu">
                     </div>
                 </li>
                 <li class="hj-on">
-                    <a href="http://www.gjw.com/huangjiu">
+                    <a href="/base/list?kindId=5">
                         <img src="${base}/item_files/hj-icon.png" original="/Content/head/img/hj-icon.png">&nbsp;黄 酒</a><em>›</em>
                     <div class="hj-box sec-box none" id="huangjiu">
 
                     </div>
                 </li>
                 <li class="ysj-on">
-                    <a href="http://www.gjw.com/qingjiu">
+                    <a href="/base/list?kindId=6">
                         <img src="${base}/item_files/ysj-icon.png" original="/Content/head/img/ysj-icon.png">&nbsp;清 酒</a><em>›</em>
                     <div class="ysj-box sec-box none" id="ys">
 
                     </div>
                 </li>
                 <li class="pj-on">
-                    <a href="http://www.gjw.com/list/pijiu">
+                    <a href="/base/list?kindId=7">
                         <img src="${base}/item_files/pj-icon.png" original="/Content/head/img/pj-icon.png">&nbsp;啤 酒</a><em>›</em>
                     <div class="pj-box sec-box none" id="pijiu">
 
                     </div>
                 </li>
                 <li class="jjzb-on">
-                    <a href="http://www.gjw.com/list/jiujujigengduo">
+                    <a href="/base/list?kindId=8">
                         <img src="${base}/item_files/jjzb-icon.png" original="/Content/head/img/jjzb-icon.png">&nbsp;酒具周边</a><em>›</em>
                     <div class="jjzb-box sec-box none" id="zb">
                     </div>
                 </li>
                 <li class="xp-on">
-                    <a href="http://www.gjw.com/Search.html?Key=ALL">
+                    <a href="/base/list?kindId=9">
                         <img src="${base}/item_files/xp-icon.png" original="/Content/head/img/xp-icon.png">&nbsp;新 品</a><em>›</em>
                     <div class="jjzb-box sec-box none">
                         <div class="box-lt fl clearfix"></div>
                     </div>
                 </li>
                 <li class="xp-on">
-                    <a href="http://www.gjw.com/qingcang/default.htm">
+                    <a href="/base/list?kindId=10">
                         <img src="${base}/item_files/qingcang.png" original="/Content/head/img/qingcang.png">&nbsp;清 仓</a><em>›</em>
                     <div class="jjzb-box sec-box none">
                         <div class="box-lt fl clearfix"></div>
@@ -179,7 +179,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="http://www.gjw.com/">首页</a></li>
+        <li><a href="/pageHome.html">首页</a></li>
         <li><a href="http://tm.gjw.com/">特卖会</a></li>
         <li><a href="http://import.gjw.com/">进口馆</a></li>
         <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
@@ -742,47 +742,24 @@
             function addToCart() {
                 var count = $.trim($("#txtQuantity").val());
                 var itemName="${item.itemName}";
-                $("#addCat").attr("href","${base}/shopping/insert?itemName="+itemName+"&count="+count);
+                var currentUsre="${Session.currentUser}";
+                if(currentUsre==""){
+                    alert("请先登录");
+                }else {
+                    $("#addCat").attr("href","/shopping/insert?itemName="+itemName+"&count="+count);
+                }
             }
 
             function joinCart() {
                 var count = $.trim($("#txtQuantity").val());
                 var itemName="${item.itemName}";
-                window.location.href="/shopping/join?itemName="+itemName+"&count="+count;
+                var currentUsre="${Session.currentUser}";
+                if(currentUsre==""){
+                    alert("请先登录");
+                }else{
+                    window.location.href="/shopping/join?itemName="+itemName+"&count="+count;
+                }
             }
-
-            //$("addToCat").attr("href","<a href=\"/shopping/insert?itemName="+itemName+"&count="+count+"\">立即购买</a>")
-            //}
-            /*立即购买*/
-            <#--function addToCart(id) {-->
-            <#--var count = $.trim($("#txtQuantity").val());-->
-            <#--$.get("shopping/insert",-->
-            <#--{itemId:${item.itemId},-->
-            <#--count:qty},function (data) {-->
-            <#--if(data.code=="0"){-->
-            <#--window.location ='/shopping/list?userId=1';-->
-            <#--}-->
-            <#--});-->
-            <#--}-->
-
-            /*加入购物车*/
-            //        function joinCart(id) {
-            //            var Quan = $("#txtQuantity").val();
-            //            Gocartplus(id, Quan, true, function (data) {
-            //                var img = $("#bigpicshow").attr("src");
-            //                flycart(event, img);
-            //
-            //                $("#head_cart_no").html(data.data);
-            //            })
-            //        }
-            /*立即购买*/
-            //        function addToCart(id, getQty) {
-            //            var qty = $.trim($("#txtQuantity").val());
-            //            Gocartplus(id, qty, true, function () {
-            //                window.location = 'http://order.gjw.com/order/Cart.html';
-            //            })
-            //        }
-
 
 
             function Getpage(pages, page, type) {
