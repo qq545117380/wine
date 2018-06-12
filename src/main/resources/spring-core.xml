@@ -15,7 +15,8 @@
     <context:component-scan base-package="
     com.zmj.wine.service.impl,
     com.zmj.wine.controller,
-    com.zmj.wine.dao"/>
+    com.zmj.wine.dao,
+    com.zmj.wine.utils"/>
 
     <!--mvc 使用注解驱动-->
     <mvc:annotation-driven/>
