@@ -32,31 +32,36 @@ public class shoppingController {
                              Integer count, HttpSession httpSession){
         Item item = itemService.selectByName(itemName);
         Shoppingcart shoppingcart = new Shoppingcart();
-
         User currentUser = (User)httpSession.getAttribute("currentUser");
-        //如果不为空就将购物车内的商品插入数据库，如果为空酒存入cookie
-        if(currentUser!=null && currentUser.equals("")){
-            shoppingcart.setUserId(currentUser.getUserId());
+        shoppingcart.setCartName(itemName);
+        shoppingcart.setCartPrice(item.getActivityPrice());
+        shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
+        shoppingcart.setCartCount(count);
+        shoppingcart.setCartImg(item.getImg1());
+        shoppingcart.setUserId(currentUser.getUserId());
+        //这里并没有判断是否添加成功
+        int num = shoppingCartService.insert(shoppingcart);
+        if(num==0){
+            List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
+            return "shoppingCart";
+        }else{
+            return "item";
         }
+    }
 
+    //加入购物车
+    @RequestMapping("/join")
+    public String selectByUserId(String itemName, Integer count,HttpSession httpSession){
+        Item item = itemService.selectByName(itemName);
+        Shoppingcart shoppingcart = new Shoppingcart();
+        User currentUser = (User)httpSession.getAttribute("currentUser");
         shoppingcart.setCartName(itemName);
         shoppingcart.setCartCount(item.getActivityPrice());
         shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
         shoppingcart.setCartCount(count);
         shoppingcart.setCartImg(item.getImg1());
-
-        int num = shoppingCartService.insert(shoppingcart);
-        if(num==0){
-            List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
-            return "shoppingCart";
-        }
+        shoppingcart.setUserId(currentUser.getUserId());
+        shoppingCartService.insert(shoppingcart);
         return "item";
-    }
-
-    @RequestMapping("/list")
-    public String selectByUserId(Integer userId, Model model){
-        List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(userId);
-        model.addAttribute("shoppingcartList",shoppingcartList);
-        return "shoppingcart";
     }
 }
