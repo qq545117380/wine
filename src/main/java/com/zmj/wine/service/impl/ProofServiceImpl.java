@@ -1,8 +1,11 @@
 package com.zmj.wine.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.zmj.wine.dao.ProofMapper;
 import com.zmj.wine.entity.Proof;
 import com.zmj.wine.service.IProofService;
+import com.zmj.wine.utils.RedisUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +17,28 @@ import java.util.List;
 public class ProofServiceImpl implements IProofService{
     @Resource
     private ProofMapper proofDAO;
+
+    @Resource
+    private RedisUtil redisUtil;
+
+
     @Override
     public Proof selectByPrimaryKey(Integer proofId) {
-        Proof proof = proofDAO.selectByPrimaryKey(proofId);
+        Gson gson = new Gson();
+        String key="proof"+proofId.toString();
+        Proof proof;
+        try {
+            proof = JSON.parseObject(redisUtil.get(key).toString(), Proof.class);
+        }catch (NullPointerException e1){
+            synchronized (key){
+                try {
+                    proof = JSON.parseObject(redisUtil.get(key).toString(), Proof.class);
+                }catch (NullPointerException e2){
+                    proof = proofDAO.selectByPrimaryKey(proofId);
+                    redisUtil.set(key,gson.toJson(proof));
+                }
+            }
+        }
         return proof;
     }
 
