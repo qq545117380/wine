@@ -2,6 +2,7 @@ package com.zmj.wine.service;
 
 import com.zmj.wine.entity.Item;
 import com.zmj.wine.utils.PageBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -36,4 +37,8 @@ public interface ItemService {
 
     //特卖会相关
     List<Item> selectByDescribe(String itemDescribe);
+
+    int updateByPreferential(
+            @Param("itemPreferential") Integer itemPreferential,
+            @Param("itemId") Integer itemId);
 }

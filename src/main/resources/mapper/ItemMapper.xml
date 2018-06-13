@@ -227,6 +227,14 @@
       </if>
     </trim>
   </insert>
+
+  <!--更改库存数量-->
+  <update id="updateByPreferential" parameterType="com.zmj.wine.entity.Item">
+      update tb_item
+      set item_preferential = #{itemPreferential,jdbcType=INTEGER}
+      where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.zmj.wine.entity.Item">
     update tb_item
     <set>

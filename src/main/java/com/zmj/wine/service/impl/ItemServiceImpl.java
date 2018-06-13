@@ -27,6 +27,7 @@ public class ItemServiceImpl implements ItemService {
     @Resource
     private RedisUtil redisUtil;
 
+    Gson gson = new Gson();
 
     //后台查询所有的商品
     @Override
@@ -61,7 +62,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item selectByPrimaryKey(Integer itemId) {
-        Gson gson = new Gson();
         String key="item"+itemId.toString();
         Item item;
         try {
@@ -112,5 +112,14 @@ public class ItemServiceImpl implements ItemService {
         return itemList;
     }
 
-
+    //更新商品库存
+    @Override
+    public int updateByPreferential(Integer itemPreferential, Integer itemId) {
+        int num = itemMapper.updateByPreferential(itemPreferential, itemId);
+        if(num>0){
+            return 0;
+        }else {
+            return 1;
+        }
+    }
 }

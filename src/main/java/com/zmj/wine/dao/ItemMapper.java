@@ -40,4 +40,8 @@ public interface ItemMapper {
 
     //特卖会相关
     List<Item> selectByDescribe(String itemDescribe);
+
+    //修改商品库存
+    int updateByPreferential(@Param("itemPreferential") Integer itemPreferential,
+                             @Param("itemId") Integer itemId);
 }
