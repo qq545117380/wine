@@ -83,6 +83,12 @@ public class ItemServiceImpl implements ItemService {
         itemMapper.updateByPrimaryKeySelective(item);
     }
 
+    @Override
+    public List<Item> selectByDescribe(String itemDescribe) {
+        List<Item> itemList = itemMapper.selectByDescribe(itemDescribe);
+        return itemList;
+    }
+
 
 
 }

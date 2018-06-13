@@ -56,6 +56,14 @@
     where item_id = #{itemId,jdbcType=INTEGER}
   </select>
 
+  <!--查询特卖会商品-->
+  <select id="selectByDescribe" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item
+    where item_describe = #{itemDescribe}
+  </select>
+
 <!--根据酒名查询单品信息-->
   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
