@@ -71,5 +71,18 @@ public class ItemServiceImpl implements ItemService {
         itemMapper.insert(item);
     }
 
+    //后台查询商品
+    @Override
+    public Item findItem(int itemId) {
+        return itemMapper.selectByPrimaryKey(itemId);
+    }
+
+    //后台修改商品信息
+    @Override
+    public void updateItem(Item item) {
+        itemMapper.updateByPrimaryKeySelective(item);
+    }
+
+
 
 }
