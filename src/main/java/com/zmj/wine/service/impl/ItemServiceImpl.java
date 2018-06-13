@@ -1,9 +1,12 @@
 package com.zmj.wine.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.zmj.wine.dao.ItemMapper;
 import com.zmj.wine.entity.Item;
 import com.zmj.wine.service.ItemService;
 import com.zmj.wine.utils.PageBean;
+import com.zmj.wine.utils.RedisUtil;
 import com.zmj.wine.utils.SystemUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +23,10 @@ public class ItemServiceImpl implements ItemService {
 
     @Resource
     private ItemMapper itemMapper;
+
+    @Resource
+    private RedisUtil redisUtil;
+
 
     //后台查询所有的商品
     @Override
@@ -47,14 +54,30 @@ public class ItemServiceImpl implements ItemService {
         pageBean.setCurrentPage(currentPage);
         pageBean.setTotalPage(sumPage);
         pageBean.setData(itemList);
-
+        pageBean.setSum(sum);
         return pageBean;
     }
 
 
     @Override
     public Item selectByPrimaryKey(Integer itemId) {
-        Item item = itemMapper.selectByPrimaryKey(itemId);
+        Gson gson = new Gson();
+        String key="item"+itemId.toString();
+        Item item;
+        try {
+            //通过key取redis内的对象字符串，再转换为对象
+            item = JSON.parseObject(redisUtil.get(key).toString(), Item.class);
+        }catch (NullPointerException e1){
+            synchronized (key){
+                try{
+                    item = JSON.parseObject(redisUtil.get(key).toString(), Item.class);
+                }catch (NullPointerException e2){
+                    item = itemMapper.selectByPrimaryKey(itemId);
+                    //gson.toJson(item)  转化为json字符串
+                    redisUtil.set(key,gson.toJson(item));
+                }
+            }
+        }
         return item;
     }
 
@@ -88,7 +111,6 @@ public class ItemServiceImpl implements ItemService {
         List<Item> itemList = itemMapper.selectByDescribe(itemDescribe);
         return itemList;
     }
-
 
 
 }
