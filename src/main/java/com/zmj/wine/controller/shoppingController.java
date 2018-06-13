@@ -51,7 +51,7 @@ public class shoppingController {
 
     //加入购物车
     @RequestMapping("/join")
-    public String selectByUserId(String itemName, Integer count,HttpSession httpSession){
+    public String selectByUserId(String itemName, Integer count,HttpSession httpSession,Model model){
         Item item = itemService.selectByName(itemName);
         Shoppingcart shoppingcart = new Shoppingcart();
         User currentUser = (User)httpSession.getAttribute("currentUser");
@@ -62,6 +62,7 @@ public class shoppingController {
         shoppingcart.setCartImg(item.getImg1());
         shoppingcart.setUserId(currentUser.getUserId());
         shoppingCartService.insert(shoppingcart);
+        model.addAttribute("item",item);
         return "item";
     }
 }
