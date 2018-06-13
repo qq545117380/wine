@@ -29,7 +29,7 @@ public class shoppingController {
 
     @RequestMapping("/insert")
     public String insert(String itemName,
-                             Integer count, HttpSession httpSession){
+                             Integer count, HttpSession httpSession,Model model){
         Item item = itemService.selectByName(itemName);
         Shoppingcart shoppingcart = new Shoppingcart();
         User currentUser = (User)httpSession.getAttribute("currentUser");
@@ -43,9 +43,10 @@ public class shoppingController {
         int num = shoppingCartService.insert(shoppingcart);
         if(num==0){
             List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
+            model.addAttribute("shoppingcartList",shoppingcartList);
             return "shoppingCart";
         }else{
-            return "item";
+            return "/item";
         }
     }
 
@@ -62,6 +63,6 @@ public class shoppingController {
         shoppingcart.setCartImg(item.getImg1());
         shoppingcart.setUserId(currentUser.getUserId());
         shoppingCartService.insert(shoppingcart);
-        return "item";
+        return "/item";
     }
 }
