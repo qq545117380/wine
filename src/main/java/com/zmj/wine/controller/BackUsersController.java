@@ -49,9 +49,8 @@ public class BackUsersController {
 
     //删除管理员@PathVariable("userId")
     @RequestMapping("/deleteUser")
-    public String deletUser( String userId){
+    public String deleteUser( String userId){
         int usersId = Integer.parseInt(userId);
-//        System.out.println(userId);
         int user = usersService.deleteUser(usersId);
         if (user==0){
             logger.info("恭喜用户删除成功");
@@ -59,4 +58,20 @@ public class BackUsersController {
         return "redirect:/back/users/1";
     }
 
+    //预修改后台管理人员信息
+    @RequestMapping("preUpdateUser/{userId}")
+    public String preUpdateUser(@PathVariable("userId") int usersId,
+    Model Model){
+        Users users = usersService.queryUserById(usersId);
+        Model.addAttribute("users",users);
+        return "/backPage/admin-update";
+    }
+
+    //修改后台管理人员的信息
+
+    @RequestMapping("updateUser")
+    public String updateUser(Users users){
+        usersService.updateUser(users);
+        return "redirect:/back/users/1";
+    }
 }

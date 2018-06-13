@@ -1,7 +1,6 @@
 package com.zmj.wine.controller;
 
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.sun.org.apache.bcel.internal.classfile.Code;
 import com.zmj.wine.dao.UserMapper;
 import com.zmj.wine.dao.UsersMapper;
 import com.zmj.wine.entity.User;
@@ -107,7 +106,7 @@ public class UserController {
             }
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
 //            验证验证码
-            if(vcode==null||!vcode.equals(req.getSession().getAttribute("vcode"))) {
+            if(vcode==null||!vcode.equalsIgnoreCase((String)req.getSession().getAttribute("vcode"))) {
                 jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_UNKNOWN_ACCOUNT, SystemParam.Login.MSG_FAIL_UNKNOWN_ACCOUNT);
                 return jsonResult;
             }

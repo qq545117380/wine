@@ -78,8 +78,7 @@
                     <#--location.href="${base}/back/delete/${users.id}" title="删除">-->
                         <a style="text-decoration:none" href="javascript:deleteUser(userId=${users.id});" title="删除">
                     <i class="Hui-iconfont">&#xe6de;</i></a>
-                    <a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>-->
+                    <a style="text-decoration:none" class="ml-5" href="javascript:updateUser(userId=${users.id});" title="修改"><i class="Hui-iconfont">&#xe6df;</i></a>
                 </td>
             </tr>
             </tbody>
@@ -143,14 +142,26 @@
     }
 
     function deleteUser(userId) {
-        var usersId =userId;
+//        var usersId =userId;
+//        alert(userId)
         var usersType ="${currentUsers.userType}";
         if (usersType =="超级管理员"){
             if(confirm("确认删除吗")){
                 window.location.href="${base}/back/deleteUser?userId="+userId;
+                <#--window.location.href="${base}/back/deleteUser/"+userId;-->
             }
         }else {
             alert("不好意思，只有超级管理员，有添加权限");
+        }
+    }
+
+    function updateUser(userId) {
+        var userId=userId;
+        var usersType="${currentUsers.userType}";
+        if (usersType == "超级管理员"){
+            window.location.href="${base}/back/preUpdateUser/"+userId;
+        }else{
+            alert("不好意思，只有超级管理员，有修改权限");
         }
     }
 
