@@ -6,6 +6,7 @@ import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;

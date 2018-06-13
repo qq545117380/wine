@@ -56,7 +56,7 @@
                 <th width="40"><input name="" type="checkbox" value=""></th>
                 <th width="50">ID</th>
                 <th width="150">产品名称</th>
-                <th>产品图片</th>
+                <th >产品图片</th>
                 <th width="100">所属活动</th>
                 <th width="100">产品价格</th>
                 <th width="100">产品品牌</th>
@@ -72,7 +72,7 @@
                 <td>${item.itemId}</td>
                 <td>${item.itemName}</td>
 			<#--<td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>-->
-                <td><img width="100" class="picture-thumb" src="${imagesPath}/${item.img1}"></td>
+                <td><img width="80" height="55" class="picture-thumb" src="${imagesPath}/${item.img1}"></td>
                 <td>${item.itemPromotionMsg}</td>
 			<#--<td class="text-l"><a class="maincolor" href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">现代简约 白色 餐厅</a></td>-->
                 <td>${item.regularPrice} 元</td>
