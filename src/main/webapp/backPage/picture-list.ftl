@@ -92,7 +92,7 @@
         <div id="fenye">
             <ul>
 			<#if itemPageBean.currentPage==1>
-                <li><a>上一页</a></li>
+                <#--<li><a>上一页</a></li>-->
 			<#else>
                 <li><a href="${base}/back/item/${itemPageBean.currentPage-1}">上一页</a></li>
 			</#if>
@@ -108,7 +108,7 @@
 			</#list>
 
 			<#if itemPageBean.currentPage==itemPageBean.totalPage >
-                <li><a>下一页</a></li>
+                <#--<li><a>下一页</a></li>-->
 			<#else>
                 <li><a href="${base}/back/item/${itemPageBean.currentPage+1}">下一页</a> </li>
 			</#if>

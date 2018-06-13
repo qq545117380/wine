@@ -83,14 +83,18 @@
                 </ul>
             </dd>
         </dl>
-        <#--<dl id="menu-picture">-->
-            <#--<dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
-            <#--<dd>-->
-                <#--<ul>-->
-                    <#--<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>-->
-                <#--</ul>-->
-            <#--</dd>-->
-        <#--</dl>-->
+        <dl id="menu-picture">
+            <dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="${base}/back/orders/1" data-title="所有订单查询" href="javascript:void(0)">所有订单查询</a></li>
+                    <li><a data-href="${base}/back/signOrder/1" data-title="签收订单查询" href="javascript:void(0)">签收订单查询</a></li>
+                    <li><a data-href="${base}/back/rejectionOrder/1" data-title="拒收订单查询" href="javascript:void(0)">拒收订单查询</a></li>
+                    <li><a data-href="${base}/back/unfilledOrder/1" data-title="未发货订单查询" href="javascript:void(0)">未发货订单查询</a></li>
+                    <li><a data-href="${base}/back/returnOrder/1" data-title="退货订单查询" href="javascript:void(0)">退货订单查询</a></li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="menu-product">
             <dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -134,20 +138,20 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-tongji">
-            <dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
-                    <li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
-                    <li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
-                    <li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
-                    <li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
-                    <li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
-                    <li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
-                </ul>
-            </dd>
-        </dl>
+        <#--<dl id="menu-tongji">-->
+            <#--<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
+            <#--<dd>-->
+                <#--<ul>-->
+                    <#--<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>-->
+                    <#--<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>-->
+                    <#--<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>-->
+                    <#--<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>-->
+                    <#--<li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>-->
+                    <#--<li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>-->
+                    <#--<li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>-->
+                <#--</ul>-->
+            <#--</dd>-->
+        <#--</dl>-->
         <dl id="menu-system">
             <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -260,16 +264,5 @@
 
 </script>
 
-<!--此乃百度统计代码，请自行删除-->
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<!--/此乃百度统计代码，请自行删除-->
 </body>
 </html>

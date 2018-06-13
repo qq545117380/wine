@@ -36,7 +36,7 @@
             color: red;
         }
     </style>
-    <title>图片列表</title>
+    <title>订单列表</title>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 图片管理 <span class="c-gray en">&gt;</span> 图片列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -47,45 +47,52 @@
 			<#--<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>-->
 		<#--<a class="btn btn-primary radius" href="${base}/back/preAdd">-->
 			<#--<i class="Hui-iconfont">&#xe600;</i> 添加商品</a></span>-->
-        <span class="r">会员用户的总数是：<strong>${userPageBean.sum}</strong> 人</span>
+        <span class="r">共有已拒收订单：<strong>${orderPageBean.sum}</strong> 条</span>
     </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
-                <th width="40"><input name="" type="checkbox" value=""></th>
-                <th width="50">ID</th>
-                <th width="100">用户昵称</th>
-                <th width="80">用户照片</th>
-                <th width="50">性别</th>
-                <th width="100">手机账号</th>
-                <th width="150">邮箱</th>
-                <th width="150">地址</th>
-                <th width="100">积分</th>
-                <#--<th width="100">操作</th>-->
+                <th>ID</th>
+                <th width="50">订单号</th>
+                <th width="50">订单状态</th>
+                <th width="80">产品名称</th>
+                <th>产品图片</th>
+                <th>产品单价 </th>
+                <th>订单数量</th>
+                <th>订单总额</th>
+                <th>收货人</th>
+                <th width="100">收货地址</th>
+                <th>运费</th>
+                <th >支付方式</th>
+                <th>附加说明</th>
+
             </tr>
             </thead>
 		<#--  遍历产品集合-->
-		<#list userPageBean.data as user>
+		<#list orderPageBean.data as order>
             <tbody>
             <tr class="text-c">
-                <td><input name="" type="checkbox" value=""></td>
-                <td>${user.userId}</td>
-                <td>${user.userNikename}</td>
-			<#--<td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>-->
-                <td><img width="50px" class="picture-thumb" src="${imagesPath}/${user.userPhoto}"></td>
-                <td>${user.userSex}</td>
-			<#--<td class="text-l"><a class="maincolor" href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">现代简约 白色 餐厅</a></td>-->
-                <td>${user.getUserMobile()} </td>
-                <td class="text-c">${user.userEmail}</td>
-                <td>${user.userAddress}</td>
-                <td>${user.userIntegral}</td>
-                <#--<td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>-->
+                <td>${order.orderId}</td>
+                <td>${order.orderNo}</td>
+                <td id="status" class="haha">${order.orderStatus}</td>
+                    <#--<td class="td-status"><span class="label label-success radius">${order.orderStatus}</span></td>-->
+                <td>${order.orderName}</td>
+                <td><img width="80" height="55" class="picture-thumb" src="${imagesPath}/${order.orderImg}"></td>
+                <td id="price" class="hah">${order.orderDiscounts}元</td>
+                <td id="num">${order.orderNum}</td>
+                <td id="sumPrice"></td>
+                <td>${order.user.userNikename} </td>
+                <td class="text-c">${order.orderAddress}</td>
+                <td>${order.orderCarriage}</td>
+                <td>${order.orderPayWay}</td>
+                <td>${order.orderExplain}</td>
                 <#--<td class="td-manage">-->
-                    <#--<a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">-->
-                    <#--<i class="Hui-iconfont">&#xe6de;</i></a>-->
+                    <#--&lt;#&ndash;<a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">&ndash;&gt;-->
+                    <#--&lt;#&ndash;<i class="Hui-iconfont">&#xe6de;</i></a>&ndash;&gt;-->
                     <#--<a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改商品"><i class="Hui-iconfont">&#xe6df;</i></a>-->
-                    <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+                    <#--&lt;#&ndash;<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                    </td>&ndash;&gt;-->
             </tr>
             </tbody>
 		</#list>
@@ -94,28 +101,28 @@
         <!-- 分页标签 -->
         <div id="fenye">
             <ul>
-			<#if userPageBean.currentPage==1>
-                <#--<li><a>上一页</a></li>-->
+			<#if orderPageBean.currentPage==1>
+                <li><a></a></li>
 			<#else>
-                <li><a href="${base}/back/user/${userPageBean.currentPage-1}">上一页</a></li>
+                <li><a href="${base}/back/orders/${orderPageBean.currentPage-1}">上一页</a></li>
 			</#if>
 			<#--循环遍历出页面数-->
-			<#list 1..userPageBean.totalPage as page>
-				<#if page == userPageBean.currentPage>
+			<#list 1..orderPageBean.totalPage as page>
+				<#if page == orderPageBean.currentPage>
                     <li><a>${page}</a></li>
 				<#else >
                     <#--<#if page<6>-->
-                    <li id="xuan"><a href="${base}/back/user/${page}">${page}</a></li>
+                    <li id="xuan"><a href="${base}/back/orders/${page}">${page}</a></li>
                     <#--</#if>-->
 				</#if>
 			</#list>
 
-			<#if userPageBean.currentPage==userPageBean.totalPage >
-                <#--<li><a>下一页</a></li>-->
+			<#if orderPageBean.currentPage==orderPageBean.totalPage >
+                <li><a></a></li>
 			<#else>
-                <li><a href="${base}/user/item/${userPageBean.currentPage+1}">下一页</a> </li>
+                <li><a href="${base}/back/orders/${orderPageBean.currentPage+1}">下一页</a> </li>
 			</#if>
-                <li>当前页面数是第 ${userPageBean.currentPage} 页</li>
+                <li>当前页面数是第 ${orderPageBean.currentPage} 页</li>
             </ul>
         </div>
 
@@ -136,14 +143,36 @@
 <script type="text/javascript" src="${base}/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${base}/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-    $('.table-sort').dataTable({
-        "aaSorting": [[ 1, "desc" ]],//默认第几个排序
-        "bStateSave": true,//状态保存
-        "aoColumnDefs": [
-            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-            {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
-        ]
-    });
+    $(function () {
+        $(".hah").each(function () {
+            var price =parseInt($(this).text());
+            var num = parseInt($(this).next().text());
+            var sumPrice=price*num;
+            $(this).next().next().text(sumPrice);
+//            var price=parseInt($("#price").text());
+//            var num=parseInt($("#num").text());
+//            var sumPrice=price*num;
+//            $("#sumPrice").text(sumPrice);
+        });
+
+            $(".haha").each(function () {
+                var status =$(this).text();
+//                alert(status);
+                if (status == "已签收"){
+                    $(this).css("color","red");
+                }else if(status == "已拒收"){
+                    $(this).css("color","blue");
+                }else if(status == "未发货"){
+                    $(this).css("color","Khaki");
+                }
+            })
+
+
+    })
+
+
+
+
     //	$(function () {
     //		$("#xuan").click(function () {
     //			$(this).addClass("test")；
