@@ -55,7 +55,7 @@ public class ItemServiceImpl implements ItemService {
         pageBean.setCurrentPage(currentPage);
         pageBean.setTotalPage(sumPage);
         pageBean.setData(itemList);
-
+        pageBean.setSum(sum);
         return pageBean;
     }
 

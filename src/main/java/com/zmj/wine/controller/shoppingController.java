@@ -5,7 +5,10 @@ import com.zmj.wine.entity.Shoppingcart;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -20,7 +23,7 @@ public class shoppingController {
 
     @Resource
     private ItemService itemService;
-
+    //购物车页面
     @RequestMapping("/insert")
     public String insert(String itemName,
                              Integer count, HttpSession httpSession,Model model){
@@ -37,11 +40,27 @@ public class shoppingController {
         int num = shoppingCartService.insert(shoppingcart);
         if(num==0){
             List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
-            model.addAttribute("shoppingcartList",shoppingcartList);
+            /*model.addAttribute("shoppingcartList",shoppingcartList);*/
+            httpSession.setAttribute("shoppingcartList",shoppingcartList);
             return "shoppingCart";
         }else{
             return "/item";
         }
+    }
+    //结算页面
+    @RequestMapping("/settle")
+    public String insert(){
+        /*int sh = 0;
+        Shoppingcart shoppingcart = new Shoppingcart();
+        List<Shoppingcart> shoppingList = null;
+        for(String id:shop){
+            System.out.println(id);
+            sh = Integer.parseInt(id);
+            shoppingcart = shoppingCartService.selectByPrimaryKey(sh);
+            shoppingList.add(shoppingcart);
+        }
+        model.addAttribute("shoppingList",shoppingList);*/
+        return "Settlement";
     }
 
     //加入购物车

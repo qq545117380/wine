@@ -16,12 +16,49 @@
     <result column="order_img" jdbcType="VARCHAR" property="orderImg" />
     <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
     <result column="order_explain" jdbcType="VARCHAR" property="orderExplain" />
+    <!--联合查询，查询订单的时候 同时查询对应的用户 -->
+    <association property="user" column="user_id"
+                 select="com.zmj.wine.dao.UserMapper.selectUserById"/>
   </resultMap>
   <sql id="Base_Column_List">
     order_id, user_id, order_no, order_time, order_name, order_address, order_price, 
     order_discounts, order_num, order_carriage, order_pay_way, order_img, order_status, 
     order_explain
   </sql>
+
+  <!--查询订单的总数量-->
+  <select id="selectOrderNum" resultType="java.lang.Integer">
+    select count(1) from tb_order;
+  </select>
+
+  <!--后台分页查询所有的订单-->
+  <select id="selectAllOrder" resultMap="BaseResultMap">
+    select
+    order_id, user_id, order_no, order_time, order_name, order_address, order_price,
+    order_discounts, order_num, order_carriage, order_pay_way, order_img, order_status,
+    order_explain
+    from tb_order
+    limit #{index},#{size};
+  </select>
+
+  <!--后台根据订单状态查询订单信息-->
+  <select id="selectOrderByStatus" resultMap="BaseResultMap">
+    select
+    order_id, user_id, order_no, order_time, order_name, order_address, order_price,
+    order_discounts, order_num, order_carriage, order_pay_way, order_img, order_status,
+    order_explain
+    from tb_order
+    where order_status=#{status}
+    limit #{index},#{size};
+  </select>
+
+  <!--根据订单状态查询订单数量-->
+  <select id="selectOrderNumByStatus" resultType="java.lang.Integer">
+    select count(1) from tb_order where order_status = #{status}
+  </select>
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

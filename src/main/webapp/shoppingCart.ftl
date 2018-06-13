@@ -6,15 +6,17 @@
     <base id="base" href="${base}">
     <title>购物车 - 购酒网</title>
     <link rel="stylesheet" href="${base}/shoppingCart_files/main.min.css">
-   
-    
-     <script src="${base}/shoppingCart/hm.js.下载"></script><script src="${base}/shoppingCart_files/jquery-1.7.1.min.js.下载"></script>
+
+    <script type="text/javascript" src="${base}/js/jquery-3.3.1.js"></script>
+     <script src="${base}/shoppingCart/hm.js.下载"></script>
+    <script src="${base}/shoppingCart_files/jquery-1.7.1.min.js.下载"></script>
       <script>
             document.domain = "gjw.com"; 
         </script>
     
     	<script src="${base}/shoppingCart_files/layer.js.下载"></script><link rel="stylesheet" href="${base}/shoppingCart_files/layer.css" id="layui_layer_skinlayercss" style="">
     <script src="${base}/shoppingCart_files/main.min.js.下载"></script>
+
     <style>
         .ksy {
         
@@ -73,13 +75,21 @@
                 我的购物车</h1>
             <div id="shipping_area_top" class="fl">
                 <b>单笔订单满100元免运费（香港、澳门、台湾、钓鱼岛地区和拆分订单除外）</b></div>
-                     <a id="ASettlement" href="Javascript:layer.msg(&#39;客官,请选择商品再去结算！&#39;)" class="fr cbtn check_btn">去结算</a>
+                     <#--<a id="ASettlement" href="Javascript:layer.msg(&#39;客官,请选择商品再去结算！&#39;)" class="fr cbtn check_btn">
+                         去结算
+                     </a>-->
+                     <a id="ASettlement" href="${base}/shopping/settle" class="fr cbtn check_btn">
+                        去结算
+                     </a>
         </div>
         <div id="divOrderInfo">
             <dl class="cart_box">
-                <dt><span class="check_all">
-                    <input id="CheckAll" class="check_ll" type="checkbox" checked="">
-                    全选</span> <span class="cb_r1" style="text-align: left;">商品</span> <span class="cb_r2">
+                <dt>
+                    <span class="check_all">
+                    <input id="CheckAll" class="check_ll" name="checkAll" type="checkbox" checked="">
+                    全选
+                    </span>
+                    <span class="cb_r1" style="text-align: left;">商品</span> <span class="cb_r2">
                         单价</span> <span class="cb_r3">优惠</span> <span class="cb_r4">数量</span> <span class="cb_r5">
                             小计</span> <span class="cb_r6">操作</span>
                     <div class="clear">
@@ -91,16 +101,18 @@
                         
                         <table class="cart_goods_area tbcart" id="tbcart7637">
                             <tbody>
+                            <#list shoppingcartList as shoppingValue>
                                 <tr>
-                                    <#list shoppingcartList as shoppingValue>
+
                                     <td class="zp_td check">
                                         <span><b>
-                                                    <input class="check_cb" id="Checkbox7637" type="checkbox" checked="" value="7637">
+                                                    <input class="check_cb" id="Checkbox7637" type="checkbox" name="check" checked="" value="7637">
                                                 </b></span>
                                     </td>
                                     <td class="cb_r11 zp_td">
-                                        <a href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
-                                            <img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}"></a>
+                                        <a href="http://www.gjw.com/product/item-id-7637.htm" target="_blank" value="${shoppingValue.cartImg}" class="cartImg">
+                                            <img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}">
+                                        </a>
                                     </td>
                                     <td class="cb_r1">
                                         <a class="c12" href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
@@ -122,14 +134,15 @@
                                         <p></p>
                                     </td>
                                     <td class="cb_r5">
-                                        <span id="sum7637" class="cs_sum"><b>(${shoppingValue.cartPrice}-${shoppingValue.cartCount})*${shoppingValue.cartCount}</b></span>
+                                        <span id="sum7637" class="cs_sum"><b id="shop_sum"></b>${shoppingValue.cartPrice}</span>
                                     </td>
                                     <td class="cb_r6">
                                         <span class="coll_opt"><a href="javaScript:Collect(7637)">收藏</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span class="del_opt"><a href="javaScript:Remove(7637)">删除</a></span>
                                     </td>
-                                    </#list>
+
                                 </tr>
+                            </#list>
                             </tbody>
                         </table>
                         <div class="box"></div>
@@ -150,9 +163,12 @@
                 </div>
                 <dd>
                     <ul id="total_area" class="cart_sum">
-                        <li id="total_price"><span class=" fl  btn_all">
-                            <input id="check_All" class="check_ll" type="checkbox" checked="">
-                            全选</span> <span class="fl delepro" id="delePro"><a href="javascript:void(0)">删除选中商品</a>
+                        <li id="total_price">
+                            <span class=" fl  btn_all">
+                            <input id="check_All" class="check_ll" name="checkAll" type="checkbox" checked="">
+                            全选
+                            </span>
+                            <span class="fl delepro" id="delePro"><a href="javascript:void(0)">删除选中商品</a>
                             </span><span class="fl cearpro" id="creaPro"><a href="javascript:void(0)">清空购物车</a>
                             </span>应付商品金额：
                             <font id="palyMoney">¥654.00</font>
@@ -172,8 +188,12 @@
             <div class="cart_btn">
                 <a href="http://www.gjw.com/" id="ABack" class="fl cbtn gono_btn">继续购物</a>
                 <span class="fl tip">商品价格和库存请以订单提交时为准</span>
-                 <a id="ASettlement1" href="http://order.gjw.com/order/settlement" class="fr cbtn check_btn">去结算</a>
-
+                 <#--<a id="ASettlement1" href="http://order.gjw.com/order/settlement" class="fr cbtn check_btn">
+                     去结算
+                 </a>-->
+                <a id="ASettlement1" href="${base}/shopping/settle" class="fr cbtn check_btn">
+                    去结算
+                </a>
             </div>
         </div>
         <dl class="trinket_box">
@@ -344,8 +364,67 @@
         (function() {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?f45b9c2a3772066fdf84b38506d4920f";
-            var s = document.getElementsByTagName("script")[0]; 
+            var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
-</script>
+    </script>
+
+    <script type="text/javascript">
+        //计算总价
+        function calcPrice(){
+            var sum = 0;
+            //获得所有name为check的选中状态的复选框,对其进行遍历
+            $("[name='check']:checkbox:checked").each(function(){
+                //获得该复选框同一行的总价文字
+                var price = $(this).parent().parent().parent().parent().find(".cb_r2").text();
+                sum += parseInt(price);
+            });
+            //显示到总价格标签中
+            $("#palyMoney").text(sum);
+        }
+        //网页加载后
+        $(function(){
+            //调用计算总价
+            calcPrice();
+            //给name为checkAll的复选框添加点击事件
+            $("[name='checkAll']:checkbox").click(function(){
+                //找到所有name为check的复选框，将checked属性设置为和该复选框一样
+                $("[name='check']:checkbox").prop("checked",$(this).prop("checked"));
+                calcPrice();
+            });
+            //点击商品的复选框后重新计算价格
+            $("[name='check']:checkbox").click(function(){
+                calcPrice();
+            });
+
+        });
+    </script>
+    <#--<script type="text/javascript">
+        function settle(){
+            var shop = new Array();
+            /*var cartPrice;*/
+            var cartName = null;
+           /*var cartImg;*/
+            /*var cartCount;*/
+
+            $("[name='check']:checkbox:checked").each(function(){
+                //获得该复选框同一行的总价文字
+                /*cartPrice = $(this).parent().parent().parent().parent().find(".cb_r2").text();*/
+                cartName = $(this).parent().parent().parent().parent().find(".c12").text();
+                /*cartImg = $(this).parent().parent().parent().parent().find(".cartImg").attr(value);*/
+                /*cartCount = $(this).parent().parent().parent().parent().find(".fl num_input Quantity").val();*/
+                shop.push(cartName);
+            });
+            $.ajax({
+                type:"POST",
+                url:"/shopping/settle",
+                dataType:"json",
+                contentType:"application/json",
+                data:JSON.stringify(shop),
+                success:function(data){
+                    alert("=============")
+                }
+            });
+        }
+    </script>-->
 </body></html>

@@ -29,6 +29,9 @@ public interface UserMapper {
     //后台查询用户的总数量
     int selectUserNum();
 
+    //后台根据用户id 查询用户信息
+    User selectUserById(int id);
+
     /**
      * 用户登陆/注册
      *

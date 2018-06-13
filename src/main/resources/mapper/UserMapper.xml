@@ -23,6 +23,12 @@
     user_address, user_integral from tb_user;
   </select>
 
+  <!--后台根据id 查询用户x信息-->
+  <select id="selectUserById" resultMap="BaseResultMap">
+    select user_id,user_nikename
+    from tb_user where user_id = #{id};
+  </select>
+
   <!--后台查询用户总数量-->
   <select id="selectUserNum" resultType="java.lang.Integer">
     select count(1) from tb_user;
