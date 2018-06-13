@@ -136,7 +136,6 @@
 	</script>-->
 
 <script type="text/javascript">
-
     function login() {
         var userMobile = $("#userMobile").val();
         var userPassword = $("#userPassword").val();
@@ -146,11 +145,10 @@
             "${base}/user/login",
             {"userMobile":userMobile,"userPassword":userPassword,"vcode":vcode,"num": num},
             function (data) {
-                alert(data.code);
+                /*alert(data.code);*/
                  if (data.code == 0){
-                     alert("1111");
-
-                    window.location.href = "${base}/welcome.html";
+                     alert("登录成功");
+                    window.location.href = "${base}/center/userCenter";
                 } else {
                     alert("手机号或密码错误");
                     alert("请重新输入手机号和密码");
