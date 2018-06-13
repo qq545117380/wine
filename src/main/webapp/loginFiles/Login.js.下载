@@ -1,0 +1,105 @@
+﻿$(function () {
+    var loginfun = {
+        urlApiPath: "http://order.gjw.com/Order_Api",
+        urlPath: "http://order.gjw.com/Login",
+        init: function () {
+            this.bindEvent();
+        },
+        bindEvent: function () {
+            var curobj = this;
+            $("#txtPassword").val("");
+            //聚焦和失焦样式
+            var $text_box = $('.text_box');
+            $text_box.bind('click', function () {
+                $(this).find('input').trigger('focus');
+            })
+            var $loginInput = $('.text_box').find('input');
+            $loginInput.bind('focus', function () {
+                var $papa = $(this).closest('.text_box');
+                $papa.hasClass('errorBox') && $papa.removeClass('errorBox');
+                $papa.hasClass('meet') && $papa.removeClass('meet');
+                var $strong = $papa.find('strong');
+                if ($strong) {
+                    $strong.remove();
+                }
+                $papa.addClass('focus')
+            });
+            $loginInput.bind('blur', function () {
+                $(this).closest('.text_box').removeClass('focus')
+            });
+
+            /**
+            *登录验证s
+            **/
+            var ustr = "邮箱/手机号码";
+            $("#txtUserName").focus(function () {
+                if ($(this).val() == ustr) {
+                    $(this).val("");
+                }
+                $(this).css({ "color": "#333" });
+            }).blur(function () {
+                if ($(this).val() == "") {
+                    $(this).attr("value", ustr);
+                    $(this).css({ "color": "#999" });
+                }
+            })
+            $("#replace_img").click(function () {
+                curobj.changeCode();
+            });
+
+            var $loginSubmit = $('.loginBtn');
+            $loginSubmit.bind('click', function () {
+                var flag = true;
+                var $input = $('.text_box').find('input');
+                $input.each(function () {
+                    if ($(this).val() == '') {
+                        flag = false;
+                        var $papa = $(this).closest('.text_box');
+                        if ($papa.find('.error').length == 0) {
+                            var error = $(this).attr('data-id');
+                            addError(error, $papa);
+                        }
+                    }
+                })
+                if ($('.codeText').val() == "") {
+                    $('.codeText').attr('placeholder', '请输入验证码');
+                }
+                if (!flag) return false;
+                $('#form2').ajaxSubmit(function (data) {
+                    var json = data;
+                    if (json.Success == 1) {
+                        var backurl = $("#hifbackurl").val();
+                        if (backurl == "") {
+                            window.location = "/user/";
+                        }
+                        else {
+                            window.location = backurl;
+                        }
+                    }
+                    else if (json.Success == 3) {
+                        var backbbsurl = $("#backbbsurl").val();
+                        if (backbbsurl == "") {
+                            window.location = "/";
+                        } else {
+                            window.location = json.Message;
+                        }
+                    }
+                    else if ( json.Success=0&&json.Data == 'showCode') {
+                        $("#loginCode").show();
+                        curobj.changeCode();
+                        alert(json.Message);
+                    }
+                    else {
+                      //  curobj.changeCode();
+                        alert(json.Message);
+                    }
+                });
+            });
+        },
+        changeCode: function () {
+            var dd = new Date();
+            $("#imgCode").attr("src", this.urlApiPath + "/verifycode?dd=" + dd);
+        }
+    }
+    loginfun.init();
+});
