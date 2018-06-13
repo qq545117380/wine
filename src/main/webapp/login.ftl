@@ -82,7 +82,9 @@
 							</div>
 							<!--<input class="loginBtn" type="button" id="sub_button" value="登 录" onclick="submit_login_form('sub_button','user/login')">-->
 							<!--<button class="loginBtn" id="sub_button" onclick="login()">登录</button>-->
-							<a href="javascript:login();" class="loginBtn">登录</a>
+							<a href="javascript:login();" class="loginBtn">
+								登录
+							</a>
 						</div>
 						<div class="dashedLine"></div>
 						<div class="other_login">

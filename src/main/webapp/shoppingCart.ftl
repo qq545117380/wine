@@ -75,7 +75,12 @@
                 我的购物车</h1>
             <div id="shipping_area_top" class="fl">
                 <b>单笔订单满100元免运费（香港、澳门、台湾、钓鱼岛地区和拆分订单除外）</b></div>
-                     <a id="ASettlement" href="Javascript:layer.msg(&#39;客官,请选择商品再去结算！&#39;)" class="fr cbtn check_btn">去结算</a>
+                     <#--<a id="ASettlement" href="Javascript:layer.msg(&#39;客官,请选择商品再去结算！&#39;)" class="fr cbtn check_btn">
+                         去结算
+                     </a>-->
+                     <a id="ASettlement" href="${base}/shopping/settle" class="fr cbtn check_btn">
+                        去结算
+                     </a>
         </div>
         <div id="divOrderInfo">
             <dl class="cart_box">
@@ -105,8 +110,9 @@
                                                 </b></span>
                                     </td>
                                     <td class="cb_r11 zp_td">
-                                        <a href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
-                                            <img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}"></a>
+                                        <a href="http://www.gjw.com/product/item-id-7637.htm" target="_blank" value="${shoppingValue.cartImg}" class="cartImg">
+                                            <img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}">
+                                        </a>
                                     </td>
                                     <td class="cb_r1">
                                         <a class="c12" href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
@@ -182,8 +188,12 @@
             <div class="cart_btn">
                 <a href="http://www.gjw.com/" id="ABack" class="fl cbtn gono_btn">继续购物</a>
                 <span class="fl tip">商品价格和库存请以订单提交时为准</span>
-                 <a id="ASettlement1" href="http://order.gjw.com/order/settlement" class="fr cbtn check_btn">去结算</a>
-
+                 <#--<a id="ASettlement1" href="http://order.gjw.com/order/settlement" class="fr cbtn check_btn">
+                     去结算
+                 </a>-->
+                <a id="ASettlement1" href="${base}/shopping/settle" class="fr cbtn check_btn">
+                    去结算
+                </a>
             </div>
         </div>
         <dl class="trinket_box">
@@ -354,7 +364,7 @@
         (function() {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?f45b9c2a3772066fdf84b38506d4920f";
-            var s = document.getElementsByTagName("script")[0]; 
+            var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
@@ -389,4 +399,32 @@
 
         });
     </script>
+    <#--<script type="text/javascript">
+        function settle(){
+            var shop = new Array();
+            /*var cartPrice;*/
+            var cartName = null;
+           /*var cartImg;*/
+            /*var cartCount;*/
+
+            $("[name='check']:checkbox:checked").each(function(){
+                //获得该复选框同一行的总价文字
+                /*cartPrice = $(this).parent().parent().parent().parent().find(".cb_r2").text();*/
+                cartName = $(this).parent().parent().parent().parent().find(".c12").text();
+                /*cartImg = $(this).parent().parent().parent().parent().find(".cartImg").attr(value);*/
+                /*cartCount = $(this).parent().parent().parent().parent().find(".fl num_input Quantity").val();*/
+                shop.push(cartName);
+            });
+            $.ajax({
+                type:"POST",
+                url:"/shopping/settle",
+                dataType:"json",
+                contentType:"application/json",
+                data:JSON.stringify(shop),
+                success:function(data){
+                    alert("=============")
+                }
+            });
+        }
+    </script>-->
 </body></html>

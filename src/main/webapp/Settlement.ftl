@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <!-- saved from url=(0037)http://order.gjw.com/order/Settlement -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
+<html>
+<head>
+    <!--需要添加base-->
+	<#assign base=request.contextPath/>
+    <base id="base" href="${base}/">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="./Settlement_files/main.css">
-        <script src="./Settlement_files/hm.js.下载"></script><script src="./Settlement_files/jquery-1.7.1.min.js.下载"></script>
+		<link rel="stylesheet" type="text/css" href="${base}/Settlement_files/main.css">
+        <script src="${base}/Settlement_files/hm.js.下载"></script><script src="${base}/Settlement_files/jquery-1.7.1.min.js.下载"></script>
         <script>
             document.domain = "gjw.com";
         </script>
-        <script src="./Settlement_files/layer.js.下载"></script><link rel="stylesheet" href="./Settlement_files/layer.css" id="layui_layer_skinlayercss" style="">
-        <script src="./Settlement_files/main.min.js.下载"></script>
+        <script src="${base}/Settlement_files/layer.js.下载"></script><link rel="stylesheet" href="${base}/Settlement_files/layer.css" id="layui_layer_skinlayercss" style="">
+        <script src="${base}/Settlement_files/main.min.js.下载"></script>
+    	<script type="text/javascript" src="${base}/js/jquery-3.3.1.js"></script>
 	</head>
 
 	<body rlt="1" style="">
@@ -79,7 +84,7 @@
 		<div class="check_wrap">
 			<div class="check_header botShodow">
 				<a href="http://www.gjw.com/" title="购酒网">
-					<img src="./Settlement_files/logo1.jpg" alt="购酒网"></a>
+					<img src="${base}/Settlement_files/logo1.jpg" alt="购酒网"></a>
 				<span style="position:relative;">
                     <span class="logoNextText">结算页</span>
 				</span>
@@ -176,29 +181,29 @@
 										小计
 									</th>
 								</tr>
-
+								<#list shoppingcartList as shoppingValue>
 								<tr>
 									<td width="100">
 										<a href="http://www.gjw.com/product/item-id-35.htm" target="_blank">
-											<img width="50" height="50" src="./Settlement_files/cb2a83e93b5a46c493d01aceb5f3c4ab_0.jpg" title="52度 剑南春 500ml"></a>
+											<img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}"></a>
 									</td>
 									<td>
 										<a href="http://www.gjw.com/product/item-id-35.htm" target="_blank">
-											52度 剑南春 500ml</a><br>
+											${shoppingValue.cartName}</a><br>
                                                       
 
 									</td>
-									<td>
-										¥398
+									<td class="cartPrice">
+										${shoppingValue.cartPrice}
 									</td>
 									<td>
-										1
+										${shoppingValue.cartDiscounts}
 									</td>
 									<td>
-										¥398
+										${shoppingValue.cartPrice}
 									</td>
 								</tr>								<!--赠品s-->
-
+								</#list>
 								<!--赠品e-->
                                 <tr>
                                 <td colspan="5">
@@ -303,7 +308,7 @@
 		</div>
 		<!--主体 e-->
 		<div class="foot" id="foot">
-			<img src="./Settlement_files/sanBao_07.gif" class="sanbao">
+			<img src="${base}/Settlement_files/sanBao_07.gif" class="sanbao">
 			<div class="links">
             <a href="http://www.gjw.com/jituan/default.html" target="_blank">关于我们</a> <span>|</span> <a href="http://www.gjw.com/help/show-id-18.htm" target="_blank">联系我们</a> <span>|</span> <a href="http://www.gjw.com/help/show-id-19.htm" target="_blank">
             友情链接</a> <span>|</span> <a href="http://www.gjw.com/help/show-id-20.htm" target="_blank">隐私声明</a>
@@ -321,12 +326,12 @@
 		<!--尾部 e-->
 
 	
-	<script src="./Settlement_files/jquery-1.7.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
-    <script src="./Settlement_files/main.min.js(1).下载" type="text/javascript"></script>
-    	<script src="./Settlement_files/layer.js.下载"></script>
-    <script src="./Settlement_files/LoginBox.js.下载"></script>
-<script src="./Settlement_files/ReceiveAddBox.js.下载"></script>
-     <script type="text/javascript">
+	<script src="${base}/Settlement_files/jquery-1.7.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="${base}/Settlement_files/main.min.js(1).下载" type="text/javascript"></script>
+    	<script src="${base}/Settlement_files/layer.js.下载"></script>
+    <script src="${base}/Settlement_files/LoginBox.js.下载"></script>
+<script src="${base}/Settlement_files/ReceiveAddBox.js.下载"></script>
+     <#--<script type="text/javascript">
          document.domain = "gjw.com";
          $(".toggleTitle").click(function () {
              $(this).parent().children(".toggleBox").toggle();
@@ -383,8 +388,24 @@
              }
          }
          act(1);
-
-
-     </script>
+     </script>-->
+	 <script>
+         //计算总价
+         function calcPrice(){
+             var sum = 0;
+             $(".cartPrice").each(function(){
+                 //获得该复选框同一行的总价文字
+                 var price = $(this).parent().parent().parent().parent().find(".cartPrice").text();
+                 sum += parseInt(price);
+             });
+             //显示到总价格标签中
+             $("#lbSumProMoney").text(sum);
+             $("#SumMoney").text(sum);
+         }
+         //网页加载后
+		 $(function () {
+             calcPrice();
+         });
+	 </script>
 
 </body></html>
