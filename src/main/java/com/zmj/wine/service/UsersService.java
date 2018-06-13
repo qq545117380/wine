@@ -29,6 +29,12 @@ public interface UsersService {
     //后台删除用户
     int deleteUser(int id);
 
+    //后台根据用户id 查询用户
+    Users queryUserById(int id);
+
+    //后台修改用户信息
+    int updateUser(Users users);
+
     /**
      * 登录
      */

@@ -64,6 +64,18 @@ public class UsersServiceImpl implements UsersService{
         return usersMapper.deleteByPrimaryKey(id);
     }
 
+    //后台查询管理员信息
+    @Override
+    public Users queryUserById(int id) {
+        return usersMapper.selectByPrimaryKey(id);
+    }
+
+    //后台修改管理员的信息
+    @Override
+    public int updateUser( Users users) {
+        return usersMapper.updateByPrimaryKeySelective(users);
+    }
+
     //登录
     @Override
     public void login(String userMobile, String userPassword) throws AuthenticationException {

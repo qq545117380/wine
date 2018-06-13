@@ -70,5 +70,8 @@ public class UserServiceImpl implements UserService {
         user.setUserPassword(userPassword);
         userMapper.insertUser(user);
     }
-
+    @Override
+    public void update(String userPassword, String userMobile){
+        userMapper.updatePassword(userPassword, userMobile);
+    }
 }

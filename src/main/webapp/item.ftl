@@ -407,7 +407,7 @@
                                 <div class="rtbox fl">
                                     <ul id="GroupPro" data-templateid="lefthottemplate">
                                     <#list relevanceList as relevanceValue>
-                                        <li><a target="_blank" id="4918" href="/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
+                                        <li><a target="_blank" id="4918" href="${base}/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
                                     </#list>
                                     </ul>
                                 </div>
@@ -746,7 +746,7 @@
                 if(currentUsre==""){
                     alert("请先登录");
                 }else {
-                    $("#addCat").attr("href","/shopping/insert?itemName="+itemName+"&count="+count);
+                    $("#addCat").attr("href","${base}/shopping/insert?itemName="+itemName+"&count="+count);
                 }
             }
 
@@ -757,7 +757,7 @@
                 if(currentUsre==""){
                     alert("请先登录");
                 }else{
-                    window.location.href="/shopping/join?itemName="+itemName+"&count="+count;
+                    window.location.href="${base}/shopping/join?itemName="+itemName+"&count="+count;
                 }
             }
 
