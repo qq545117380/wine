@@ -1,0 +1,343 @@
+﻿
+//倒计时fnf
+var updateEndTime = function () {
+    var date = new Date();
+    var time = date.getTime(); //当前时间距1970年1月1日之间的毫秒数
+    $(".settime").each(function (i) {
+        var endDate1 = this.getAttribute("endTime"); //结束时间字符串
+        var endDate = endDate1.replace(/\//g, "-");
+        //转换为时间日期类型
+        var endDate1 = eval('new Date(' + endDate.replace(/\d+(?=-[^-]+$)/, function (a) {
+            return parseInt(a, 10) - 1;
+        }).match(/\d+/g) + ')');
+
+        var endTime = endDate1.getTime(); //结束时间毫秒数
+
+        var lag = ((endTime - time) / 1000) + 86400 //当前时间和结束时间之间的秒数
+        if (lag > 0) {
+            var second = Math.floor(lag % 60);
+            var minite = Math.floor((lag / 60) % 60);
+            var hour = Math.floor((lag / 3600) % 24);
+            $(this).html("0天" + hour + "小时" + minite + "分" + second + "秒");
+        } else {
+            var name = $(this).parent().children(".sysj").data("paytype");
+            if (name != "货到付款" && name != "货到刷卡") {
+                $(".sysj,.daojis,.ljfkbtn").remove();
+                //$.post("/Ajax/User/UserHandle.htm?act=ResetOrder", {
+                //    "ID": $(this).data("id")
+                //}, function(data) {
+                //    var json = eval(data)[0];
+                //    if (json.Success == 1) {
+                //        userOrd(1, '', '');
+                //        CK();
+
+                //    }
+
+                //});
+            }
+            $(this).parent().children(".sysj").remove();
+            $(this).remove();
+
+        }
+    });
+    setTimeout("updateEndTime()", 1000);
+}
+
+$(function () {
+    
+    var myOrderObj = {
+        urlApiPath: "http://order.gjw.com/Order_Api",
+        urlPath: "http://order.gjw.com/UserOrder",
+        loadNum: 1,
+        flag: 0,
+        init: function () {
+            this.bindEvent();
+            this.loadData();
+            this.render();
+          
+
+        },
+        bindEvent: function () {
+            var that = this;
+            //删除
+            $(".ljx").on("click", function (e) {
+                var curr = $(this);
+                ifrmLogin.login(function () {
+                    layer.confirm("您确认删除订单吗？", {
+                        btn: ["确定", "取消"]
+                    },
+                    function () {
+
+                        $.post(that.urlPath + "/Del", {
+                            id: curr.data("id")
+                        },
+                        function (data) {
+                            var json = data;
+
+                            1 == json.Success ? (layer.msg(json.Message, { time: 500 }, {
+                                icon: 1
+                            }), setTimeout(function () {
+                                window.location.replace(this.location.href);
+                            })) : layer.msg(json.Message, { time: 500 }, {
+                                icon: 2
+                            })
+                        });
+                    });
+                });
+            });
+
+            $(".qxddbtn").on("click", function () {
+                var curr = $(this);
+                ifrmLogin.login(function () {
+                    layer.confirm("您确认取消订单吗？取消后此订单将视为无效订单", {
+                        btn: ["确定", "取消"]
+                    },
+                    function () {
+
+                        $.post(that.urlPath + "/Cancel", {
+                            id: curr.data("id")
+                        },
+                        function (data) {
+                            var json = data;
+
+                            1 == json.Success ? (layer.msg("取消成功", { time: 500 }, {
+                                icon: 1
+                            }), setTimeout(function () {
+                                window.location.replace(this.location.href);
+                            })) : layer.msg(json.Message, { time: 500 }, {
+                                icon: 2
+                            })
+                        });
+                    });
+                });
+            });
+            //$(".ljfkbtn").on("click", function () {
+            //    var curr = $(this);
+            //    ifrmLogin.login(function () {
+            //        layer.confirm("您确认取消订单吗？取消后此订单将视为无效订单", {
+            //            btn: ["确定", "取消"]
+            //        },
+            //       function () {
+
+            //           $.post(that.urlPath + "/Cancel", {
+            //               id: curr.data("id")
+            //           },
+            //           function (data) {
+            //               var json = data;
+
+            //               1 == json.Success ? (layer.msg("取消成功", {
+            //                   icon: 1
+            //               }), setTimeout(function () {
+            //                   window.location.replace(this.location.href);
+            //               })) : layer.msg(json.Message, {
+            //                   icon: 2
+            //               })
+            //           });
+            //       });
+            //    });
+            //});
+            $(".qrshbtn").on("click", function () {
+                var curr = $(this);
+                ifrmLogin.login(function () {
+                    layer.confirm("您确认已经收到货了吗？", {
+                        btn: ["确定", "取消"]
+                    },
+                   function () {
+
+                       $.post(that.urlPath + "/Confirm", {
+                           id: curr.data("id")
+                       },
+                       function (data) {
+                           var json = data;
+
+                           1 == json.Success ? (layer.msg("确认成功", { time: 500 }, {
+                               icon: 1
+                           }), setTimeout(function () {
+                               window.location.replace(this.location.href);
+                           })) : 2 == json.Success ? (layer.msg('<span style="text-align:center;display:inline-block; width: 100%;">客官，您需签收后方可确认收货</span><br><span style="color:red;text-align:center;display:inline-block">注：由于地区网络不同，系统反馈签收状态会有一定时间的延时，请您谅解。</span>', { icon: 2 })) : layer.msg(json.Message, {
+                               icon: 2
+                           })
+                       });
+                   });
+                });
+            });
+            $(".zcgm").on("click", function () {
+                var curr = $(this);       
+                ifrmLogin.login(function () {
+                    layer.confirm("您确认再次购买订单内商品？", {
+                        btn: ["确定", "取消"]
+                    },
+                   function () {
+
+                     
+                       $.ajax({
+                           url: that.urlPath + "/BuyAgain",
+                           type: 'POST',
+                           dataType: 'json',
+                           async: false,  // 此处必须定义为同步
+                           data: { id: curr.data("id") },
+                           success: function (data) {
+                               var json = data;
+                               //console.log(json);
+                               if (json.Success == 1) {
+                                   var popup = window.open('about:blank', '_blank');
+                                   for (i = 0; i < json.Data.length; i++) {
+                                       //console.log(json.Data[i].pro_ProductID);
+                                       //goCart(json.Data[i].pro_ProductID, event)
+                                       Gocartplus(json.Data[i].pro_ProductID, 1, true, function () {
+                                         
+                                       })
+                                   }
+                                   layer.msg("添加成功", { time: 500 }, {
+                                       icon: 1
+                                   })
+  popup.location = 'http://order.gjw.com/Order/Cart.html';
+                               }
+                               else {
+                                   layer.msg(json.Message, {
+                                       icon: 2
+                                   })
+                                   tempwindow.close();//
+                               }
+                           }
+                       })
+                      
+                   });
+                });
+            });
+
+            $(".ckwl").on('mouseenter', function() {
+
+                var id = $(this).data("id");
+                $.ajax({
+                    //提交数据的类型 POST GET
+                    type: "POST",
+                    //提交的网址
+                    url: that.urlPath + "/OrderWuliu",
+                    //提交的数据
+                    data: {
+                        ID: id
+                    },
+                    //返回数据的格式
+                    async: false,
+                    datatype: "text", //"xml", "html", "script", "json", "jsonp", "text".
+                    //在请求之前调用的函数
+                    success: function(data) {
+
+                        var json = eval(data);
+                        if (data.Success == 1) {
+                            var Tracking = json.Data;
+                          
+                            var str = "";
+                            for (var i = 0; i < 2; i++) {
+                                if (Tracking.length < 3) {
+                                    var strIntro = Tracking[i].split('|');
+                                    str += "<li><p>" + strIntro[1] + "</p><em> " + strIntro[0] + "</em></li>";
+                                } else
+                                    if (Tracking.length > 3) {
+                                        var strIntro = Tracking[Tracking.length - 2 - i].split('|');
+                                        str += "<li><p>" + strIntro[1] + "</p><em> " + strIntro[0] + "</em></li>";
+                                    }
+                            }
+                            var kdgs = json.Message;
+                            var kdxx = kdgs.split(':')[0] + ":" + kdgs.split(':')[1];
+                            $("#wl_" + id).append("<div class='wlmsg-xx-box' style='z-index:9999'><div class='wuliunum'>" + kdxx +
+                                "</div><ul> " + str + "<li>以上为最新跟踪信息<a class='lookall' href='/UserOrder/OrderDetail-" + id + ".html'>查看全部</a></li></ul> </div>")
+                        } else {
+
+                            $("#wl_" + id).append("<div class='wlmsg-xx-box'> <ul><li><em>客官，不要急嘛。此单物流信息还未更新呢！</em></li></ul> </div>");
+                        }
+
+                    }
+                });
+            });
+            $(".ckwl").on('mouseleave', function () {
+
+                $(".wlmsg-xx-box").remove(".wlmsg-xx-box");
+            });
+           
+            $("#btnS").on("click", function ()
+            {
+                var txtbox = $("#txtsearch").val();
+                //if (txtbox != "" && txtbox != "输入订单号或商品名称搜索")
+                //{
+                    window.location.replace(that.urlPath + "/MyOrder-" + $("#sst").val() + "-1-" + txtbox + ".html");
+                //}
+            });
+            //状态查询
+            $(".ddlist").on("click",function () {
+                $(this).parent().children().removeClass("select");
+                $(this).addClass("select");
+                var sta1 = $(this).data("s");
+                //console.log(sta1);
+                //sta = sta1;
+                //userOrd(1, "", sta);
+
+                window.location.replace(that.urlPath + "/MyOrder-" + sta1 + "-1.html");
+
+            });
+        },
+        render: function () {
+            var that = this;
+        },
+        loadData: function () {
+            var that = this;
+        }
+       
+    }
+    myOrderObj.init();
+    CK();
+    setTimeout("updateEndTime()", 1000);
+
+});
+
+
+
+function CK() {
+    //alert($("#sst").val());
+    $(".ddlist").parent().children().removeClass("select");
+    $(".ddlist").each(function () {
+        if ($(this).data("s") == $("#sst").val())
+            $(this).addClass("select")
+    })
+
+    $.ajax({
+        //提交数据的类型 POST GET
+        type: "POST",
+        //提交的网址
+        url: "/UserOrder/MyOrder_Count",
+        //提交的数据
+        //  data:{ID: id},
+        //返回数据的格式
+        async: false,
+        datatype: "json", //"xml", "html", "script", "json", "jsonp", "text".
+        //在请求之前调用的函数
+        success: function (data) {
+            //console.log(data.Data);
+           
+            var json = data;
+            if (json.Success == 1) {
+                var cc = json.Data;
+                for (var s = 0; s < cc.length; s++) {
+                    if (cc[s].State == "0") {
+                        $(".ddlist").eq(1).find("em").html(cc[s].OrderCount);
+                    }
+                    if (cc[s].State == "1") {
+                        $(".ddlist").eq(2).find("em").html(cc[s].OrderCount);
+                    }
+                    if (cc[s].State == "2") {
+                        $(".ddlist").eq(3).find("em").html(cc[s].OrderCount);
+                    }
+                    if (cc[s].State == "3") {
+                        $(".ddlist").eq(4).find("em").html(cc[s].OrderCount);
+                    }
+                    if (cc[s].State == "8") {
+                        $(".ddlist").eq(5).find("em").html(cc[s].OrderCount);
+                    }
+                }
+
+
+            }
+        }
+    });
+}
