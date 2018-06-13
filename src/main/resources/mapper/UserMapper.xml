@@ -40,7 +40,7 @@
   <!--添加-->
   <insert id="insertUser" parameterType="com.zmj.wine.entity.User">
     insert into tb_user (user_mobile, user_password)
-    values (#{userMobile,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR})
+    values (#{userMobile}, #{userPassword})
   </insert>
 
   <!--用户登陆-->
@@ -61,9 +61,9 @@
       user_email, user_photo, user_nikename, 
       user_sex, user_address, user_integral
       )
-    values (#{userId,jdbcType=INTEGER}, #{userMobile,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
-      #{userEmail,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}, #{userNikename,jdbcType=VARCHAR}, 
-      #{userSex,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, #{userIntegral,jdbcType=INTEGER}
+    values (#{userId}, #{userMobile}, #{userPassword},
+      #{userEmail}, #{userPhoto}, #{userNikename},
+      #{userSex}, #{userAddress}, #{userIntegral}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zmj.wine.entity.User">
@@ -170,8 +170,7 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updatePassword" parameterType="com.zmj.wine.entity.User">
-    update tb_user
-    set user_password = #{userPassword,jdbcType=VARCHAR}
-    where user_mobile = #{userMobile,jdbcType=VARCHAR}
+    update tb_user set user_password = #{userPassword}
+    where user_mobile = #{userMobile}
   </update>
 </mapper>

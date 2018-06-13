@@ -15,6 +15,7 @@ import com.zmj.wine.utils.SystemTools;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,34 +40,47 @@ public class UserController {
     //重新修改手机密码
     @ResponseBody
     @RequestMapping("/updatePwd")
-    public Object updatePwd(String password,HttpSession httpSession){
+    public Object updatePwd(String userPassword,HttpSession httpSession){
         String phoneNum = (String) httpSession.getAttribute("phoneNum");
         JsonResult jsonResult = null;
-        User user = userDAO.updatePassword(password, phoneNum);
-        if(null!=user){
-            jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
+        User user = new User();
+        System.out.println(userPassword);
+        try {
+            /*userDAO.updatePassword(userPassword, phoneNum);*/
+            userServiceImpl.update(userPassword,phoneNum);
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
+        System.out.println(user.getUserPassword());
+        jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
         return jsonResult;
     }
     //跳转updatePassword．ftl页面
     @RequestMapping("/updatePassword")
-    public String updatePassword(){
-        return "updatePassword";
+    public String updatePassword(HttpSession httpSession, Model model){
+       String  phone = (String) httpSession.getAttribute("phoneNum");
+       model.addAttribute("phone",phone);
+        System.out.println("================");
+       return "updatePassword";
     }
     //验证修改密码时的手机验证码
     @ResponseBody
     @RequestMapping("/MobileMessage")
-    public Object updatePassword(String mobileCode,HttpSession httpSession){
+    public Object MobileMessage(String mobileCode,HttpSession httpSession){
         JsonResult jsonResult = null;
         Object random = httpSession.getAttribute("random");
         if(mobileCode!=null&&mobileCode.equals(random)) {
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_Register_SUCCESS, SystemParam.Login.MSG_Register_SUCCESS);
         }
+        int code = jsonResult.getCode();
+        System.out.println("========="+code);
         return jsonResult;
     }
-    //跳转mobileMessage．页面
+    //跳转mobileMessage．ftl页面
     @RequestMapping("/mobileMessage")
     public String mobileMessage(){
+
         return "mobileMessage";
     }
     //跳转登录页面
@@ -79,6 +93,7 @@ public class UserController {
     public String register(){
         return "register";
     }
+    //跳转用手机短信找回密码页面
     @RequestMapping("/find")
     public String findPsw(){
         return "findPsw";
