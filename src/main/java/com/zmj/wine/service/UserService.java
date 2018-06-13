@@ -32,5 +32,12 @@ public interface UserService {
      * @param userPassword
      */
     void save(String userMobile, String userPassword);
+    /**
+     * 修改密码
+     * @param userPassword
+     * @param userMobile
+     * @return
+     */
+    void update(String userPassword, String userMobile);
 
 }

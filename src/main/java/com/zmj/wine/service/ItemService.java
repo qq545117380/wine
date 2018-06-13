@@ -33,4 +33,7 @@ public interface ItemService {
 
     //后台修改商品信息
      void updateItem(Item item);
+
+    //特卖会相关
+    List<Item> selectByDescribe(String itemDescribe);
 }

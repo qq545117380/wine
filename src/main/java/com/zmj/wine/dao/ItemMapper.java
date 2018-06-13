@@ -37,4 +37,7 @@ public interface ItemMapper {
 
     //<!--根据酒名查询单品信息-->
     Item selectByName(String itemName);
+
+    //特卖会相关
+    List<Item> selectByDescribe(String itemDescribe);
 }

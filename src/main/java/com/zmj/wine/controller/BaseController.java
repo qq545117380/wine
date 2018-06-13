@@ -100,6 +100,7 @@ public class BaseController {
         model.addAttribute("kind",kind);
         Brand brand = brandService.selectByPrimaryKey(brandId);
         ArrayList<Brand> brandList = new ArrayList<>();
+        brandList.add(brand);
         model.addAttribute("brandList",brandList);
         //如果产地信息为空
         if(yieldlyId==null ){
@@ -195,5 +196,12 @@ public class BaseController {
         return "pinpaibaijiu";
     }
 
+    //特卖会商品
+    @RequestMapping("/promotion")
+    public String promotion(Model model){
+        List<Item> itemList = itemService.selectByDescribe("特卖会");
+        model.addAttribute("itemList",itemList);
+        return "promotion";
+    }
 
 }

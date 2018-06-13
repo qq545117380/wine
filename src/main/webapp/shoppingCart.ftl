@@ -92,6 +92,7 @@
                         <table class="cart_goods_area tbcart" id="tbcart7637">
                             <tbody>
                                 <tr>
+                                    <#list shoppingcartList as shoppingValue>
                                     <td class="zp_td check">
                                         <span><b>
                                                     <input class="check_cb" id="Checkbox7637" type="checkbox" checked="" value="7637">
@@ -99,34 +100,35 @@
                                     </td>
                                     <td class="cb_r11 zp_td">
                                         <a href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
-                                            <img width="50" height="50" src="${base}/shoppingCart_files/fb0e24b4a52c4d09ba2120208404ae56_0.jpg" title="中级庄 梅多克产区贝桥城堡 Chateau Pey De Pont 红葡萄酒 2013年 750ml"></a>
+                                            <img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}"></a>
                                     </td>
                                     <td class="cb_r1">
                                         <a class="c12" href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
-                                                  中级庄 梅多克产区贝桥城堡 Chateau Pey De Pont 红葡萄酒 2013年 750ml</a><br>
+                                        ${shoppingValue.cartName}</a><br>
                                     </td>
                                     <td class="cb_r2">
-                                        ¥109
+                                        ${shoppingValue.cartPrice}
                                     </td>
                                     <td class="cb_r3 cf04" id="Pro7637">
-                                       立减 120 元
+                                       ${shoppingValue.cartDiscounts}
                                     </td>
                                     <td class="cb_r4">
                                         <p class="num_line">
                                             </p><div class="imp">
                                                 <span class="fl Cart_down " index="7637">－</span>
-                                                <input type="text" value="6" maxlength="4" class="fl num_input Quantity" index="7637" id="Quantity7637">
+                                                <input type="text" value="${shoppingValue.cartCount}" maxlength="4" class="fl num_input Quantity" index="7637" id="Quantity7637">
                                                 <span class="fl Cart_up" index="7637">＋</span> <span style="display: none;" class="num_tip"></span>
                                             </div>
                                         <p></p>
                                     </td>
                                     <td class="cb_r5">
-                                        <span id="sum7637" class="cs_sum"><b>¥654.00</b></span>
+                                        <span id="sum7637" class="cs_sum"><b>(${shoppingValue.cartPrice}-${shoppingValue.cartCount})*${shoppingValue.cartCount}</b></span>
                                     </td>
                                     <td class="cb_r6">
                                         <span class="coll_opt"><a href="javaScript:Collect(7637)">收藏</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span class="del_opt"><a href="javaScript:Remove(7637)">删除</a></span>
                                     </td>
+                                    </#list>
                                 </tr>
                             </tbody>
                         </table>

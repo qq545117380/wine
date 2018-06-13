@@ -111,67 +111,67 @@
             <a href="http://www.gjw.com/product/item-id-2.htm">☰ &nbsp; 全 部 分 类</a>
             <ul class="qbfl-list">
                 <li class="yjxg-on">
-                    <a href="/base/list?kindId=1">
+                    <a href="./base/list?kindId=1">
                         <img src="${base}/item_files/ax-icon.png" original="/Content/head/img/ax-icon.png">&nbsp;一键选购</a><em>›</em>
                     <div class="yjxg-box sec-box none" id="yijian"></div>
 
                 </li>
                 <li class="bj-on">
-                    <a href="/base/list?kindId=2">
+                    <a href="./base/list?kindId=2">
                         <img src="${base}/item_files/bj-icon.png" original="/Content/head/img/bj-icon.png">&nbsp;白 酒</a><em>›</em>
                     <div class="bj-box sec-box none" id="baijiu">
 
                     </div>
                 </li>
                 <li class="ptj-on">
-                    <a href="/base/list?kindId=3">
+                    <a href="./base/list?kindId=3">
                         <img src="${base}/item_files/ptj-icon.png" original="/Content/head/img/ptj-icon.png">&nbsp;葡 萄 酒</a><em>›</em>
                     <div class="ptj-box sec-box none" id="putaojiu">
 
                     </div>
                 </li>
                 <li class="yj-on">
-                    <a href="/base/list?kindId=4">
+                    <a href="./base/list?kindId=4">
                         <img src="${base}/item_files/yj-icon.png" original="/Content/head/img/yj-icon.png">&nbsp;洋 酒</a><em>›</em>
                     <div class="yj-box sec-box none" id="yangjiu">
                     </div>
                 </li>
                 <li class="hj-on">
-                    <a href="/base/list?kindId=5">
+                    <a href="./base/list?kindId=5">
                         <img src="${base}/item_files/hj-icon.png" original="/Content/head/img/hj-icon.png">&nbsp;黄 酒</a><em>›</em>
                     <div class="hj-box sec-box none" id="huangjiu">
 
                     </div>
                 </li>
                 <li class="ysj-on">
-                    <a href="/base/list?kindId=6">
+                    <a href="./base/list?kindId=6">
                         <img src="${base}/item_files/ysj-icon.png" original="/Content/head/img/ysj-icon.png">&nbsp;清 酒</a><em>›</em>
                     <div class="ysj-box sec-box none" id="ys">
 
                     </div>
                 </li>
                 <li class="pj-on">
-                    <a href="/base/list?kindId=7">
+                    <a href="./base/list?kindId=7">
                         <img src="${base}/item_files/pj-icon.png" original="/Content/head/img/pj-icon.png">&nbsp;啤 酒</a><em>›</em>
                     <div class="pj-box sec-box none" id="pijiu">
 
                     </div>
                 </li>
                 <li class="jjzb-on">
-                    <a href="/base/list?kindId=8">
+                    <a href="./base/list?kindId=8">
                         <img src="${base}/item_files/jjzb-icon.png" original="/Content/head/img/jjzb-icon.png">&nbsp;酒具周边</a><em>›</em>
                     <div class="jjzb-box sec-box none" id="zb">
                     </div>
                 </li>
                 <li class="xp-on">
-                    <a href="/base/list?kindId=9">
+                    <a href="./base/list?kindId=9">
                         <img src="${base}/item_files/xp-icon.png" original="/Content/head/img/xp-icon.png">&nbsp;新 品</a><em>›</em>
                     <div class="jjzb-box sec-box none">
                         <div class="box-lt fl clearfix"></div>
                     </div>
                 </li>
                 <li class="xp-on">
-                    <a href="/base/list?kindId=10">
+                    <a href="./base/list?kindId=10">
                         <img src="${base}/item_files/qingcang.png" original="/Content/head/img/qingcang.png">&nbsp;清 仓</a><em>›</em>
                     <div class="jjzb-box sec-box none">
                         <div class="box-lt fl clearfix"></div>
@@ -179,8 +179,8 @@
                 </li>
             </ul>
         </li>
-        <li><a href="/pageHome.html">首页</a></li>
-        <li><a href="http://tm.gjw.com/">特卖会</a></li>
+        <li><a href="./pageHome.html">首页</a></li>
+        <li><a href="./base/promotion">特卖会</a></li>
         <li><a href="http://import.gjw.com/">进口馆</a></li>
         <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
         <li><a href="http://www.gjw.com/shoucang/default.htm">高端收藏</a></li>
@@ -407,7 +407,7 @@
                                 <div class="rtbox fl">
                                     <ul id="GroupPro" data-templateid="lefthottemplate">
                                     <#list relevanceList as relevanceValue>
-                                        <li><a target="_blank" id="4918" href="/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
+                                        <li><a target="_blank" id="4918" href="${base}/item/byName?itemName=${relevanceValue.rmName}"><img height="30px" width="30px" src="${imagesPath}/${relevanceValue.rmImg}" original="http://img0.gjw.com/product/2017/1109/8c6de6539d1b4eb8b56d40d555ce102c_1.jpg">${relevanceValue.rmName}                                    </a></li>
                                     </#list>
                                     </ul>
                                 </div>
@@ -746,7 +746,7 @@
                 if(currentUsre==""){
                     alert("请先登录");
                 }else {
-                    $("#addCat").attr("href","/shopping/insert?itemName="+itemName+"&count="+count);
+                    $("#addCat").attr("href","${base}/shopping/insert?itemName="+itemName+"&count="+count);
                 }
             }
 
@@ -757,7 +757,7 @@
                 if(currentUsre==""){
                     alert("请先登录");
                 }else{
-                    window.location.href="/shopping/join?itemName="+itemName+"&count="+count;
+                    window.location.href="${base}/shopping/join?itemName="+itemName+"&count="+count;
                 }
             }
 
