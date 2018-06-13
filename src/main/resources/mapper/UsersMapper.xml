@@ -16,6 +16,20 @@
     _id, username, password, password_salt, nickname, sex, user_type, role, login_time
   </sql>
 
+  <!--查询后台用户的总人数-->
+  <select id="selectUsersNum" resultType="java.lang.Integer">
+    select count(1) from users;
+  </select>
+
+<!--分页查询后台管理员-->
+  <select id="selectUsersByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from users
+    limit #{index},#{size};
+
+  </select>
+
   <!--查询所有的后台用户信息-->
   <select id="findAllUsers" resultMap="BaseResultMap">
     select _id, username, password, password_salt, nickname, sex, user_type, role, login_time
@@ -23,7 +37,8 @@
   </select>
   <!--根据用户名字 查询用户-->
   <select id="checkUsername" resultMap="BaseResultMap">
-    select username,password from users where username =#{username}
+    select _id, username, password, password_salt, nickname, sex, user_type, role, login_time
+     from users where username =#{username}
   </select>
   <!--自定义 根据用户名字 查询角色信息-->
   <select id="queryRoles" resultType="java.lang.String">

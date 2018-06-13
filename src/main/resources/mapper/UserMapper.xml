@@ -23,6 +23,20 @@
     user_address, user_integral from tb_user;
   </select>
 
+  <!--后台查询用户总数量-->
+  <select id="selectUserNum" resultType="java.lang.Integer">
+    select count(1) from tb_user;
+  </select>
+
+  <!--后台分页查询会员用户信息-->
+  <select id="selectUserByPage" resultMap="BaseResultMap">
+    select
+    user_id, user_mobile, user_password, user_email, user_photo, user_nikename, user_sex,
+    user_address, user_integral
+    from tb_user
+    limit #{index},#{size};
+  </select>
+
   <!--添加-->
   <insert id="insertUser" parameterType="com.zmj.wine.entity.User">
     insert into tb_user (user_mobile, user_password)

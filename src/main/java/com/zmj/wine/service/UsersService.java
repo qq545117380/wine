@@ -1,6 +1,7 @@
 package com.zmj.wine.service;
 
 import com.zmj.wine.entity.Users;
+import com.zmj.wine.utils.PageBean;
 import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,19 @@ public interface UsersService {
 
     //查询所有后台用户的信息
     List<Users> findAllUsers();
+
+    //分页查询后台
+    PageBean<Users> queryUsersByPage(int currentPage);
+
+    //查询用户的总数量
+    int queryUsersNum();
+
+    //后台添加用户
+    int addUsers(Users users);
+
+    //后台删除用户
+    int deleteUser(int id);
+
     /**
      * 登录
      */

@@ -9,6 +9,17 @@ public class PageBean<T> {
 
     private int currentPage;
 
+    //对象的总数量
+    private int sum;
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+
     public List<T> getData() {
         return data;
     }

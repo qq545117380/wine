@@ -45,9 +45,9 @@
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 		<#--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">-->
 			<#--<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>-->
-		<a class="btn btn-primary radius" href="${base}/back/preAdd">
-			<i class="Hui-iconfont">&#xe600;</i> 添加商品</a></span>
-        <span class="r">共有商品：<strong>${itemPageBean.sum}</strong> 条</span>
+		<#--<a class="btn btn-primary radius" href="${base}/back/preAdd">-->
+			<#--<i class="Hui-iconfont">&#xe600;</i> 添加商品</a></span>-->
+        <span class="r">会员用户的总数是：<strong>${userPageBean.sum}</strong> 人</span>
     </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
@@ -55,33 +55,36 @@
             <tr class="text-c">
                 <th width="40"><input name="" type="checkbox" value=""></th>
                 <th width="50">ID</th>
-                <th width="150">产品名称</th>
-                <th>产品图片</th>
-                <th width="100">所属活动</th>
-                <th width="100">产品价格</th>
-                <th width="100">产品品牌</th>
-                <th width="60">发布状态</th>
-                <th width="100">操作</th>
+                <th width="100">用户昵称</th>
+                <th width="80">用户照片</th>
+                <th width="50">性别</th>
+                <th width="100">手机账号</th>
+                <th width="150">邮箱</th>
+                <th width="150">地址</th>
+                <th width="100">积分</th>
+                <#--<th width="100">操作</th>-->
             </tr>
             </thead>
 		<#--  遍历产品集合-->
-		<#list itemPageBean.data as item>
+		<#list userPageBean.data as user>
             <tbody>
             <tr class="text-c">
                 <td><input name="" type="checkbox" value=""></td>
-                <td>${item.itemId}</td>
-                <td>${item.itemName}</td>
+                <td>${user.userId}</td>
+                <td>${user.userNikename}</td>
 			<#--<td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>-->
-                <td><img width="100" class="picture-thumb" src="${imagesPath}/${item.img1}"></td>
-                <td>${item.itemPromotionMsg}</td>
+                <td><img width="50px" class="picture-thumb" src="${imagesPath}/${user.userPhoto}"></td>
+                <td>${user.userSex}</td>
 			<#--<td class="text-l"><a class="maincolor" href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">现代简约 白色 餐厅</a></td>-->
-                <td>${item.regularPrice} 元</td>
-                <td class="text-c">${item.itemBrand}</td>
-                <td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>
-                <td class="td-manage">
+                <td>${user.getUserMobile()} </td>
+                <td class="text-c">${user.userEmail}</td>
+                <td>${user.userAddress}</td>
+                <td>${user.userIntegral}</td>
+                <#--<td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>-->
+                <#--<td class="td-manage">-->
                     <#--<a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">-->
                     <#--<i class="Hui-iconfont">&#xe6de;</i></a>-->
-                    <a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改商品"><i class="Hui-iconfont">&#xe6df;</i></a>
+                    <#--<a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改商品"><i class="Hui-iconfont">&#xe6df;</i></a>-->
                     <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
             </tr>
             </tbody>
@@ -91,28 +94,28 @@
         <!-- 分页标签 -->
         <div id="fenye">
             <ul>
-			<#if itemPageBean.currentPage==1>
+			<#if userPageBean.currentPage==1>
                 <li><a>上一页</a></li>
 			<#else>
-                <li><a href="${base}/back/item/${itemPageBean.currentPage-1}">上一页</a></li>
+                <li><a href="${base}/back/user/${userPageBean.currentPage-1}">上一页</a></li>
 			</#if>
 			<#--循环遍历出页面数-->
-			<#list 1..itemPageBean.totalPage as page>
-				<#if page == itemPageBean.currentPage>
+			<#list 1..userPageBean.totalPage as page>
+				<#if page == userPageBean.currentPage>
                     <li><a>${page}</a></li>
 				<#else >
                     <#--<#if page<6>-->
-                    <li id="xuan"><a href="${base}/back/item/${page}">${page}</a></li>
+                    <li id="xuan"><a href="${base}/back/user/${page}">${page}</a></li>
                     <#--</#if>-->
 				</#if>
 			</#list>
 
-			<#if itemPageBean.currentPage==itemPageBean.totalPage >
+			<#if userPageBean.currentPage==userPageBean.totalPage >
                 <li><a>下一页</a></li>
 			<#else>
-                <li><a href="${base}/back/item/${itemPageBean.currentPage+1}">下一页</a> </li>
+                <li><a href="${base}/user/item/${userPageBean.currentPage+1}">下一页</a> </li>
 			</#if>
-                <li>当前页面数是第 ${itemPageBean.currentPage} 页</li>
+                <li>当前页面数是第 ${userPageBean.currentPage} 页</li>
             </ul>
         </div>
 

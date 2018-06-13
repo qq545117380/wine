@@ -45,9 +45,9 @@
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 		<#--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">-->
 			<#--<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>-->
-		<a class="btn btn-primary radius" href="${base}/back/preAdd">
-			<i class="Hui-iconfont">&#xe600;</i> 添加商品</a></span>
-        <span class="r">共有商品：<strong>${itemPageBean.sum}</strong> 条</span>
+		<a class="btn btn-primary radius" href="javascript:add();">
+			<i class="Hui-iconfont">&#xe600;</i> 添加管理员</a></span>
+        <span class="r">共有管理员：<strong>${usersPageBean.sum}</strong> 人</span>
     </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
@@ -55,34 +55,32 @@
             <tr class="text-c">
                 <th width="40"><input name="" type="checkbox" value=""></th>
                 <th width="50">ID</th>
-                <th width="150">产品名称</th>
-                <th>产品图片</th>
-                <th width="100">所属活动</th>
-                <th width="100">产品价格</th>
-                <th width="100">产品品牌</th>
-                <th width="60">发布状态</th>
+                <th width="100">用户昵称</th>
+                <th width="50">性别</th>
+                <th width="100">用户账号</th>
+                <th width="150">管理类型</th>
                 <th width="100">操作</th>
             </tr>
             </thead>
 		<#--  遍历产品集合-->
-		<#list itemPageBean.data as item>
+		<#list usersPageBean.data as users>
             <tbody>
             <tr class="text-c">
                 <td><input name="" type="checkbox" value=""></td>
-                <td>${item.itemId}</td>
-                <td>${item.itemName}</td>
-			<#--<td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>-->
-                <td><img width="100" class="picture-thumb" src="${imagesPath}/${item.img1}"></td>
-                <td>${item.itemPromotionMsg}</td>
-			<#--<td class="text-l"><a class="maincolor" href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">现代简约 白色 餐厅</a></td>-->
-                <td>${item.regularPrice} 元</td>
-                <td class="text-c">${item.itemBrand}</td>
-                <td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>
+                <td id="userId">${users.id}</td>
+                <td>${users.nickname}</td>
+                <td>${users.sex}</td>
+                <td>${users.username} </td>
+                <td>${users.userType}</td>
+                <#--<td class="td-status"><span class="label label-success radius">${item.itemStatus}</span></td>-->
                 <td class="td-manage">
-                    <#--<a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架">-->
-                    <#--<i class="Hui-iconfont">&#xe6de;</i></a>-->
-                    <a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改商品"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+                    <#--<a style="text-decoration:none" href="javascript:if(confirm('确认删除?'))-->
+                    <#--location.href="${base}/back/delete/${users.id}" title="删除">-->
+                        <a style="text-decoration:none" href="javascript:deleteUser(userId=${users.id});" title="删除">
+                    <i class="Hui-iconfont">&#xe6de;</i></a>
+                    <a style="text-decoration:none" class="ml-5" href="${base}/back/preUpdate/${item.itemId}/${itemPageBean.currentPage}" title="修改"><i class="Hui-iconfont">&#xe6df;</i></a>
+                    <#--<a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>-->
+                </td>
             </tr>
             </tbody>
 		</#list>
@@ -91,33 +89,32 @@
         <!-- 分页标签 -->
         <div id="fenye">
             <ul>
-			<#if itemPageBean.currentPage==1>
+			<#if usersPageBean.currentPage==1>
                 <li><a>上一页</a></li>
 			<#else>
-                <li><a href="${base}/back/item/${itemPageBean.currentPage-1}">上一页</a></li>
+                <li><a href="${base}/back/users/${usersPageBean.currentPage-1}">上一页</a></li>
 			</#if>
 			<#--循环遍历出页面数-->
-			<#list 1..itemPageBean.totalPage as page>
-				<#if page == itemPageBean.currentPage>
+			<#list 1..usersPageBean.totalPage as page>
+				<#if page == usersPageBean.currentPage>
                     <li><a>${page}</a></li>
 				<#else >
                     <#--<#if page<6>-->
-                    <li id="xuan"><a href="${base}/back/item/${page}">${page}</a></li>
+                    <li id="xuan"><a href="${base}/back/users/${page}">${page}</a></li>
                     <#--</#if>-->
 				</#if>
 			</#list>
 
-			<#if itemPageBean.currentPage==itemPageBean.totalPage >
+			<#if usersPageBean.currentPage==usersPageBean.totalPage >
                 <li><a>下一页</a></li>
 			<#else>
-                <li><a href="${base}/back/item/${itemPageBean.currentPage+1}">下一页</a> </li>
+                <li><a href="${base}/user/item/${usersPageBean.currentPage+1}">下一页</a> </li>
 			</#if>
-                <li>当前页面数是第 ${itemPageBean.currentPage} 页</li>
+                <li>当前页面数是第 ${usersPageBean.currentPage} 页</li>
             </ul>
         </div>
 
-
-
+            <#--<input type="text" value=" ${currentUsers.userType}">-->
 
     </div>
 </div>
@@ -133,20 +130,31 @@
 <script type="text/javascript" src="${base}/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${base}/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-    $('.table-sort').dataTable({
-        "aaSorting": [[ 1, "desc" ]],//默认第几个排序
-        "bStateSave": true,//状态保存
-        "aoColumnDefs": [
-            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-            {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
-        ]
-    });
-    //	$(function () {
-    //		$("#xuan").click(function () {
-    //			$(this).addClass("test")；
-    //			$("#xuan").not(this).removeClass("test")；
-    //        })
-    //    })
+    function add() {
+//        var usersType =$("#type").text();
+        var usersType="${currentUsers.userType}";
+        alert(usersType);
+        if (usersType == "超级管理员"){
+            window.location.href="${base}/back/addUser";
+        }else {
+            alert("不好意思，只有超级管理员，有添加权限");
+        }
+
+    }
+
+    function deleteUser(userId) {
+        var usersId =userId;
+        var usersType ="${currentUsers.userType}";
+        if (usersType =="超级管理员"){
+            if(confirm("确认删除吗")){
+                window.location.href="${base}/back/deleteUser?userId="+userId;
+            }
+        }else {
+            alert("不好意思，只有超级管理员，有添加权限");
+        }
+    }
+
+
 
 
 

@@ -1,6 +1,7 @@
 package com.zmj.wine.dao;
 
 import com.zmj.wine.entity.Users;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,6 +22,14 @@ public interface UsersMapper {
 
     //查询所有后台用户
     List<Users>  findAllUsers();
+
+    //分页查询管理员总数
+    int selectUsersNum();
+
+    //分页查询用户
+    List<Users> selectUsersByPage
+    (@Param("index") int index,@Param("size") int size);
+
     //根据用户姓名 查询用户对象
     Users checkUsername(String username);
 
