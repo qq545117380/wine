@@ -28,6 +28,22 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
 
+  <!--查询数据库内当前user的购物车内有没有此种商品-->
+  <select id="selectByUserIdAndItemName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_shoppingcart
+    where user_id = #{userId}
+    AND cart_name=#{itemName}
+  </select>
+
+  <!--更改购物车内商品数量-->
+  <update id="updateByCount" parameterType="com.zmj.wine.entity.Shoppingcart">
+    update tb_shoppingcart
+    set cart_count =#{count}
+    where user_id=#{userId} AND cart_name=#{itemName}
+  </update>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_shoppingcart
     where cart_id = #{cartId,jdbcType=INTEGER}

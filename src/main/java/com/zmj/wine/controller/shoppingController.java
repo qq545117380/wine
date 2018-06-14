@@ -5,10 +5,13 @@ import com.zmj.wine.entity.Shoppingcart;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
+import com.zmj.wine.utils.JsonResult;
+import com.zmj.wine.utils.SystemTools;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import com.zmj.wine.utils.RedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -32,21 +35,30 @@ public class shoppingController {
         Item item = itemService.selectByName(itemName);
         Shoppingcart shoppingcart = new Shoppingcart();
         User currentUser = (User)httpSession.getAttribute("currentUser");
-        shoppingcart.setCartName(itemName);
-        shoppingcart.setCartPrice(item.getActivityPrice());
-        shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
-        shoppingcart.setCartCount(count);
-        shoppingcart.setCartImg(item.getImg1());
-        shoppingcart.setUserId(currentUser.getUserId());
-        //这里并没有判断是否添加成功
-        int num = shoppingCartService.insert(shoppingcart);
-        if(num==0){
-            List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
-            /*model.addAttribute("shoppingcartList",shoppingcartList);*/
+        shoppingcart = shoppingCartService.selectByUserIdAndItemName(currentUser.getUserId(), itemName);
+        if(shoppingcart!=null ) {
+            shoppingCartService.updateByCount(currentUser.getUserId(), itemName, shoppingcart.getCartCount()+count);
+            List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(currentUser.getUserId());
             httpSession.setAttribute("shoppingcartList",shoppingcartList);
             return "shoppingCart";
-        }else{
-            return "/item";
+        }else {
+            shoppingcart=new Shoppingcart();
+            shoppingcart.setCartName(itemName);
+            shoppingcart.setCartPrice(item.getActivityPrice());
+            shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
+            shoppingcart.setCartCount(count);
+            shoppingcart.setCartImg(item.getImg1());
+            shoppingcart.setUserId(currentUser.getUserId());
+            //这里并没有判断是否添加成功
+            int num = shoppingCartService.insert(shoppingcart);
+            if(num==0){
+                List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(shoppingcart.getUserId());
+            /*model.addAttribute("shoppingcartList",shoppingcartList);*/
+                httpSession.setAttribute("shoppingcartList",shoppingcartList);
+                return "shoppingCart";
+            }else{
+                return "/item";
+            }
         }
     }
     //结算页面
@@ -67,19 +79,29 @@ public class shoppingController {
 
     //加入购物车
     @RequestMapping("/join")
-    public String selectByUserId(String itemName, Integer count,HttpSession httpSession,Model model){
+    @ResponseBody
+    public JsonResult selectByUserId(String itemName, Integer count, HttpSession httpSession){
         Item item = itemService.selectByName(itemName);
-        Shoppingcart shoppingcart = new Shoppingcart();
+        Shoppingcart shoppingcart;
         User currentUser = (User)httpSession.getAttribute("currentUser");
-        shoppingcart.setCartName(itemName);
-        shoppingcart.setCartCount(item.getActivityPrice());
-        shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
-        shoppingcart.setCartCount(count);
-        shoppingcart.setCartImg(item.getImg1());
-        shoppingcart.setUserId(currentUser.getUserId());
-        shoppingCartService.insert(shoppingcart);
-        model.addAttribute("item",item);
-        return "/item";
+
+        shoppingcart= shoppingCartService.selectByUserIdAndItemName(currentUser.getUserId(), itemName);
+        if(shoppingcart!=null ){
+            shoppingCartService.updateByCount(currentUser.getUserId(),itemName,shoppingcart.getCartCount()+count);
+            return SystemTools.formatJsonResult(0,"");
+        }else{
+            shoppingcart=new Shoppingcart();
+            shoppingcart.setCartName(itemName);
+            shoppingcart.setCartPrice(item.getActivityPrice());
+            shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
+            shoppingcart.setCartCount(count);
+            shoppingcart.setCartImg(item.getImg1());
+            shoppingcart.setUserId(currentUser.getUserId());
+            int num = shoppingCartService.insert(shoppingcart);
+            JsonResult jsonResult = SystemTools.formatJsonResult(num, "添加成功");
+            System.out.println("jsonResult===="+jsonResult);
+            return jsonResult;
+        }
     }
 
 }
