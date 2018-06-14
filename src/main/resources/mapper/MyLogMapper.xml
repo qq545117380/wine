@@ -4,11 +4,25 @@
   <resultMap id="BaseResultMap" type="com.zmj.wine.entity.MyLog">
     <id column="log_id" jdbcType="INTEGER" property="logId" />
     <result column="log_user_name" jdbcType="VARCHAR" property="logUserName" />
-    <result column="log_time" jdbcType="DATE" property="logTime" />
+    <result column="log_time" jdbcType="VARCHAR" property="logTime" />
   </resultMap>
   <sql id="Base_Column_List">
     log_id, log_user_name, log_time
   </sql>
+
+  <!--查询日志总数量-->
+  <select id="selectLogNum" resultType="java.lang.Integer">
+    select count(1) from log;
+  </select>
+
+  <!--后台分页查询日志-->
+  <select id="selectLogByPage" resultMap="BaseResultMap">
+    select log_id, log_user_name, log_time
+    from log
+    limit #{index},#{size};
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
