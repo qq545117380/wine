@@ -53,4 +53,15 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
         List<Shoppingcart> shoppingcartList = shoppingcartDAO.selectByUserId(userId);
         return shoppingcartList;
     }
+
+    @Override
+    public Shoppingcart selectByUserIdAndItemName(Integer userId, String itemName) {
+        Shoppingcart shoppingcart = shoppingcartDAO.selectByUserIdAndItemName(userId, itemName);
+        return shoppingcart;
+    }
+
+    @Override
+    public void updateByCount(Integer userId, String itemName, Integer count) {
+        shoppingcartDAO.updateByCount(userId, itemName, count);
+    }
 }
