@@ -5,10 +5,9 @@ import com.zmj.wine.entity.Shoppingcart;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.zmj.wine.utils.RedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -24,6 +23,9 @@ public class shoppingController {
     @Resource
     private ItemService itemService;
     //购物车页面
+    @Resource
+    private RedisUtil redisUtil;
+
     @RequestMapping("/insert")
     public String insert(String itemName,
                              Integer count, HttpSession httpSession,Model model){
@@ -65,7 +67,7 @@ public class shoppingController {
 
     //加入购物车
     @RequestMapping("/join")
-    public String selectByUserId(String itemName, Integer count,HttpSession httpSession){
+    public String selectByUserId(String itemName, Integer count,HttpSession httpSession,Model model){
         Item item = itemService.selectByName(itemName);
         Shoppingcart shoppingcart = new Shoppingcart();
         User currentUser = (User)httpSession.getAttribute("currentUser");
@@ -76,6 +78,8 @@ public class shoppingController {
         shoppingcart.setCartImg(item.getImg1());
         shoppingcart.setUserId(currentUser.getUserId());
         shoppingCartService.insert(shoppingcart);
+        model.addAttribute("item",item);
         return "/item";
     }
+
 }
