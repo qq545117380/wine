@@ -439,7 +439,7 @@
 
                             <div class="btnbox clearfix">
                                 <a id="addCat" href="#" class="addBuy btn" rel="nofollow" onclick="addToCart();"></a>
-                                <a id="addToCat" href="#" class="addToCart btn" rel="nofollow" onclick="joinCart();"></a>
+                                <a id="addToCat" class="addToCart btn" rel="nofollow" onclick="joinCart();"></a>
                                 <div class="noprobox" style="display: none;"><a id="noPro" class="noPro" target="_blank" rel="nofollow"></a></div>
 
                                 <div id="apphover">
@@ -762,6 +762,7 @@
                             count:count},function (data) {
                                 if(data.code== "0"){
                                     alert("成功添加商品到购物车");
+                                    window.location.reload();
                                 }
                             });
                     return false;

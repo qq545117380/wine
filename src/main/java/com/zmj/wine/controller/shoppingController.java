@@ -92,16 +92,16 @@ public class shoppingController {
         }else{
             shoppingcart=new Shoppingcart();
             shoppingcart.setCartName(itemName);
-            shoppingcart.setCartCount(item.getActivityPrice());
+            shoppingcart.setCartPrice(item.getActivityPrice());
             shoppingcart.setCartDiscounts(item.getRegularPrice()-item.getActivityPrice());
             shoppingcart.setCartCount(count);
             shoppingcart.setCartImg(item.getImg1());
             shoppingcart.setUserId(currentUser.getUserId());
             int num = shoppingCartService.insert(shoppingcart);
-            return SystemTools.formatJsonResult(num,"");
+            JsonResult jsonResult = SystemTools.formatJsonResult(num, "添加成功");
+            System.out.println("jsonResult===="+jsonResult);
+            return jsonResult;
         }
-//        model.addAttribute("item",item);
-//        return "/item";
     }
 
 }
