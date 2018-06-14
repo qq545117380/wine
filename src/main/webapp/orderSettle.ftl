@@ -234,18 +234,20 @@
                     </div>
                     <ul class="fl mgn_bottom_10" id="flatPay">
                         <li index="4">
-                            <img src="${base}/orderSettle/zhifubao.png">
                             <input type="radio" name="bank" id="zhifubao" style="display: none;">
                             <label class="zhifubao active" data-value="支付宝" data-name="4">
-                                <b></b>
+                                <b>
+                                    <img src="${base}/orderSettle/zhifubao.png" style="margin-left:-115px;margin-top:-25px;">
+                                </b>
                             </label>
                         </li>
                         <li>
-                            <img src="${base}/orderSettle/weixin.png">
                             <input type="radio" name="bank" id="wechat" style="display: none;">
                             <label class="wechat" data-value="微信支付">
-                                <b></b>
+                                <b>
+                                </b>
                             </label>
+                            <img src="${base}/orderSettle/weixin.png" style="margin-left:-134px;margin-top:-32px;">
                         </li>
                     </ul>
                 </div>
