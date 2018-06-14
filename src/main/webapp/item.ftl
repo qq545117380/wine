@@ -438,7 +438,7 @@
                             </div>
 
                             <div class="btnbox clearfix">
-                                <a id="addCat" href="#" class="addBuy btn" rel="nofollow" onclick="addToCart();"></a>
+                                <a id="addCat" class="addBuy btn" rel="nofollow" onclick="addToCart();"></a>
                                 <a id="addToCat" class="addToCart btn" rel="nofollow" onclick="joinCart();"></a>
                                 <div class="noprobox" style="display: none;"><a id="noPro" class="noPro" target="_blank" rel="nofollow"></a></div>
 
@@ -497,7 +497,7 @@
                     <span class="twxqnav select"><a href="http://www.gjw.com/product/item-id-2.htm#twxq" rel="nofollow" target="_self">图文详情</a></span>
                     <span class="jypjnav"><a href="http://www.gjw.com/product/item-id-2.htm#Comment" rel="nofollow" target="_self">酒友评价<em id="pjnum_em">（444）</em></a></span>
                     <span><em id="xfjg">￥1988</em></span>
-                    <a href="javascript:void(0)" rel="nofollow" onclick="joinCart(${item.itemId});" class="addshopcar">加入购物车</a>
+                    <a rel="nofollow" onclick="joinCart();" class="addshopcar">加入购物车</a>
                     <span>
                     <a target="_blank" href="http://order.gjw.com/order/Cart.html">
                         <img src="${base}/item_files/shopcar2.png" original="http://static.gjw.com//product/20161021/img/shopcar2.png"><em class="numicon itemNum">0</em> </a></span>
@@ -745,8 +745,10 @@
                 var currentUsre="${Session.currentUser}";
                 if(currentUsre==""){
                     alert("请先登录");
+                    return false;
                 }else {
-                    $("#addCat").attr("href","${base}/shopping/insert?itemName="+itemName+"&count="+count);
+                    window.location.href="${base}/shopping/insert?itemName="+itemName+"&count="+count;
+                    <#--$("#addCat").attr("href","${base}/shopping/insert?itemName="+itemName+"&count="+count);-->
                 }
             }
 
@@ -756,6 +758,7 @@
                 var currentUsre="${Session.currentUser}";
                 if(currentUsre==""){
                     alert("请先登录");
+                    return false;
                 }else{
                     $.get("${base}/shopping/join",
                             {itemName:itemName,
