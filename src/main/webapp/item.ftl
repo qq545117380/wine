@@ -757,7 +757,15 @@
                 if(currentUsre==""){
                     alert("请先登录");
                 }else{
-                    window.location.href="${base}/shopping/join?itemName="+itemName+"&count="+count;
+                    $.get("${base}/shopping/join",
+                            {itemName:itemName,
+                            count:count},function (data) {
+                                if(data.code== "0"){
+                                    alert("成功添加商品到购物车");
+                                }
+                            });
+                    return false;
+                    <#--window.location.href="${base}/shopping/join?itemName="+itemName+"&count="+count;-->
                 }
             }
 
