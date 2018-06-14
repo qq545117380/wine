@@ -152,8 +152,9 @@
                      alert("登录成功");
                     window.location.href = "${base}/center/userCenter";
                 } else {
-                    alert("手机号或密码错误");
-                    alert("请重新输入手机号和密码");
+                     alert(data.msg);
+//                    alert("手机号或密码错误");
+//                    alert("请重新输入手机号和密码");
                 }
             }
         );
