@@ -33,8 +33,16 @@ public class ItemController {
     public String selectItem(String itemName, Model model) {
         Item item = itemService.selectByName(itemName);
         model.addAttribute("item", item);
+        //关联商品集合
         List<Relevance> relevanceList = relevanceService.selectItemByItemId(item.getItemId());
         model.addAttribute("relevanceList",relevanceList);
         return "item";
+    }
+
+    @RequestMapping("/pItem")
+    public String selectByPromotion(Integer itemId, Model model){
+        Item item = itemService.selectByPrimaryKey(itemId);
+        model.addAttribute("item", item);
+        return "temaihui";
     }
 }
