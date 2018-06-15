@@ -21,6 +21,11 @@
         <property name="redisTemplate" ref="redisTemplate"></property>
     </bean>
 
+    <!--注入stringRedisTemplate-->
+    <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory"   ref="connectionFactory" />
+    </bean>
+
     <!--连接池配置-->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxWaitMillis" value="10000"/>
