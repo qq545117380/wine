@@ -98,7 +98,6 @@
                 </dt>
                 <dd id="cart_goods">
                     <div id="cart_goods_area">
-                        
                         <table class="cart_goods_area tbcart" id="tbcart7637">
                             <tbody>
                             <#list shoppingcartList as shoppingValue>
@@ -118,7 +117,7 @@
                                         <a class="c12" href="http://www.gjw.com/product/item-id-7637.htm" target="_blank">
                                         ${shoppingValue.cartName}</a><br>
                                     </td>
-                                    <td class="cb_r2">
+                                    <td class="cb_r2" id="subPrice">
                                         ${shoppingValue.cartPrice}
                                     </td>
                                     <td class="cb_r3 cf04" id="Pro7637">
@@ -128,13 +127,16 @@
                                         <p class="num_line">
                                             </p><div class="imp">
                                                 <span class="fl Cart_down " index="7637">－</span>
-                                                <input type="text" value="${shoppingValue.cartCount}" maxlength="4" class="fl num_input Quantity" index="7637" id="Quantity7637">
+                                                <input type="text" value="${shoppingValue.cartCount}" maxlength="4" class="fl num_input Quantity Quantity7637" index="7637" id="Quantity7637">
                                                 <span class="fl Cart_up" index="7637">＋</span> <span style="display: none;" class="num_tip"></span>
                                             </div>
                                         <p></p>
                                     </td>
                                     <td class="cb_r5">
-                                        <span id="sum7637" class="cs_sum"><b id="shop_sum"></b>${shoppingValue.cartPrice}</span>
+                                        <span id="sum7637" class="cs_sum">
+                                            <b id="shop_sum" class="shop_sum">
+                                            </b>
+                                        </span>
                                     </td>
                                     <td class="cb_r6">
                                         <span class="coll_opt"><a href="javaScript:Collect(7637)">收藏</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,7 +173,9 @@
                             <span class="fl delepro" id="delePro"><a href="javascript:void(0)">删除选中商品</a>
                             </span><span class="fl cearpro" id="creaPro"><a href="javascript:void(0)">清空购物车</a>
                             </span>应付商品金额：
-                            <font id="palyMoney">¥654.00</font>
+                            <font id="palyMoney">
+                                ¥654.00
+                            </font>
                         </li>
                         <li style="display: none;" id="total_discount">兑换券折扣：<b>-¥0.00</b></li>
                         <li style="display: none;" id="total_bonus">优惠券折扣：<b>-¥0.00</b></li>
@@ -373,10 +377,16 @@
         //计算总价
         function calcPrice(){
             var sum = 0;
+            $("[name='check']:checkbox:checked").each(function () {
+                var unitPrice = $(this).parent().parent().parent().next('td').next('td').next('td').text();
+                var count = $(this).parent().parent().parent().next('td').next('td').next('td').next('td').next('td').find(".Quantity7637").val();
+                var subtotal = parseInt(unitPrice)*parseInt(count);
+                $(this).parent().parent().parent().next('td').next('td').next('td').next('td').next('td').next('td').find(".shop_sum").text(subtotal);
+            });
             //获得所有name为check的选中状态的复选框,对其进行遍历
             $("[name='check']:checkbox:checked").each(function(){
                 //获得该复选框同一行的总价文字
-                var price = $(this).parent().parent().parent().parent().find(".cb_r2").text();
+                var price = $(this).parent().parent().parent().next('td').next('td').next('td').next('td').next('td').next('td').find(".shop_sum").text();
                 sum += parseInt(price);
             });
             //显示到总价格标签中

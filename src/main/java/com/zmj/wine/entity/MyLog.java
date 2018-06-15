@@ -1,13 +1,14 @@
 package com.zmj.wine.entity;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class MyLog {
     private Integer logId;
 
     private String logUserName;
 
-    private Date logTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private String logTime;
 
     public Integer getLogId() {
         return logId;
@@ -25,11 +26,11 @@ public class MyLog {
         this.logUserName = logUserName == null ? null : logUserName.trim();
     }
 
-    public Date getLogTime() {
+    public String getLogTime() {
         return logTime;
     }
 
-    public void setLogTime(Date logTime) {
+    public void setLogTime(String logTime) {
         this.logTime = logTime;
     }
 }

@@ -6,6 +6,7 @@ import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
 import com.zmj.wine.utils.JsonResult;
+import com.zmj.wine.utils.SystemParam;
 import com.zmj.wine.utils.SystemTools;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,6 +76,20 @@ public class shoppingController {
         }
         model.addAttribute("shoppingList",shoppingList);*/
         return "Settlement";
+    }
+    //支付页面
+    @ResponseBody
+    @RequestMapping("/orderSettle")
+    public Object orderSettle(String sumMoney,HttpSession session){
+        int sum = Integer.parseInt(sumMoney);
+        JsonResult jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
+        session.setAttribute("sumPrice",sum);
+        return jsonResult;
+    }
+    //支付
+    @RequestMapping("/settlePrice")
+    public String settle(){
+        return "orderSettle";
     }
 
     //加入购物车

@@ -188,19 +188,18 @@
 											<img width="50" height="50" src="${imagesPath}/${shoppingValue.cartImg}" title="${shoppingValue.cartName}"></a>
 									</td>
 									<td>
-										<a href="http://www.gjw.com/product/item-id-35.htm" target="_blank">
+										<a href="http://www.gjw.com/product/item-id-35.htm" target="_blank" name="cartName">
 											${shoppingValue.cartName}</a><br>
                                                       
 
 									</td>
-									<td class="cartPrice">
+									<td id="cartPrice">
 										${shoppingValue.cartPrice}
 									</td>
-									<td>
-										${shoppingValue.cartDiscounts}
+									<td id="cartCount">
+										${shoppingValue.cartCount}
 									</td>
-									<td>
-										${shoppingValue.cartPrice}
+									<td class="subtotal">
 									</td>
 								</tr>								<!--赠品s-->
 								</#list>
@@ -301,7 +300,11 @@
 						</div>
 					</div>
 					<div class="payBtnBox">
-						<a href="javascript:void(0);" id="btnOk" class="payBtn fr"></a>
+						<a href="javascript:orderSettle();" id="btnOk" class="payBtn fr">
+						</a>
+                            <#--<a id="ASettlement1" href="${base}/shopping/orderSettle" class="fr cbtn check_btn">
+                                去结算
+                            </a>-->
 					</div>
 				</div>
 			</div>
@@ -393,14 +396,32 @@
          //计算总价
          function calcPrice(){
              var sum = 0;
-             $(".cartPrice").each(function(){
+             $("[name='cartName']").each(function () {
+                 var unitPrice = $(this).parent().next('td').text();
+			 	/*alert(unitPrice);*/
+                 var count = $(this).parent().next('td').next('td').text();
+             	/*alert(count);*/
+                 var subtotal = parseInt(unitPrice)*parseInt(count);
+             	/*alert(subtotal);*/
+                 $(this).parent().next('td').next('td').next('td').text(subtotal);
+			 	 sum += parseInt(subtotal);
+             });
+         		$("#lbSumProMoney").text(sum);
+         		$("#SumMoney").text(sum);
+             /*//获得所有name为check的选中状态的复选框,对其进行遍历
+             $("[name='check']:checkbox:checked").each(function(){
                  //获得该复选框同一行的总价文字
-                 var price = $(this).parent().parent().parent().parent().find(".cartPrice").text();
+                 var price = $(this).parent().parent().parent().next('td').next('td').next('td').next('td').next('td').next('td').find(".shop_sum").text();
                  sum += parseInt(price);
              });
+			 $(".subtotal").text(subtotal);
+             $(".subtotal").each(function(){
+                 //获得该复选框同一行的总价文字
+                 var subPrice = $(this).parent().parent().parent().parent().find(".subtotal").text();
+                 sum += parseInt(subPrice);
+             });*/
              //显示到总价格标签中
-             $("#lbSumProMoney").text(sum);
-             $("#SumMoney").text(sum);
+
          }
          //网页加载后
 		 $(function () {
@@ -408,4 +429,17 @@
          });
 	 </script>
 
+        <script type="text/javascript">
+            function orderSettle() {
+                var SumMoney = $("#SumMoney").text();
+                $.post(
+                        "${base}/shopping/orderSettle",
+                        {"sumMoney":SumMoney},
+                        function (data) {
+                           /* alert("跳转成功");*/
+                            window.location.href = "${base}/shopping/settlePrice";
+                        }
+                );
+            }
+        </script>
 </body></html>

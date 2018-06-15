@@ -3,8 +3,10 @@ package com.zmj.wine.controller;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.zmj.wine.dao.UserMapper;
 import com.zmj.wine.dao.UsersMapper;
+import com.zmj.wine.entity.MyLog;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.entity.Users;
+import com.zmj.wine.service.BackLogService;
 import com.zmj.wine.service.UserService;
 import com.zmj.wine.service.UsersService;
 import com.zmj.wine.utils.JsonResult;
@@ -36,6 +38,10 @@ public class UserController {
     private UserService userServiceImpl;
     @Resource
     private UsersService usersServiceImpl;
+    //后台登录日志
+    @Resource
+    private BackLogService backLogService;
+
     //重新修改手机密码
     @ResponseBody
     @RequestMapping("/updatePwd")
@@ -107,6 +113,12 @@ public class UserController {
         JsonResult jsonResult = null;
         Object vcode1 = req.getSession().getAttribute("vcode");
         System.out.println(vcode1);
+        //验证验证码
+        jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
+        if(vcode==null||!vcode.equalsIgnoreCase((String)req.getSession().getAttribute("vcode"))) {
+            jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_INCORRECT_CODE, SystemParam.Login.MSG_FAIL_INCORRECT_CODE);
+            return jsonResult;
+        }
         try {
             if(num.equals("user")){
                 userServiceImpl.login(userMobile,userPassword);
@@ -118,13 +130,12 @@ public class UserController {
                 Users users = null;
                 users = usersDAO.checkUsername(userMobile);
                 httpSession.setAttribute("currentUsers",users);
+                //添加后台登录信息
+                MyLog myLog = new MyLog();
+                myLog.setLogUserName(users.getNickname());
+                backLogService.addLoginLog(myLog);
             }
-            jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
-//            验证验证码
-            if(vcode==null||!vcode.equalsIgnoreCase((String)req.getSession().getAttribute("vcode"))) {
-                jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_UNKNOWN_ACCOUNT, SystemParam.Login.MSG_FAIL_UNKNOWN_ACCOUNT);
-                return jsonResult;
-            }
+
 
         } catch (UnknownAccountException e) {
             e.printStackTrace();
@@ -134,7 +145,6 @@ public class UserController {
             jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_FAIL_INCORRECT_PASSWORD, SystemParam.Login.MSG_FAIL_INCORRECT_PASSWORD);
         }
        /* System.out.println("成功执行");*/
-//        System.out.println(jsonResult);
         /*System.out.println(jsonResult.getCode());
         System.out.println(jsonResult.getMsg());*/
         return jsonResult;
