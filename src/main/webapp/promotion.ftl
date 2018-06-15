@@ -242,7 +242,7 @@ img{
 <div class="bg">
 <div class="a"><img alt="" width="1040" height="650" usemap="#Map" border="0" original="http://img0.gjw.com/Minisite/2018/luy/6/6-9/LP/lp_02.jpg" src="http://img0.gjw.com/Minisite/2018/luy/6/6-9/LP/lp_02.jpg" style="display: inline;">
   <map name="Map" id="Map">
-    <area shape="rect" coords="6,254,1037,641" href="http://www.gjw.com/product/item-id-5129.htm" target="_blank">
+    <area shape="rect" coords="6,254,1037,641" href="${base}/item/pItem?itemId=26" target="_blank">
   </map>
 </div>
 </div>
