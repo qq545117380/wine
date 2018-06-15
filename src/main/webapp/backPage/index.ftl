@@ -24,6 +24,11 @@
 	<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
+
+    <#-- goeasy 消息推送-->
+    <script type="text/javascript" src="https://cdn.goeasy.io/goeasy.js"></script>
+
+
     <title>H-ui.admin v3.1</title>
     <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
     <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -50,14 +55,16 @@
                 <ul class="cl">
                     <li>欢迎 ${currentUsers.userType}</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A">${currentUsers.nickname} <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A">${currentUsers.nickname}
+                            <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
                             <li><a href="#">切换账户</a></li>
                             <li><a href="#">退出</a></li>
                         </ul>
                     </li>
-                    <li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+                    <li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">0</span>
+                        <i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
                     <li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
@@ -201,22 +208,21 @@
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="${base}/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
-    $(function(){
-        /*$("#min_title_list li").contextMenu('Huiadminmenu', {
-            bindings: {
-                'closethis': function(t) {
-                    console.log(t);
-                    if(t.find("i")){
-                        t.find("i").trigger("click");
-                    }
-                },
-                'closeall': function(t) {
-                    alert('Trigger was '+t.id+'\nAction was Email');
-                },
-            }
-        });*/
+    <#-- GoEasy 消息推送-->
+    var goEasy = new GoEasy({appkey: 'BS-ef447d7ed8da4c8089a50fff1ab109df'});
+              goEasy.subscribe({
+                channel: 'zmj',
+                onMessage: function(message){
+                 alert('接收到消息:'+message.content);//拿到了信息之后，你可以做你任何想做的事
+                    var msg = parseInt($(".badge-danger").text());
+                    $(".badge-danger").text( msg + 1);
+
+             }
     });
-    /*个人信息*/
+
+
+
+/*个人信息*/
     function myselfinfo(){
         layer.open({
             type: 1,
