@@ -19,22 +19,11 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-  <repositories>
-    <!-- GoEasy消息推送 -->
-    <repository>
-      <id>goeasy</id>
-      <name>goeasy</name>
-      <url>http://maven.goeasy.io/content/repositories/releases/</url>
-    </repository>
-  </repositories>
+
 
   <dependencies>
 
-    <dependency>
-      <groupId>io.goeasy</groupId>
-      <artifactId>goeasy-sdk</artifactId>
-      <version>0.3.3</version>
-    </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
@@ -239,7 +228,45 @@
     </dependency>
 
 
+    <dependency>
+      <groupId>io.goeasy</groupId>
+      <artifactId>goeasy-sdk</artifactId>
+      <version>0.3.3</version>
+    </dependency>
+
+    <!--?? xml-->
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <version>1.1.6</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/core
+    ????????????-->
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>javase</artifactId>
+      <version>3.3.2</version>
+    </dependency>
   </dependencies>
+
+
+  <repositories>
+      <repository>
+        <id>goeasy</id>
+        <name>goeasy</name>
+        <url>http://maven.goeasy.io/content/repositories/releases/</url>
+      </repository>
+  </repositories>
 
 
   <build>
