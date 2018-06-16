@@ -58,6 +58,7 @@ public class shoppingController {
                 httpSession.setAttribute("shoppingcartList",shoppingcartList);
                 return "shoppingCart";
             }else{
+                model.addAttribute("item",item);
                 return "/item";
             }
         }
