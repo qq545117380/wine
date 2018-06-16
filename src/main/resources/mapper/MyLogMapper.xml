@@ -29,10 +29,12 @@
     from log
     where log_id = #{logId,jdbcType=INTEGER}
   </select>
+  <!--根据id 查询日志-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from log
     where log_id = #{logId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.zmj.wine.entity.MyLog">
     insert into log (log_id, log_user_name, log_time
       )

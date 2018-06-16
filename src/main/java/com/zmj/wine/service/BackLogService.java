@@ -15,5 +15,8 @@ public interface BackLogService {
    //后台分页查询日志
     PageBean<MyLog> queryLogByPage(int page);
 
+    //后台根据id 删除日志信息
+    int deleteLog(int id);
+
 
 }

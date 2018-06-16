@@ -47,15 +47,15 @@
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 		<#--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">-->
 			<#--<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>-->
-		<#--<a class="btn btn-primary radius" href="javascript:add();">-->
-			<#--<i class="Hui-iconfont">&#xe600;</i> 添加管理员</a></span>-->
+		<a class="btn btn-primary radius" href="javascript:deleteLog();">
+			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除日志</a></span>
         <span class="r">共有登录日志：<strong>${myLogPageBean.sum}</strong> 条</span>
     </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
-                <#--<th width="40"><input name="" type="checkbox" value=""></th>-->
+                <th width="40"><input name="checkth" type="checkbox" value=""></th>
                 <th width="50">ID</th>
                 <th width="100">用户昵称</th>
                 <th width="150">登录时间</th>
@@ -66,8 +66,12 @@
 		<#list myLogPageBean.data as log>
             <tbody>
             <tr class="text-c">
-                <#--<td><input name="" type="checkbox" value=""></td>-->
-                <td id="userId">${log.logId}</td>
+                <td>
+                    <input name="check" type="checkbox" value="">
+                </td>
+                <td>
+                    <span class="id" >${log.logId}</span>
+                </td>
                 <td>${log.logUserName}</td>
                 <#--?string('yyyy-MM-dd HH:mm:ss')-->
                 <td>${log.logTime}</td>
@@ -139,31 +143,40 @@
 
     }
 
-    function deleteUser(userId) {
-//        var usersId =userId;
-//        alert(userId)
-        var usersType ="${currentUsers.userType}";
-        if (usersType =="超级管理员"){
-            if(confirm("确认删除吗")){
-                window.location.href="${base}/back/deleteUser?userId="+userId;
-                <#--window.location.href="${base}/back/deleteUser/"+userId;-->
-            }
+    //批量删除日志
+    function deleteLog() {
+        var userType="${currentUsers.userType}"
+        if(userType=="超级管理员"){
+            var logArray = new Array();
+            var i=0;
+            //遍历所有被选中的日志
+            $("[name='check']:checkbox:checked").each(function (){
+                var id =parseInt($(this).parent().parent().find(".id").text());
+//            var id = parseInt($(this).parent().next('td').find(".id").text());
+                logArray.push(id);
+//            logArray[i++]={"id":id}
+                alert(id);
+            });
+            var log =(JSON.stringify(logArray));
+            $.ajax({
+                type:'post',
+                url:'${base}/back/log/delete',
+//            dataType:'json',
+                contentType :'application/json;charset=utf-8',
+                data:log,
+                success:function (result) {
+                    if (result=="ok"){
+                        window.location.href="${base}/back/log/1"
+                    }else {
+                        alert("不好意思，请稍后再试")
+                    }
+                }
+            });
         }else {
-            alert("不好意思，只有超级管理员，有删除权限");
+            alert("不好意思,只有超级管理员,有删除权限")
         }
+
     }
-
-    function updateUser(userId) {
-        var userId=userId;
-        var usersType="${currentUsers.userType}";
-        if (usersType == "超级管理员"){
-            window.location.href="${base}/back/preUpdateUser/"+userId;
-        }else{
-            alert("不好意思，只有超级管理员，有修改权限");
-        }
-    }
-
-
 
 
 
