@@ -50,5 +50,10 @@ public class BackLogServiceImpl implements BackLogService {
         return pageBean;
     }
 
+    @Override
+    public int deleteLog(int id) {
+        return myLogMapper.deleteByPrimaryKey(id);
+    }
+
 
 }

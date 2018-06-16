@@ -27,4 +27,5 @@ public interface MyLogMapper {
     //后台分页查询登录日志
     List<Log> selectLogByPage
     (@Param("index")int index,@Param("size") int size);
+
 }
