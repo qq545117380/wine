@@ -86,9 +86,9 @@
             </a>
             	<div class="fl topGif" id="topGif"><a href="http://www.gjw.com/product/item-id-7625.html" target="_blank"><img src="${imagesPath}/093094c6ae204763b190aab9265e0f33.gif" alt="" original="${imagesPath}/093094c6ae204763b190aab9265e0f33.gif"></a></div>
 		<div class="topSearch fl">
-			<div class="clearfix" id="clearsch" style=" position:absolute; z-index:12;">
-			<div class="@@-container"><input type="text" @@="off" name="query" placeholder="茅台飞天" class="topSearchtxt fl" style="border-radius: 3px 0px 0px 3px;"><div class="proposal-box"><ul class="proposal-list"></ul></div><div class="topSearchbtn fl">搜索</div></div></div>
-			<div class="topTags clearfix" id="Hot_search"><a href="http://www.gjw.com/baijiu-maotai/" title="茅台" class="v6_hot">茅台</a><a href="http://www.gjw.com/baijiu-wuliangye/" title="五粮液" class="v6_hot">五粮液</a><a href="http://www.gjw.com/putaojiu-lafeixilie" title="拉菲" class="v6_hot">拉菲</a><a href="http://www.gjw.com/putaojiu-benfu" title="奔富" class="v6_hot">奔富</a><a href="http://www.gjw.com/baijiu-yanghe" title="洋河" class="v6_hot">洋河</a><a href="http://www.gjw.com/putaojiu-huangweidaishu" title="黄尾袋鼠" class="v6_hot">黄尾袋鼠</a><a href="http://www.gjw.com/baijiu-jiannanchun" title="剑南春" class="v6_hot">剑南春</a><a href="http://www.gjw.com/baijiu-luzhoulaojiao" title="泸州老窖" class="v6_hot">泸州老窖</a></div>
+			<#--<div class="clearfix" id="clearsch" style=" position:absolute; z-index:12;">-->
+			<div class="@@-container"><input type="text" @@="off" name="query" placeholder="茅台飞天" class="topSearchtxt fl" style="border-radius: 3px 0px 0px 3px;"><div class="proposal-box"><ul class="proposal-list"></ul></div><div class="topSearchbtn fl">搜索</div></div>
+			<#--<div class="topTags clearfix" id="Hot_search"><a href="http://www.gjw.com/baijiu-maotai/" title="茅台" class="v6_hot">茅台</a><a href="http://www.gjw.com/baijiu-wuliangye/" title="五粮液" class="v6_hot">五粮液</a><a href="http://www.gjw.com/putaojiu-lafeixilie" title="拉菲" class="v6_hot">拉菲</a><a href="http://www.gjw.com/putaojiu-benfu" title="奔富" class="v6_hot">奔富</a><a href="http://www.gjw.com/baijiu-yanghe" title="洋河" class="v6_hot">洋河</a><a href="http://www.gjw.com/putaojiu-huangweidaishu" title="黄尾袋鼠" class="v6_hot">黄尾袋鼠</a><a href="http://www.gjw.com/baijiu-jiannanchun" title="剑南春" class="v6_hot">剑南春</a><a href="http://www.gjw.com/baijiu-luzhoulaojiao" title="泸州老窖" class="v6_hot">泸州老窖</a></div>-->
 		</div>
             <div class="topShopcar fr">
             	<div class="shopcarBox">
