@@ -1325,7 +1325,7 @@
 
         /*倒计时*/
         $(function () {
-            countDown("2018/6/17 19:00:00", "#colockbox1");
+            countDown("2018/6/19 17:30:00", "#colockbox1");
         });
             function countDown(time, id) {
                 var hour_elem = $(id).find('.hour');

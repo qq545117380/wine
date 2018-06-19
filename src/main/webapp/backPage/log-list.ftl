@@ -155,7 +155,7 @@
 //            var id = parseInt($(this).parent().next('td').find(".id").text());
                 logArray.push(id);
 //            logArray[i++]={"id":id}
-                alert(id);
+//                alert(id);
             });
             var log =(JSON.stringify(logArray));
             $.ajax({

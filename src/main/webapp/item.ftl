@@ -392,7 +392,7 @@
 
                             <div class="pay">
                                 <p>
-                                    关注度<em>&nbsp;2318343</em>
+                                    关注度<em>&nbsp;${item.itemNotability}</em>
                                 </p>
                                 <span class="line"></span>
                                 <p>
@@ -400,7 +400,7 @@
                                 </p>
                                 <span class="line"></span>
                                 <p>
-                                    送积分<span>&nbsp;1988</span>
+                                    送积分<span>&nbsp;${item.itemIntegral}</span>
                                 </p>
                             </div>
                             <div class="guanlbox clearfix" id="group">
@@ -1652,18 +1652,20 @@
 <script src="${base}/item_files/Order_index.min.js.下载"></script>
 <script src="${base}/item_files/main.min.js.下载"></script>
 
-<script type="text/javascript">
-    //SY小能客服
+<script src='//kefu.easemob.com/webim/easemob.js?configId=2020b20c-f850-4730-ad1f-47273a1818e1'></script>
 
-    NTKF_PARAM = {
-        siteid: "kf_9250", 	                //企业ID，为固定值，必填
-        settingid: "kf_9250_1462524671271", //接待组ID，为固定值，必填kf_9250_1462522749545
-        uid: gj_User.id, 	                        //用户ID，未登录可以为空，但不能给null，uid赋予的值显示到小能客户端上
-        uname: gj_User.Name + gj_User.mob, 	            //用户名，未登录可以为空，但不能给null，uname赋予的值显示到小能客户端上
-        isvip: "0",                         //是否为vip用户，0代表非会员，1代表会员，取值显示到小能客户端上
-        userlevel: gj_User.levelId  	        //网站自定义会员级别，0-N，可根据选择判断，取值显示到小能客户端上
-    }
-</script>
+<#--<script type="text/javascript">-->
+    <#--//SY小能客服-->
+
+    <#--NTKF_PARAM = {-->
+        <#--siteid: "kf_9250", 	                //企业ID，为固定值，必填-->
+        <#--settingid: "kf_9250_1462524671271", //接待组ID，为固定值，必填kf_9250_1462522749545-->
+        <#--uid: gj_User.id, 	                        //用户ID，未登录可以为空，但不能给null，uid赋予的值显示到小能客户端上-->
+        <#--uname: gj_User.Name + gj_User.mob, 	            //用户名，未登录可以为空，但不能给null，uname赋予的值显示到小能客户端上-->
+        <#--isvip: "0",                         //是否为vip用户，0代表非会员，1代表会员，取值显示到小能客户端上-->
+        <#--userlevel: gj_User.levelId  	        //网站自定义会员级别，0-N，可根据选择判断，取值显示到小能客户端上-->
+    <#--}-->
+<#--</script>-->
 
 <script type="text/javascript" src="${base}/item_files/ntkfstat.js.下载" charset="utf-8"></script>
 <script>

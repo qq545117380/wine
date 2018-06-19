@@ -91,22 +91,22 @@
         <!-- 分页标签 -->
         <div id="fenye">
             <ul>
-                <li> ${itemPageBean.currentPage}/${itemPageBean.totalPage}</li>
+                <#--<li> ${itemPageBean.currentPage}/${itemPageBean.totalPage}</li>-->
 			<#if itemPageBean.currentPage==1>
                 <#--<li><a>上一页</a></li>-->
 			<#else>
                 <li><a href="${base}/back/item/${itemPageBean.currentPage-1}">上一页</a></li>
 			</#if>
 			<#--循环遍历出页面数-->
-			<#--<#list 1..itemPageBean.totalPage as page>-->
-				<#--<#if page == itemPageBean.currentPage>-->
-                    <#--<li><a>${page}</a></li>-->
-				<#--<#else >-->
-                    <#--&lt;#&ndash;<#if page<6>&ndash;&gt;-->
-                    <#--<li id="xuan"><a href="${base}/back/item/${page}">${page}</a></li>-->
-                    <#--&lt;#&ndash;</#if>&ndash;&gt;-->
-				<#--</#if>-->
-			<#--</#list>-->
+			<#list 1..itemPageBean.totalPage as page>
+				<#if page == itemPageBean.currentPage>
+                    <li><a>${page}</a></li>
+				<#else >
+                    <#--<#if page<6>-->
+                    <li id="xuan"><a href="${base}/back/item/${page}">${page}</a></li>
+                    <#--</#if>-->
+				</#if>
+			</#list>
 			<#if itemPageBean.currentPage==itemPageBean.totalPage >
                 <#--<li><a>下一页</a></li>-->
 			<#else>
