@@ -62,7 +62,7 @@
         AND content_id = #{contentId}
       </if>
       <if test="priceId != null">
-        AND price_id = #{priceId}
+        AND price_group_id = #{priceId}
       </if>
     </where>
   </select>
@@ -87,7 +87,7 @@
         AND content_id = #{contentId}
       </if>
       <if test="priceId != null">
-        AND price_id = #{priceId}
+        AND price_group_id = #{priceId}
       </if>
     </where>
   </select>
@@ -111,7 +111,7 @@
         AND content_id = #{contentId}
       </if>
       <if test="priceId != null">
-        AND price_id = #{priceId}
+        AND price_group_id = #{priceId}
       </if>
     </where>
   </select>
@@ -135,7 +135,7 @@
         AND content_id = #{contentId}
       </if>
       <if test="priceId != null">
-        AND price_id = #{priceId}
+        AND price_group_id = #{priceId}
       </if>
     </where>
   </select>
@@ -159,7 +159,7 @@
         AND proof_id = #{proofId}
       </if>
       <if test="priceId != null">
-        AND price_id = #{priceId}
+        AND price_group_id = #{priceId}
       </if>
     </where>
   </select>
