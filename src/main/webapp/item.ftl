@@ -41,7 +41,7 @@
             </div>
         </div>
         <ul class="navBox fr clearfix">
-            <li class="loginReg" id="login"><em>Hi,请 </em><a href="./user/login1" class="login" rel="nofollow" target="_self">登录</a>/ <a href="./user/register" class="reg" rel="nofollow" target="_self">注册</a></li>
+            <li class="loginReg" id="login"><em>Hi,请 </em><a href="${base}/user/login1" class="login" rel="nofollow" target="_self">登录</a>/ <a href="./user/register" class="reg" rel="nofollow" target="_self">注册</a></li>
             <li class="line"></li>
             <li class="wddd navlist">
                 <a href="${base}/center/userCenter" class="force_link" rel="nofollow">我的订单</a>
