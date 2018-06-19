@@ -83,7 +83,7 @@
 		<!--头部 e-->
 		<div class="check_wrap">
 			<div class="check_header botShodow">
-				<a href="http://www.gjw.com/" title="购酒网">
+				<a href="${base}/pageHome.html" title="购酒网">
 					<img src="${base}/Settlement_files/logo1.jpg" alt="购酒网"></a>
 				<span style="position:relative;">
                     <span class="logoNextText">结算页</span>
