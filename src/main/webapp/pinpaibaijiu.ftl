@@ -110,67 +110,67 @@
 					<a href="/pageHome.html">☰ &nbsp; 全 部 分 类</a>
 					<ul class="qbfl-list">
 					<li class="yjxg-on">
-						<a href="/base/list?kindId=1">
+						<a href="${base}/base/list?kindId=1">
 							<img src="${imagesPath}/ax-icon.png" original="${imagesPath}/ax-icon.png">&nbsp;一键选购</a><em>›</em>
 						<div class="yjxg-box sec-box none" id="yijian"></div>
 							
 					</li>
 					<li class="bj-on">
-						<a href="/base/list?kindId=2">
+						<a href="${base}/base/list?kindId=2">
 							<img src="${imagesPath}/bj-icon.png" original="${imagesPath}/bj-icon.png">&nbsp;白 酒</a><em>›</em>
 						<div class="bj-box sec-box none" id="baijiu">
 						 
 						</div>
 					</li>
 					<li class="ptj-on">
-						<a href="/base/list?kindId=3">
+						<a href="${base}/base/list?kindId=3">
 							<img src="${imagesPath}/ptj-icon.png" original="${imagesPath}/ptj-icon.png">&nbsp;葡 萄 酒</a><em>›</em>
 						<div class="ptj-box sec-box none" id="putaojiu">
 							 
 						</div>
 					</li>
 					<li class="yj-on">
-						<a href="/base/list?kindId=4">
+						<a href="${base}/base/list?kindId=4">
 							<img src="${imagesPath}/yj-icon.png" original="${imagesPath}/yj-icon.png">&nbsp;洋 酒</a><em>›</em>
 						<div class="yj-box sec-box none" id="yangjiu">
 						</div>
 					</li>
 					<li class="hj-on">
-						<a href="/base/list?kindId=5">
+						<a href="${base}/base/list?kindId=5">
 							<img src="${imagesPath}/hj-icon.png" original="${imagesPath}/hj-icon.png">&nbsp;黄 酒</a><em>›</em>
 						<div class="hj-box sec-box none" id="huangjiu">
 							 
 						</div>
 					</li>
 					<li class="ysj-on">
-						<a href="/base/list?kindId=6">
+						<a href="${base}/base/list?kindId=6">
 							<img src="${imagesPath}/ysj-icon.png" original="${imagesPath}/ysj-icon.png">&nbsp;清 酒</a><em>›</em>
 						<div class="ysj-box sec-box none" id="ys">
 							 
 						</div>
 					</li>
 					<li class="pj-on">
-						<a href="/base/list?kindId=7">
+						<a href="${base}/base/list?kindId=7">
 							<img src="${imagesPath}/pj-icon.png" original="${imagesPath}/pj-icon.png">&nbsp;啤 酒</a><em>›</em>
 						<div class="pj-box sec-box none" id="pijiu">
 							
 						</div>
 					</li>
 					<li class="jjzb-on">
-						<a href="/base/list?kindId=8">
+						<a href="${base}/base/list?kindId=8">
 							<img src="${imagesPath}/jjzb-icon.png" original="${imagesPath}/jjzb-icon.png">&nbsp;酒具周边</a><em>›</em>
 						<div class="jjzb-box sec-box none" id="zb"> 
 						</div>
 					</li>
 					<li class="xp-on">
-						<a href="/base/list?kindId=9">
+						<a href="${base}/base/list?kindId=9">
 							<img src="${imagesPath}/xp-icon.png" original="${imagesPath}/xp-icon.png">&nbsp;新 品</a><em>›</em>
 								<div class="jjzb-box sec-box none">
 										<div class="box-lt fl clearfix"></div>
 								</div>
 					</li>
                         <li class="xp-on">
-						<a href="/base/list?kindId=10">
+						<a href="${base}/base/list?kindId=10">
 							<img src="${imagesPath}/qingcang.png" original="${imagesPath}/qingcang.png">&nbsp;清 仓</a><em>›</em>
 								<div class="jjzb-box sec-box none">
 										<div class="box-lt fl clearfix"></div>
@@ -179,11 +179,11 @@
 				</ul>
 				</li>
 				 <li><a href="/pageHome.html">首页</a></li>
-                        <li><a href="http://tm.gjw.com/">特卖会</a></li>
-                        <li><a href="http://import.gjw.com/">进口馆</a></li>
-                        <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
-                        <li><a href="http://www.gjw.com/shoucang/default.htm">高端收藏</a></li> 
-                        <li><a href="http://www.gjw.com/Minisite/20170419/1199.htm">尾货直批</a></li>
+                        <li><a href="${base}/base/promotion">特卖会</a></li>
+                        <li><a href="#">进口馆</a></li>
+                        <li><a href="#">商家采销</a></li>
+                        <li><a href="#">高端收藏</a></li>
+                        <li><a href="#">尾货直批</a></li>
 			</ul>
 				<div class="fr" id="rigft_advertisting"><a href="http://www.gjw.com/product/item-id-7460.html" target="_blank"><img src="${imagesPath}/6a9d90cda55e4389815f5a78f37bc9c2.gif" alt="" original="${imagesPath}/6a9d90cda55e4389815f5a78f37bc9c2.gif"></a></div>
 		</div>
@@ -301,7 +301,7 @@
                 </div>
             </div>
             <!--商品列表s-->
-       
+
         <div class="product-list">
             <ul class="prolist clearfix">
                 <#list goodsList as goodsValue>

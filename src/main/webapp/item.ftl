@@ -18,9 +18,9 @@
 
     <script src="${base}/item_files/hm.js.下载"></script><script type="text/javascript" async="" src="${base}/item_files/dc.js.下载"></script><script src="${base}/item_files/jquery-1.7.1.min.js.下载"></script>
 
-    <script>
-        document.domain = "gjw.com";
-    </script>
+    <#--<script>-->
+        <#--document.domain = "gjw.com";-->
+    <#--</script>-->
 
     <script src="${base}/item_files/share.js.下载"></script><link rel="stylesheet" href="${base}/item_files/layer.css" id="layui_layer_skinlayercss" style=""><link type="text/css" rel="stylesheet" href="${base}/item_files/laypage.css" id="laypagecss"><script type="text/javascript" async="async" charset="utf-8" src="${base}/item_files/userinfo.php"></script><link rel="stylesheet" href="${base}/item_files/share_style0_16.css"><script type="text/javascript" async="async" charset="utf-8" src="${base}/item_files/zh_cn.js.下载" data-requiremodule="lang"></script><script type="text/javascript" async="async" charset="utf-8" src="${base}/item_files/chat.in.js.下载" data-requiremodule="chatManage"></script><script type="text/javascript" async="async" charset="utf-8" src="${base}/item_files/mqtt31.js.下载" data-requiremodule="MQTT"></script><script type="text/javascript" async="async" charset="utf-8" src="${base}/item_files/mqtt.chat.js.下载" data-requiremodule="Connection"></script></head>
 
@@ -180,11 +180,11 @@
             </ul>
         </li>
         <li><a href="./pageHome.html">首页</a></li>
-        <li><a href="./base/promotion">特卖会</a></li>
-        <li><a href="http://import.gjw.com/">进口馆</a></li>
-        <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
-        <li><a href="http://www.gjw.com/shoucang/default.htm">高端收藏</a></li>
-        <li><a href="http://www.gjw.com/Minisite/20170419/1199.htm">尾货直批</a></li>
+        <li><a href="${base}/base/promotion">特卖会</a></li>
+        <li><a href="#">进口馆</a></li>
+        <li><a href="#">商家采销</a></li>
+        <li><a href="#">高端收藏</a></li>
+        <li><a href="#">尾货直批</a></li>
     </ul>
     <div class="fr" id="rigft_advertisting"><a href="http://www.gjw.com/product/item-id-7460.html" target="_blank"><img src="${base}/item_files/6a9d90cda55e4389815f5a78f37bc9c2.gif" alt="" original="http://img0.gjw.com/Famous/2018/0508/6a9d90cda55e4389815f5a78f37bc9c2.gif"></a></div>
 </div>

@@ -178,11 +178,11 @@
 				</ul>
 				</li>
 				 <li><a href="./pageHome.html">首页</a></li>
-                        <li><a href="./base/promotion">特卖会</a></li>
-                        <li><a href="http://import.gjw.com/">进口馆</a></li>
-                        <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
-                        <li><a href="http://www.gjw.com/shoucang/default.htm">高端收藏</a></li> 
-                        <li><a href="http://www.gjw.com/Minisite/20170419/1199.htm">尾货直批</a></li>
+                        <li><a href="${base}/base/promotion">特卖会</a></li>
+                        <li><a href="#">进口馆</a></li>
+                        <li><a href="#">商家采销</a></li>
+                        <li><a href="#">高端收藏</a></li>
+                        <li><a href="#">尾货直批</a></li>
 			</ul>
 				<div class="fr" id="rigft_advertisting"><a href="http://www.gjw.com/product/item-id-7460.html" target="_blank"><img src="${base}/promotion_files/6a9d90cda55e4389815f5a78f37bc9c2.gif" alt="" original="http://img0.gjw.com/Famous/2018/0508/6a9d90cda55e4389815f5a78f37bc9c2.gif"></a></div>
 		</div>
