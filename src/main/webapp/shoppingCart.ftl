@@ -43,9 +43,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="m2"><a href="http://order.gjw.com/UserCenter/MyOrder.html" rel="nofollow">
+                    <li class="m2"><a href="${base}/center/userCenter" rel="nofollow">
                     我的订单</a></li>
-                    <li class="m3"><a class="user-a" href="http://order.gjw.com/UserCenter/MyOrder.html" rel="nofollow">
+                    <li class="m3"><a class="user-a" href="${base}/center/userCenter" rel="nofollow">
                     用户中心<u></u></a>
                         <div class="miniMenu-child hide" style="display: none;">
                             <dl>

@@ -32,6 +32,17 @@ public class shoppingController {
     @Resource
     private RedisUtil redisUtil;
 
+    @RequestMapping("/cart")
+    public String cart(HttpSession httpSession){
+        User currentUser = (User)httpSession.getAttribute("currentUser");
+        if(null!=currentUser){
+            List<Shoppingcart> shoppingcartList = shoppingCartService.selectByUserId(currentUser.getUserId());
+            httpSession.setAttribute("shoppingcartList",shoppingcartList);
+            return "shoppingCart";
+        }
+        return "redirect:/user/login1";
+    }
+
     @RequestMapping("/insert")
     public String insert(String itemName,
                              Integer count, HttpSession httpSession,Model model){

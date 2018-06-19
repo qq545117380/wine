@@ -44,12 +44,12 @@
             <li class="loginReg" id="login"><em>Hi,请 </em><a href="${base}/user/login1" class="login" rel="nofollow" target="_self">登录</a>/ <a href="./user/register" class="reg" rel="nofollow" target="_self">注册</a></li>
             <li class="line"></li>
             <li class="wddd navlist">
-                <a href="http://order.gjw.com/UserCenter/MyOrder.html" class="force_link" rel="nofollow">我的订单</a>
+                <a href="${base}/center/userCenter" class="force_link" rel="nofollow">我的订单</a>
             </li>
             <li class="line"></li>
             <li class="yhzx navlist">
 
-                <a href="http://order.gjw.com/UserCenter/MyOrder.html" rel="nofollow">个人中心</a>
+                <a href="${base}/center/userCenter" rel="nofollow">个人中心</a>
 
             </li>
             <li class="line"></li>
@@ -262,7 +262,8 @@
         <div class="mainBox">
             <div class="buyBox">
                 <div class="category">
-                    <span><a target="_blank" href="http://www.gjw.com/">首页</a>  </span>&gt;
+                    <span><a target="_blank" href="${base}/pageHome.html">
+                        首页</a>  </span>&gt;
                     <span><a target="_blank" href="http://www.gjw.com/list/baijiu">${kind.kindName}</a>  </span>&gt;
                     <span><a target="_blank" href="http://www.gjw.com/list/baijiu-maotai">${brand.brandName}</a></span>&gt;
                     <span>${item.itemName}</span>
@@ -1561,7 +1562,7 @@
             <div class="iconBox_tips">
                 <span class="tips">会员中心</span> <span class="tips_arrow">◆</span>
             </div>
-        </a><a href="http://order.gjw.com/order/Cart.html" rel="nofollow" class="rb_btn rb_Center">
+        </a><a href="${base}/shopping/cart" rel="nofollow" class="rb_btn rb_Center">
         <div class="footer_iconBox">
             <span class="iconfont cart"></span> 购<br>
             物<br>

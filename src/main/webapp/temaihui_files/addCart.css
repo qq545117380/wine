@@ -1,0 +1,126 @@
+
+.addBuy{
+	
+	display:block; width:180px; 
+	margin-top:20px; height:40px; 
+	background: url(http://47.93.226.204/zmjtp/addBuy.jpg);
+	float: left;
+	position:relative; 
+
+}
+
+.addToCart{
+  
+  float: left; 
+  background-image: url('http://47.93.226.204/zmjtp/Detail_bg.gif');
+   margin-left:16px;
+ 
+}
+
+.shopping_poppup{
+	
+	display: none;
+	width: 560px; 
+	height: 272px;
+	background:url(http://47.93.226.204/zmjtp/gouwuche_1.png);
+	position: absolute; left: -551px; top: 0;
+	
+}
+
+.shopping_poppup_a{ 
+	
+	color:#3388bb; 
+	position: absolute; 
+	left: 113px; 
+	top: 48px; 
+	font-size: 12px;
+}
+
+.shopping_poppup_a:hover{ 
+	
+	text-decoration: underline;
+
+}
+
+.shopping_poppup_onoff{
+	
+	display: block;
+	width: 25px; 
+	height: 25px; 
+	position: absolute;
+	top: 5px; 
+	right: 15px; 
+	cursor: pointer;
+	
+}
+
+
+.shopping_poppup_tab { 
+	
+	position: absolute; 
+	left: 30px; 
+	top: 124px; 
+	
+}
+.shopping_poppup_tab a{ 
+	
+	width: 120px; 
+	height: 120px; 
+	border: 1px solid #d3d3d3; 
+	float: left; 
+	margin-right: 3px; 
+	position: relative;
+	
+}
+.shopping_poppup_tab a span{ 
+	
+	width: 120px; 
+	height: 24px; 
+	background: #000000; 
+	opacity: 0.5; 
+	position: absolute;
+	bottom: -2px; 
+	left: 0; 
+	text-align: left ; 
+	line-height: 24px; 
+	    color: #fff;
+}
+.sellingBox { 
+	
+	display: block; 
+	width: 520px; 
+	height: 40px; 
+	background: #d8243a; 
+	line-height: 40px; 
+	color: #FFFFFF; 
+	margin-top: 8px; 
+}
+.sellingBox:hover{ 
+	
+	color:#FFFFFF;
+
+}
+.sellingBox h3{ 
+	
+	display: inline;  
+	font-size: 24px; 
+	font-family: "微软雅黑"; 
+	margin: 0 0 0 71px; 
+	font-style:oblique  ; 
+	font-weight: bold; 
+	
+}
+.sellingBox span{ 
+	
+	margin-left: 11px; 
+	position: relative; 
+	top: -4px;
+	
+	}
+.sellingBox span em{ 
+	
+	color: #ffcc00; 
+	
+}
+.flyer{display: block;width: 60px;height: 60px;border-radius: 60px;position: fixed;z-index: 9999999;}
+.buyBox{ border-right:none;}
