@@ -37,7 +37,7 @@
     from tb_item;
   </select>
 
-  <!--查询商品的总数量-->
+  <!--查询总共有多少单品-->
   <select id="selectItemNum" resultType="java.lang.Integer">
     select count(1) from tb_item;
   </select>

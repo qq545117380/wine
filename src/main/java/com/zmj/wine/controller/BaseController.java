@@ -118,7 +118,8 @@ public class BaseController {
             //传递给页面
             model.addAttribute("yieldlyList",yieldlyList);
         }else{
-            Yieldly yieldly = yieldlyService.selectByPrimaryKey(Integer.parseInt(yieldlyId));
+            yId=Integer.parseInt(yieldlyId);
+            Yieldly yieldly = yieldlyService.selectByPrimaryKey(yId);
             List<Yieldly> yieldlyList=new ArrayList<>();
             yieldlyList.add(yieldly);
             model.addAttribute("yieldlyList",yieldlyList);
@@ -134,7 +135,8 @@ public class BaseController {
             }
             model.addAttribute("flavourList",flavourList);
         }else{
-            Flavour flavour = flavourService.selectByPrimaryKey(Integer.parseInt(flavourId));
+            fId=Integer.parseInt(flavourId);
+            Flavour flavour = flavourService.selectByPrimaryKey(fId);
             List<Flavour> flavourList=new ArrayList<>();
             flavourList.add(flavour);
             model.addAttribute("flavourList",flavourList);
@@ -149,7 +151,8 @@ public class BaseController {
             }
             model.addAttribute("proofList",proofList);
         }else{
-            Proof proof = proofService.selectByPrimaryKey(Integer.parseInt(proofId));
+            proofNo=Integer.parseInt(proofId);
+            Proof proof = proofService.selectByPrimaryKey(proofNo);
             List<Proof> proofList=new ArrayList<>();
             proofList.add(proof);
             model.addAttribute("proofList",proofList);
@@ -164,7 +167,8 @@ public class BaseController {
             }
             model.addAttribute("contentList",contentList);
         }else {
-            Content content = contentService.selectByPrimaryKey(Integer.parseInt(contentId));
+            cId=Integer.parseInt(contentId);
+            Content content = contentService.selectByPrimaryKey(cId);
             List<Content> contentList=new ArrayList<>();
             contentList.add(content);
             model.addAttribute("contentList",contentList);
@@ -179,7 +183,8 @@ public class BaseController {
             }
             model.addAttribute("priceList",priceList);
         }else {
-            Price price = priceService.selectByPrimaryKey(Integer.parseInt(priceId));
+            priceNo=Integer.parseInt(priceId);
+            Price price = priceService.selectByPrimaryKey(priceNo);
             List<Price> priceList=new ArrayList<>();
             priceList.add(price);
             model.addAttribute("priceList",priceList);
