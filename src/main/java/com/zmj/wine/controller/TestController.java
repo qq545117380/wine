@@ -41,7 +41,7 @@ public class TestController extends HttpServlet{
             //将订单号写入session，页面显示用
             req.getSession().setAttribute("image", image);
             //将图片放入 session 中?
-            resp.sendRedirect("/payment.jsp");
+            resp.sendRedirect("./payment.jsp");
             //跳转到支付页面，显示二维码
         } catch (Exception e) {
             e.printStackTrace();

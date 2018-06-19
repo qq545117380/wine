@@ -5,6 +5,7 @@ import com.zmj.wine.entity.Shoppingcart;
 import com.zmj.wine.entity.User;
 import com.zmj.wine.service.IShoppingCartService;
 import com.zmj.wine.service.ItemService;
+import com.zmj.wine.service.OrderService;
 import com.zmj.wine.utils.JsonResult;
 import com.zmj.wine.utils.SystemParam;
 import com.zmj.wine.utils.SystemTools;
@@ -23,7 +24,8 @@ import java.util.List;
 public class shoppingController {
     @Resource
     private IShoppingCartService shoppingCartService;
-
+    @Resource
+    private OrderService orderService;
     @Resource
     private ItemService itemService;
     //购物车页面
@@ -58,6 +60,7 @@ public class shoppingController {
                 httpSession.setAttribute("shoppingcartList",shoppingcartList);
                 return "shoppingCart";
             }else{
+                model.addAttribute("item",item);
                 return "/item";
             }
         }
@@ -82,8 +85,10 @@ public class shoppingController {
     @RequestMapping("/orderSettle")
     public Object orderSettle(String sumMoney,HttpSession session){
         int sum = Integer.parseInt(sumMoney);
+        int orderNo = orderService.queryOrderNum()+1;
         JsonResult jsonResult = SystemTools.formatJsonResult(SystemParam.Login.CODE_SUCCESS, SystemParam.Login.MSG_SUCCESS);
         session.setAttribute("sumPrice",sum);
+        session.setAttribute("orderNo",orderNo);
         return jsonResult;
     }
     //支付

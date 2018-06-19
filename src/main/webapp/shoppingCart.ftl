@@ -437,4 +437,5 @@
             });
         }
     </script>-->
+    <script src='//kefu.easemob.com/webim/easemob.js?configId=2020b20c-f850-4730-ad1f-47273a1818e1'></script>
 </body></html>

@@ -207,7 +207,7 @@
                         <tr>
                             <td>
                                 <a href="http://order.gjw.com/UserOrder/OrderDetail-410468.html" id="ANumber0" class="blue" target="_blank">
-                                    872796716</a>
+                                    ${orderNo}</a>
                             </td>
                             <td>-
                             </td>
@@ -433,9 +433,10 @@
         //微信扫码
         $('#wechat').bind('change', function () {
             if (this.checked) {
-                $('#QRCodeImg').attr("src", "http://order.gjw.com/WeiXinPay/NativePay");
+                $('#QRCodeImg').attr("src", "${base}/imageServlet/image");
                 $('#qrcodeBox1').fadeIn();
                 $('#OrderPay').hide();
+                /*window.location.href = "${base}/payment/test?body="+${orderNo};*/
                 checkWxIsPay();
             } else {
                 $('#OrderPay').show();
