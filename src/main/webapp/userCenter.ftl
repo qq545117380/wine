@@ -44,12 +44,12 @@
 			        <li class="loginReg" id="login"><a href="http://order.gjw.com/UserCenter/MyOrder.html" class="login" rel="nofollow" target="_self">不见⊙Д⊙不散</a>/ <a href="Javascript:Exit()" class="reg" rel="nofollow" target="_self">退出</a></li> 
 			        <li class="line"></li>
 			        <li class="wddd navlist">
-			        	<a href="http://order.gjw.com/UserCenter/MyOrder.html" class="force_link" rel="nofollow">我的订单</a>
+			        	<a href="${base}/center/userCenter" class="force_link" rel="nofollow">我的订单</a>
 			        </li>
 			        <li class="line"></li>
 			        <li class="yhzx navlist"> 
                           
-                        	<a href="http://order.gjw.com/UserCenter/MyOrder.html" rel="nofollow">个人中心</a>          	
+                        	<a href="${base}/center/userCenter" rel="nofollow">个人中心</a>
                           
 			        </li>
 			        <li class="line"></li>
@@ -495,7 +495,7 @@
                 <div class="iconBox_tips">
                     <span class="tips">会员中心</span> <span class="tips_arrow">◆</span>
                 </div>
-            </a><a href="http://order.gjw.com/Order/Cart.html" rel="nofollow" class="rb_btn rb_Center">
+            </a><a href="${base}/shopping/cart" rel="nofollow" class="rb_btn rb_Center">
                 <div class="footer_iconBox">
                     <span class="iconfont cart"></span> 购<br>
                     物<br>
