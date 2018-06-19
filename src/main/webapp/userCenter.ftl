@@ -495,7 +495,7 @@
                 <div class="iconBox_tips">
                     <span class="tips">会员中心</span> <span class="tips_arrow">◆</span>
                 </div>
-            </a><a href="http://order.gjw.com/Order/Cart.html" rel="nofollow" class="rb_btn rb_Center">
+            </a><a href="${base}/shopping/cart" rel="nofollow" class="rb_btn rb_Center">
                 <div class="footer_iconBox">
                     <span class="iconfont cart"></span> 购<br>
                     物<br>
