@@ -227,7 +227,7 @@
             <ul class="cd-table fl" id="select2">
                     <#list yieldlyList as yieldlyValue>
                         <#--<li><a rel="nofollow" href="/yieldly/${yieldlyValue.yieldlyId}/${brandValue.brandId}">${yieldlyValue.yieldlyName}</a></li>-->
-                        <li><a rel="nofollow" href="#">${yieldlyValue.yieldlyName}</a></li>
+                        <li><a rel="nofollow" href="${base}/base/byTerm?kindId=${kind.kindId}&yieldlyId=${yieldlyValue.yieldlyId}">${yieldlyValue.yieldlyName}</a></li>
                     </#list>
             </ul>
         </div>
@@ -235,7 +235,7 @@
             <div class="search-cd-tit fl">香型:</div>
             <ul class="cd-table fl" id="select3">
                     <#list flavourList as flavourValue>
-                        <li><a rel="nofollow" href="http://www.gjw.com/list/baijiu&amp;type=110">${flavourValue.flavourName}</a></li>
+                        <li><a rel="nofollow" href="${base}/base/byTerm?kindId=${kind.kindId}&flavourId=${flavourValue.flavourId}">${flavourValue.flavourName}</a></li>
                     </#list>
             </ul>
         </div>
@@ -246,7 +246,7 @@
                     <li>酒精度&nbsp;▼
            	     	        <ul class="" id="select4">
                                 <#list proofList as proofValue>
-                                    <li><a rel="nofollow" href="http://www.gjw.com/list/baijiu&amp;type=110">${proofValue.proofName}</a></li>
+                                    <li><a rel="nofollow" href="${base}/base/byTerm?kindId=${kind.kindId} & proofId=${proofValue.proofId}">${proofValue.proofName}</a></li>
                                 </#list>
                             <#--</#list>-->
                             <div style="clear: both"></div>
@@ -255,7 +255,7 @@
                     <li>净含量&nbsp;▼
            	     	        <ul class="" id="select5">
                                     <#list contentList as contentValue>
-                                        <li><a rel="nofollow" href="http://www.gjw.com/list/baijiu&amp;netp=2347">${contentValue.contentName}</a></li>
+                                        <li><a rel="nofollow" href="${base}/base/byTerm?kindId=${kind.kindId}&contentId=${contentValue.contentId}">${contentValue.contentName}</a></li>
                                     </#list>
                                     <div style="clear: both"></div>
                                 </ul>
@@ -263,7 +263,7 @@
                     <li>价格&nbsp;▼
            	     	        <ul class="" id="select6">
                                  <#list priceList as priceValue>
-                                        <li><a rel="nofollow" href="http://www.gjw.com/list/baijiu&amp;pr=497">${priceValue.priceName}</a></li>
+                                        <li><a rel="nofollow" href="${base}/base/byTerm?kindId=${kind.kindId}&priceId=${priceValue.priceId}">${priceValue.priceName}</a></li>
                                     </#list>
                                     <div style="clear: both"></div>
                                 </ul>
