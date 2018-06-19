@@ -40,7 +40,7 @@ public class shoppingController {
             httpSession.setAttribute("shoppingcartList",shoppingcartList);
             return "shoppingCart";
         }
-        return "redirect:user/login1";
+        return "redirect:/user/login1";
     }
 
     @RequestMapping("/insert")

@@ -188,7 +188,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="http://www.gjw.com/">首页</a></li>
+        <li><a href="${base}/pageHome.html">首页</a></li>
         <li><a href="http://tm.gjw.com/">特卖会</a></li>
         <li><a href="http://import.gjw.com/">进口馆</a></li>
         <li><a href="http://www.gjw.com/help/caigou.htm">商家采销</a></li>
