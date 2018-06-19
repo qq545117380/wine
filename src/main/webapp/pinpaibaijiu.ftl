@@ -178,7 +178,7 @@
 					</li>
 				</ul>
 				</li>
-				 <li><a href="/pageHome.html">首页</a></li>
+				 <li><a href="${base}/pageHome.html">首页</a></li>
                         <li><a href="${base}/base/promotion">特卖会</a></li>
                         <li><a href="#">进口馆</a></li>
                         <li><a href="#">商家采销</a></li>
