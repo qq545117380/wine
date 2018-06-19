@@ -737,33 +737,33 @@
         <script src="${base}/item_files/laypage.js.下载"></script>
         <script src="${base}/item_files/flyCart.min.js.下载" charset="gbk"></script>
         <script type="text/javascript">
-            /**
-             * 加密（需要先加载lib/aes/aes.min.js文件）
-             * @param word
-             * @returns {*}
-             */
-            function encrypt(word){
-                var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
-                var srcs = CryptoJS.enc.Utf8.parse(word);
-                var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
-                return encrypted.toString();
-            }
-            /**
-             * 解密
-             * @param word
-             * @returns {*}
-             */
-            function decrypt(word){
-                var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
-                var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
-                return CryptoJS.enc.Utf8.stringify(decrypt).toString();
-            }
+//            /**
+//             * 加密（需要先加载lib/aes/aes.min.js文件）
+//             * @param word
+//             * @returns {*}
+//             */
+//            function encrypt(word){
+//                var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
+//                var srcs = CryptoJS.enc.Utf8.parse(word);
+//                var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+//                return encrypted.toString();
+//            }
+//            /**
+//             * 解密
+//             * @param word
+//             * @returns {*}
+//             */
+//            function decrypt(word){
+//                var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
+//                var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+//                return CryptoJS.enc.Utf8.stringify(decrypt).toString();
+//            }
 
             function addToCart() {
                 var count =  $.trim($("#txtQuantity").val());
-                var countET= encrypt(count);
+//                var countET= encrypt(count);
                 var itemName="${item.itemName}";
-                var itemNameET=encrypt(itemName);
+//                var itemNameET=encrypt(itemName);
                 var currentUsre="${Session.currentUser}";
                 if(currentUsre==""){
                     alert("请先登录");
